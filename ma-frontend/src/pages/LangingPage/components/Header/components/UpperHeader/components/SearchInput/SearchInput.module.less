@@ -1,0 +1,41 @@
+.container {
+    
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding:0px 10px 0px 10px;
+    background-color: #fff;
+    height: 45px;
+    transition: border-color 0.3s ease-in-out; /* Add transition */
+
+
+    /* Listen any focus event on child element */
+    &:focus-within {
+        border: 1.2px solid #12837b;
+    }
+
+
+    .input {
+        border: none;
+        outline: none;
+        padding: 5px;
+        flex: 1;
+        line-height: 30px;
+        font-size: 15px;
+        // color: grey;
+    }
+
+    .searchIconWrapper {
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        .searchIcon {
+            width: 25px;
+            height: 25px;
+
+        }
+    }
+}

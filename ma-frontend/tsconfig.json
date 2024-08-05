@@ -32,6 +32,7 @@
       "@/store/*": ["store/*"],
       "@/assets/*": ["assets/*"],
       "@/services/*": ["services/*"],
+      "@/commons/*": ["commons/*"],
       "@/pages/*": ["pages/*"],
       "@/lib/*": ["lib/*"]
     }

@@ -1,0 +1,64 @@
+.container {
+    display:flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    // padding: 0px 10px 20px 30px;
+
+
+    .navItemContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+
+       
+        .navItem {
+            display: inline-block;
+            position: relative;
+            font-size: 16px; /* Adjust as needed */
+            color: black; /* Adjust as needed */
+            opacity: 0.7;
+            // width: 50px;
+            flex-wrap: nowrap;
+
+
+            &:hover {
+                color: #12837b;
+                cursor: pointer;
+            }
+
+            &:hover::after {
+                width: 100%; /* Set the desired width on hover */
+                left: 0; /* Keep it centered */
+                transition: width 0.3s ease, left 0.3s ease; /* Add a transition effect */
+            }
+
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: -20px; /* Adjust distance from the text */
+                left: 0;
+                width: 0;
+                height: 3px; /* Adjust thickness */
+                background-color: #12837b; /* Adjust underline color */
+            }
+        }
+
+
+    }
+    
+    .detailPanelContainer {
+        
+    }
+}
+
+
+
+
+    

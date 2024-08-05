@@ -1,0 +1,104 @@
+
+
+.container {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 20;
+    justify-content: center;
+
+    .headingContainer {
+        font-size: 40px;
+        width: 70%;
+        color: white;
+        height: 100px;
+    }
+
+    .subheadingContainer {
+        color: white;
+    }
+
+
+    .buttonGroupContainer {
+        display: flex;
+        flex-direction: row;
+        gap:20px;
+        color: white;
+        align-items: center;
+        
+        justify-content: space-between;
+        height: 150px;
+
+        .buttonContainer {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 2px;
+            background-color: #12837b;
+            border-radius: 10px;
+            cursor: pointer;
+            align-self: flex-end;
+            padding: 3px;
+            user-select: none;
+
+            width: 250px;
+            height: 80px;
+            transition: background-color 0.2s ease-in-out;
+
+            &:hover {
+                background-color: #16a399;
+               
+            }
+
+            
+            .upperContainer {
+                display:flex;
+                flex-direction: row;
+                align-items: center;
+                flex: 1;
+                padding: 3px;
+                justify-content: space-between;
+                height: 50px;
+                
+                .buttonText {
+                    text-align: center;
+                    text-wrap: wrap;
+                    width: 80%;
+                }
+        
+                .buttonImage {
+                    width: 25px;
+                    height:25px;
+                }
+            }
+
+            .underContainer {
+                height: 30px;
+                line-height: 20px;
+                display: flex;
+                
+                flex-direction: row;
+                align-items: flex-end;
+                justify-content: center;
+
+                .buttonText {
+                    text-align: center;
+                    text-wrap: wrap;
+                    // align-self: flex-end;
+                    font-size: 10px;
+                }
+            }
+
+        }
+        
+    }
+
+
+}
