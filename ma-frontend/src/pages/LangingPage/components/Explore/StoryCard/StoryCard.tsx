@@ -1,60 +1,53 @@
+import ContentCard from "../ContentCard/ContentCard";
 import styles from "./StoryCard.module.less"
 
-interface IBulletBox {
-    image_url: string;
+
+
+export interface IBulletBox {
     text: string;
 }
 
-interface IStoryCard {
+export interface IStoryCard {
+
     title: string;
     intro: string;
-    align_direction: string;
+    align_type: string;
     floating_image: string;
     button_link: string;
     bullet_points?: IBulletBox[];
 }
 
-const StoryCard = (data: IStoryCard) => {
+interface StoryCardProps {
+    data: IStoryCard;
+}
 
-    const {title, intro, align_direction, floating_image, bullet_points, button_link} = data;
+const StoryCard = ({ data}: StoryCardProps) => {
+
+    const {align_type, floating_image} = data;
 
     return (
-        <div className={styles.container}>
-            <div className={styles.leftBlankContainer}></div>
-            <div className={styles.rightGreenContainer}>
-                <div className={styles.headingContainer}>
-                    <div className={styles.headingText}>{title}</div>
-                </div>
-                <div className={styles.subheadingContainer}>
-                    <div className={styles.subheadingText}>{intro}</div>
-                </div>
+        <div className={`${styles.container} ${styles[align_type]}`}>
+            <div className={styles.backgroundContainer}>
                 {
-                    bullet_points 
-                    && bullet_points.length > 0 
-                    && 
-                    <div className={styles.bulletGroupContainer}>
-                        {
-                            bullet_points.map((elem, index) => (
-                                <div className={styles.bulletContainer} key={elem.toString() + index}>
-                                    <div className={styles.bulletImageContainer}>
-                                        <img className={styles.bulletImage}>
-                                            {elem.image_url}
-                                        </img>
-                                    </div>
-                                    <div className={styles.bulletText}>
-                                        {elem.text}
-                                    </div>
-                                </div>
-                            ))   
-                        }
-                    </div>
+                    align_type == "double" ? 
+                    <>
+                        <div className={styles.left}>
+                        </div>
+                        <div className={styles.right}>
+                            <ContentCard {...data}></ContentCard>
+                        </div>
+                    </> : 
+                        <div className={styles.plain}>
+                            <ContentCard {...data}></ContentCard>
+                        </div>
                 }
-                <div className={styles.button}></div>
+                
+                {floating_image && 
+                <div className={`${styles.floatingImageContainer} ${styles[align_type]}`}>
+                    <img src={floating_image} className={styles.floatingImg}></img>
+                </div>}
             </div>
-            {floating_image && 
-            <div className={styles.floatingImgContainer}>
-                <img src={""}></img>
-            </div>}
+            
         </div>
     )
 }

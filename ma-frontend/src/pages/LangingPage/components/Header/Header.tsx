@@ -9,7 +9,6 @@ function Header() {
         <div className={styles.container}>
             <UpperHeader></UpperHeader>
             <NavigateBar></NavigateBar>
-            <Explore></Explore>
         </div>
     )
 }

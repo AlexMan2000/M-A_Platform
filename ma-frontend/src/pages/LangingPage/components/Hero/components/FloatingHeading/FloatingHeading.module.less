@@ -12,6 +12,7 @@
     transform: translateX(-50%) translateY(-50%);
     z-index: 20;
     justify-content: center;
+    padding: 0px 30px 0px 30px;
 
     .headingContainer {
         font-size: 40px;
@@ -41,16 +42,17 @@
             flex-direction: column;
             justify-content: space-between;
             gap: 2px;
-            background-color: #12837b;
+            background-color: var(--theme-color);
             border-radius: 10px;
             cursor: pointer;
             align-self: flex-end;
-            padding: 3px;
+            padding: 6px;
             user-select: none;
-
+            box-sizing: content-box;
+    
             width: 250px;
             height: 80px;
-            transition: background-color 0.2s ease-in-out;
+            transition: background-color 0.2s ease-in-out , width 0.3s ease, height 0.3s ease;;
 
             &:hover {
                 background-color: #16a399;
@@ -63,13 +65,18 @@
                 flex-direction: row;
                 align-items: center;
                 flex: 1;
-                padding: 3px;
+                padding: 5px;
                 justify-content: space-between;
                 height: 50px;
+                // width: 100px;
+                
                 
                 .buttonText {
-                    text-align: center;
-                    text-wrap: wrap;
+                    text-align: justify;
+                    // white-space: nowrap; /* Prevent text from wrapping */
+                    overflow: hidden; /* Hide overflow text */
+                    text-overflow: ellipsis; /* Show ellipsis for overflow text */
+                    font-size: 15px;
                     width: 80%;
                 }
         
@@ -87,12 +94,16 @@
                 flex-direction: row;
                 align-items: flex-end;
                 justify-content: center;
+                font-size: 10px;
+                white-space: nowrap; /* Prevent text from wrapping */
+                overflow: hidden; /* Hide overflow text */
+                text-overflow: ellipsis; /* Show ellipsis for overflow text */
 
                 .buttonText {
                     text-align: center;
                     text-wrap: wrap;
                     // align-self: flex-end;
-                    font-size: 10px;
+                    
                 }
             }
 
@@ -101,4 +112,24 @@
     }
 
 
+}
+
+
+@media (max-width: 1024px) {
+    
+.container {
+
+
+
+    .buttonGroupContainer {
+
+      
+        gap: 60px;
+
+        .buttonContainer {
+            width: 150px;
+            height: 80px;
+        }
+    }
+}
 }

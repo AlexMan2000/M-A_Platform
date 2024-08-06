@@ -1,9 +1,5 @@
 import styles from "./FloatingHeading.module.less"
 import ForwardArrow from "@/assets/svgs/right_arrow_icon.svg"
-import { Button } from "@mui/material";
-import { styled } from "@mui/system";
-import ClickableButton from "@/commons/components/ClickableButton/ClickableButton";
-
 interface buttonInfo {
     text: string;
     img: string;

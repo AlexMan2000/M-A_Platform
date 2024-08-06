@@ -1,0 +1,108 @@
+.container {
+    width: 400px; 
+    height: 100%; 
+    display: flex;
+    gap: 20px;
+
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    // pointer-events: none; 
+
+    &.double {
+        padding: 50px 0px 50px 100px;
+        color: white;
+    }
+    
+
+    &.plain {
+        padding: 50px 0px 50px 100px;
+        color: black;
+    }
+
+    .headingContainer {
+        font-size: 30px;
+        font-weight: 800;
+
+    }
+
+    .subheadingContainer {
+        font-size: 15px;
+        font-weight: 300;
+        text-align: justify;
+    }
+
+
+    .bulletGroupContainer{
+        flex: 1;
+
+        .bulletContainer {
+            display: flex;
+            align-items: center;
+            
+            flex-direction: row;
+            gap: 5px;
+
+            &.double {
+                color: white !important;
+            }
+
+            &.plain {
+                color: #000!important;
+            }
+
+
+            .bulletImage {
+                width: 20px;
+                height: 20px;
+            }
+
+
+            .bulletText {
+                text-align:justify
+            }
+        }
+
+
+    }
+
+    .button {
+        width: 150px;
+        height: 40px;
+        border-radius: 50px;
+        align-items: center;
+        justify-content: center;
+        align-self: stretch;
+        display: flex;
+        
+        z-index: 50;
+        flex-shrink: 0;  /** Prevent from being affected by other flex components  */
+
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+        &:hover.double {
+            cursor: pointer;
+            background-color: #17b5aa;
+            color: white;
+        }
+
+
+        &.double {
+            background-color: white;
+            color: var(--theme-color);
+        }
+
+        &.plain {
+            background-color: var(--theme-color);
+            color: white;
+        }
+
+        &:hover.plain {
+            cursor: pointer;
+            background-color: #17b5aa;
+            color: white;
+        }
+       
+    }
+}

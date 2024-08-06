@@ -1,0 +1,86 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // padding: 40px;
+    background-color: var(--theme-color);
+    color: #fff;
+    width: 100%;
+    padding: 20px 50px 50px 50px;
+    cursor: pointer;
+
+    .section-header {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .section-description {
+        font-size: 16px;
+        margin-bottom: 40px;
+        text-align: center;
+        max-width: 800px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+
+        .card {
+            background: #fff;
+            color:  var(--theme-color);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+
+            &:hover {
+                transform: translateY(-10px);
+            }
+
+            .icon {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 10px;
+            }
+
+            .title {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .bullet-points {
+                font-size: 14px;
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+                
+
+                li {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 5px;
+                }
+
+                li::before {
+                    content: "";
+                    display: inline-block;
+                    flex-shrink: 0;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 4px;
+                    background-color: var(--theme-color);
+                }
+            }
+        }
+    }
+}

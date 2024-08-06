@@ -1,6 +1,6 @@
 import { useIntl } from "react-intl";
 import styles from "./UpperHeader.module.less"
-import CompanyLogo from "@/assets/imgs/company-logo.jpg"
+import CompanyLogo from "@/assets/jpgs/company-logo.jpg"
 import SearchInput from "./components/SearchInput/SearchInput";
 import LanguageSwitcher from "./components/LanguageSwitcher/LanguageSwitcher";
 

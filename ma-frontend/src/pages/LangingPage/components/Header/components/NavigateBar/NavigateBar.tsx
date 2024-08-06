@@ -1,6 +1,6 @@
 import SwitchTab from "../SwitchTab/SwitchTab";
 import styles from "./NavigateBar.module.less"
-import ContactImage from "@/assets/imgs/Contact_Us.png"
+import ContactImage from "@/assets/pngs/Contact_Us.png"
 
 
 function NavigateBar() {

@@ -1,6 +1,8 @@
+import ClientSupport from "./components/ClientSupport/ClientSupport";
+import Explore from "./components/Explore/Explore";
 import Header from "./components/Header/Header";
-import Slider from "./components/Hero/components/Slider/Slider";
 import Hero from "./components/Hero/Hero";
+import WorkFlow from "./components/WorkFlow/WorkFlow";
 import styles from "./LandingPage.module.less"
 
 
@@ -10,6 +12,9 @@ function LandingPage() {
         <div className={styles.container}>
             <Header></Header>
             <Hero></Hero>
+            <Explore></Explore>
+            <ClientSupport></ClientSupport>
+            <WorkFlow></WorkFlow>
         </div>
     )
 }

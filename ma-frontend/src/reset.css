@@ -47,3 +47,9 @@ button {
   background: transparent;
   cursor: pointer;
 }
+
+
+/* Root color */
+:root {
+  --theme-color: #12837b;
+}
