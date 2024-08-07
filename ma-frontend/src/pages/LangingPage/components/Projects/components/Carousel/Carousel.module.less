@@ -1,0 +1,89 @@
+.carousel {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    position: relative;
+
+    .navButtonPrev {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      background-color: var(--theme-color);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 2rem;
+      cursor: pointer;
+      color: white;
+      text-align: center;
+      justify-content: center;
+      line-height: 50px;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        background-color: #18afa5;
+        
+      }
+    }
+
+    .navButtonAfter {
+      position: absolute;
+      z-index: 3;
+      background-color: var(--theme-color);
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 2rem;
+      cursor: pointer;
+      color: white;
+      text-align: center;
+      justify-content: center;
+      line-height: 50px;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        background-color: #18afa5;
+      }
+    }
+  
+    .cardContainer {
+      display: flex;
+      flex-direction: row;
+      overflow-x: scroll;
+      scroll-behavior: smooth;
+      // justify-content: center;
+      -webkit-overflow-scrolling: touch;
+      padding: 20px 100px;
+      pointer-events: auto;
+      
+      .edgeMask {
+        position: absolute;
+        top:0;
+        left:0;
+        z-index:1;
+        background: -webkit-linear-gradient(left, 
+                    rgba(240, 240, 240, 0.65) 0%, 
+                    rgba(0,0,0,0) 15%,
+                    rgba(0,0,0,0) 85%,
+                    rgba(240, 240, 240, 0.65) 100%
+        );
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+     
+  
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    
+  }
+  

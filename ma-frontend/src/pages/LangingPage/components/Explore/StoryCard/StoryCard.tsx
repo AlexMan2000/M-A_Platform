@@ -9,6 +9,7 @@ export interface IBulletBox {
 
 export interface IStoryCard {
 
+    index: number;
     title: string;
     intro: string;
     align_type: string;
@@ -21,9 +22,10 @@ interface StoryCardProps {
     data: IStoryCard;
 }
 
+
 const StoryCard = ({ data}: StoryCardProps) => {
 
-    const {align_type, floating_image} = data;
+    const {align_type, floating_image, index} = data;
 
     return (
         <div className={`${styles.container} ${styles[align_type]}`}>
@@ -31,21 +33,29 @@ const StoryCard = ({ data}: StoryCardProps) => {
                 {
                     align_type == "double" ? 
                     <>
-                        <div className={styles.left}>
+                        <div className={styles.leftDouble}>
                         </div>
-                        <div className={styles.right}>
+                        <div className={styles.rightDouble}>
                             <ContentCard {...data}></ContentCard>
                         </div>
                     </> : 
-                        <div className={styles.plain}>
+                    <>
+                        <div className={styles.leftPlain}>
                             <ContentCard {...data}></ContentCard>
                         </div>
+                        <div className={styles.rightPlain}>
+                            
+                        </div>
+                    </>
                 }
                 
                 {floating_image && 
                 <div className={`${styles.floatingImageContainer} ${styles[align_type]}`}>
                     <img src={floating_image} className={styles.floatingImg}></img>
                 </div>}
+                <div className={`${styles.floatingIndex} ${styles[align_type]}`}>
+                    {`0${index}`}
+                </div>
             </div>
             
         </div>

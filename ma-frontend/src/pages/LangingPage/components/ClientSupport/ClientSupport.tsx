@@ -1,5 +1,8 @@
 import styles from "./ClientSupport.module.less"
-import Building from "@/assets/svgs/buildings.svg"
+import PaperPlane from "@/assets/pngs/paper-plane-blue.png"
+import IndustryIcon from "@/assets/pngs/industry-icon-multi.png"
+import International from "@/assets/pngs/international.png"
+import Sustainable from "@/assets/pngs/sustainable.png"
 
 
 const sections = [
@@ -11,7 +14,7 @@ const sections = [
       "M&A advisory for smooth ownership changes",
       "Ensuring business continuity through transitions"
     ],
-    icon: Building // Replace with actual icon paths
+    icon: PaperPlane // Replace with actual icon paths
   },
   {
     header: "Thriving Amidst Industry Disruption",
@@ -21,7 +24,7 @@ const sections = [
       "Consolidation restructuring expertise",
       "Digital transformation consulting"
     ],
-    icon: Building // Replace with actual icon paths
+    icon: IndustryIcon // Replace with actual icon paths
   },
   {
     header: "Accelerating International Expansion",
@@ -31,7 +34,7 @@ const sections = [
       "Cross-border M&A facilitation",
       "Fostering local partnership networks"
     ],
-    icon: Building// Replace with actual icon paths
+    icon: International// Replace with actual icon paths
   },
   {
     header: "Driving Sustainable Business Growth",
@@ -41,21 +44,23 @@ const sections = [
       "Proactive search for acquisition and investment targets",
       "Connecting clients with PE funds, search funds, and partners"
     ],
-    icon: Building // Replace with actual icon paths
+    icon: Sustainable // Replace with actual icon paths
   }
 ];
 
 const ClientSupport = () => (
   <div className={styles.container}>
-    <div className={styles.sectionHeader}>Our Services</div>
+    <div className={styles.sectionHeader}>How We Support Our Clients</div>
     <div className={styles.sectionDescription}>
-      We work closely with our customers to solve their problems and support the growth of their business.
+    We provide tailored guidance and strategic insights to ensure seamless business transitions that honor your legacy and drive future success.
     </div>
     <div className={styles.grid}>
       {sections.map((section, index) => (
         <div className={styles.card} key={index}>
-          <img src={section.icon} alt={section.header} className={styles.icon} />
-          <div className={styles.title}>{section.header}</div>
+          <div className={styles.iconWrapper}>
+            <img src={section.icon} alt={section.header} className={styles.icon} />
+          </div>
+         <div className={styles.title}>{section.header}</div>
           <ul className={styles.bulletPoints}>
             {
                 section.bullets.map((bullet, idx) => (

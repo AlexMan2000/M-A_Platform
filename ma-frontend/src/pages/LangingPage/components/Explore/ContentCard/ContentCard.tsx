@@ -2,6 +2,7 @@ import styles from "./ContentCard.module.less"
 import BulletImage from "@/assets/pngs/bullet_point.png"
 import { IStoryCard } from "../StoryCard/StoryCard"
 
+
 const ContentCard = (data: IStoryCard) => {
 
     const {title, intro, align_type, bullet_points, button_link} = data;

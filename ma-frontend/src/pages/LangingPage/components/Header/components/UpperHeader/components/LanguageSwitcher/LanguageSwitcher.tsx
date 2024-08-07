@@ -65,7 +65,7 @@ const LanguageSwitcher = () => {
         sx={{
           fontSize: "10px",
           width: "100px",
-          height: "45px"
+          height: "35px"
         }}
       >
         <CustomMenuItem value="zh">中文</CustomMenuItem>

@@ -3,9 +3,11 @@
     flex-direction: row;
     flex: 1;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: 50px;
+    color: white;
     // padding: 0px 10px 20px 30px;
+    background-color: var(--theme-color);
 
 
     .navItemContainer {
@@ -13,6 +15,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        
         gap: 20px;
 
        
@@ -20,14 +23,15 @@
             display: inline-block;
             position: relative;
             font-size: 16px; /* Adjust as needed */
-            color: black; /* Adjust as needed */
-            opacity: 0.7;
+            color: white;
+            padding: 0px 20px 0px 20px;
+            opacity: 1;
             // width: 50px;
             flex-wrap: nowrap;
 
 
             &:hover {
-                color: var(--theme-color);
+                color: white;
                 cursor: pointer;
             }
 
@@ -42,11 +46,11 @@
                 content: '';
                 display: block;
                 position: absolute;
-                bottom: -20px; /* Adjust distance from the text */
+                bottom: -15px; /* Adjust distance from the text */
                 left: 0;
                 width: 0;
                 height: 3px; /* Adjust thickness */
-                background-color: var(--theme-color); /* Adjust underline color */
+                background-color: white; /* Adjust underline color */
             }
         }
 

@@ -1,3 +1,4 @@
+import { Grid } from "@mui/material";
 import styles from "./FloatingHeading.module.less"
 import ForwardArrow from "@/assets/svgs/right_arrow_icon.svg"
 interface buttonInfo {
@@ -24,29 +25,62 @@ const buttonInfos: buttonInfo[] = [
 ]
 
 
+
 function FloatingHeading() {
 
     return (
         <div className={styles.container}>
             <div className={styles.headingContainer}>
-                Leading SME M&A Solutions in Greater China and Southeast Asia
+                Legacy, 
+                Prosperity, 
+                Vision.
             </div>
-            <div className={styles.subheadingContainer}>
+            {/* <div className={styles.subheadingContainer}>
                 Connecting businesses for successful transitions and growth
-            </div>
+            </div> */}
             <div className={styles.buttonGroupContainer}>
+            <Grid container spacing={2}>
                 {buttonInfos.map((elem: buttonInfo, index: number) => (
-                    <div className={styles.buttonContainer} key={elem.toString() + index}>
-                        <div className={styles.upperContainer}>
-                            <div className={styles.buttonText}>{elem.text}</div>
+                    <Grid item xs={4} md={4}>
+                        <div className={styles.buttonContainer1} 
+                        key={elem.toString() + index}
+                        style ={{
+                            flexDirection: elem.underline? "column":"row",
+                            justifyContent: elem.underline? "space-between": "center",
+                            alignItems: elem.underline? "center": "center"
+                        }}
+                        >
+                            
+                            {elem.underline ?
+                                (
+                                    <>
+                                        <div className={styles.buttonText1}>{elem.text}</div>
+                                        
+                                        <div className={styles.buttonText2}> {elem.underline}</div>
+                                    </>
+                                )
+                                : 
+                                (
+                                    <>
+                                        <div className={styles.buttonText3}>{elem.text}</div>
+                                    </>
+                                )
+                            }
                             <img className={styles.buttonImage} src={elem.img}></img>
                         </div>
-                        {elem.underline&&<div className={styles.underContainer}>
-                            <div className={styles.buttonText}> {elem.underline}</div>
-                        </div>
-                        }
+                            
+                    </Grid>
+                ))}
+                <Grid item xs={12} md={12}>
+                    <div className={styles.buttonContainer2}
+                     key={"Prelim Valudation"}
+                     >
+                            <div className={styles.buttonText3}>Premium Evaluation</div>
+                            {/* <img className={styles.buttonImage} src={elem.img}></img> */}
                     </div>
-            ))}
+                </Grid>
+            </Grid>
+                
 
             </div>
         </div>

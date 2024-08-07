@@ -4,11 +4,11 @@
     flex-direction: column;
     align-items: center;
     // padding: 40px;
-    background-color: var(--theme-color);
-    color: #fff;
+    background-color: #f0f0f0;
+    color: var(--theme-color);
     width: 100%;
     padding: 20px 50px 50px 50px;
-    cursor: pointer;
+
 
     .section-header {
         font-size: 36px;
@@ -32,28 +32,55 @@
         max-width: 1200px;
 
         .card {
-            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            background: #f0f0f0;
             color:  var(--theme-color);
             padding: 20px;
-            border-radius: 8px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
 
             &:hover {
                 transform: translateY(-10px);
             }
 
-            .icon {
-                width: 50px;
-                height: 50px;
-                margin-bottom: 10px;
+            &:hover .iconWrapper {
+                box-shadow:0 0 15px #746f6f;
+                transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             }
 
+
+            .iconWrapper {
+                width: 80px;
+                height:80px;
+                // margin-bottom: 10px;
+                border-radius: 50%;
+                box-shadow: 0 0 15px #f0f0f0;
+                box-sizing: content-box;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                
+
+
+                .icon {
+                    width: 45px;
+                    height:45px;
+                    object-fit: cover;
+                }
+            }
+            
+
             .title {
-                font-size: 24px;
+                font-size: 16px;
                 font-weight: bold;
                 margin-bottom: 10px;
+                height: 60px; /* Fixed height to ensure alignment */
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .bullet-points {
@@ -75,9 +102,9 @@
                     content: "";
                     display: inline-block;
                     flex-shrink: 0;
-                    width: 8px;
-                    height: 8px;
-                    border-radius: 4px;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
                     background-color: var(--theme-color);
                 }
             }

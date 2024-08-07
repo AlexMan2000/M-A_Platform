@@ -1,14 +1,13 @@
 import FloatingHeading from "./components/FloatingHeading/FloatingHeading";
 import Slider from "./components/Slider/Slider";
+import VideoCard from "./components/VideoCard/VideoCard";
 import styles from "./Hero.module.less"
 
 function Hero () {
 
 
-
     return (
         <div className={styles.container}>
-            {/* <Carousel></Carousel> */}
             <Slider></Slider>
             <FloatingHeading></FloatingHeading>
         </div>

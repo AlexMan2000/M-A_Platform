@@ -5,7 +5,7 @@
     position: absolute;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 200px;
     top: 50%;
     left: 50%;
     width: 100%;
@@ -15,10 +15,13 @@
     padding: 0px 30px 0px 30px;
 
     .headingContainer {
-        font-size: 40px;
+        font-size: 70px;
+        font-weight: 300;
         width: 70%;
         color: white;
         height: 100px;
+        text-wrap:nowrap;
+        text-align: center;
     }
 
     .subheadingContainer {
@@ -29,82 +32,155 @@
     .buttonGroupContainer {
         display: flex;
         flex-direction: row;
-        gap:20px;
         color: white;
         align-items: center;
         
         justify-content: space-between;
         height: 150px;
 
-        .buttonContainer {
+        .buttonContainer1 {
             position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            align-items: center;   /* 与主轴垂直的轴向 */
+            justify-content: space-between; /* 主轴轴向 */
             gap: 2px;
+            // padding: 20px;
             background-color: var(--theme-color);
             border-radius: 10px;
             cursor: pointer;
-            align-self: flex-end;
-            padding: 6px;
+            height: 80px;
             user-select: none;
             box-sizing: content-box;
     
-            width: 250px;
-            height: 80px;
             transition: background-color 0.2s ease-in-out , width 0.3s ease, height 0.3s ease;;
 
             &:hover {
                 background-color: #16a399;
                
             }
-
             
-            .upperContainer {
-                display:flex;
-                flex-direction: row;
-                align-items: center;
-                flex: 1;
-                padding: 5px;
-                justify-content: space-between;
-                height: 50px;
-                // width: 100px;
-                
-                
-                .buttonText {
-                    text-align: justify;
-                    // white-space: nowrap; /* Prevent text from wrapping */
-                    overflow: hidden; /* Hide overflow text */
-                    text-overflow: ellipsis; /* Show ellipsis for overflow text */
-                    font-size: 15px;
-                    width: 80%;
-                }
-        
-                .buttonImage {
-                    width: 25px;
-                    height:25px;
-                }
+            .buttonText1 {
+                flex-shrink: 0;
+                text-align: center;
+                margin-top: 10px;
+                // align-self: flex-start;
+                // white-space: nowrap; /* Prevent text from wrapping */
+                overflow: hidden; /* Hide overflow text */
+                text-wrap: wrap;
+                text-overflow: ellipsis; /* Show ellipsis for overflow text */
+                font-size: 15px;
+                width: 80%;
             }
 
-            .underContainer {
-                height: 30px;
-                line-height: 20px;
-                display: flex;
-                
-                flex-direction: row;
-                align-items: flex-end;
-                justify-content: center;
-                font-size: 10px;
-                white-space: nowrap; /* Prevent text from wrapping */
-                overflow: hidden; /* Hide overflow text */
-                text-overflow: ellipsis; /* Show ellipsis for overflow text */
 
-                .buttonText {
-                    text-align: center;
-                    text-wrap: wrap;
-                    // align-self: flex-end;
-                    
-                }
+            .buttonText2 {
+                flex-shrink: 0;
+                text-align: center;
+                // align-self: flex-end;
+                // white-space: nowrap; /* Prevent text from wrapping */
+                overflow: hidden; /* Hide overflow text */
+                text-wrap: wrap;
+                text-overflow: ellipsis; /* Show ellipsis for overflow text */
+                font-size: 10px;
+                margin-bottom: 10px;
+                width: 80%;
+            }
+
+
+            .buttonText3 {
+                flex-shrink: 0;
+                text-align: center;
+                line-height: 100%;
+                // white-space: nowrap; /* Prevent text from wrapping */
+                overflow: hidden; /* Hide overflow text */
+                text-wrap: wrap;
+                text-overflow: ellipsis; /* Show ellipsis for overflow text */
+                font-size: 15px;
+                width: 80%;
+            }
+    
+            .buttonImage {
+                position: absolute;
+                top:50%;
+                right: 10px;
+                transform: translateY(-50%);
+                width: 25px;
+                height:25px;
+            }
+        }
+
+
+        .buttonContainer2 {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;   /* 与主轴垂直的轴向 */
+            justify-content: center; /* 主轴轴向 */
+            gap: 2px;
+            // padding: 20px;
+            background-color: white;
+            color: var(--theme-color);
+            border-radius: 10px;
+            cursor: pointer;
+            height: 80px;
+            user-select: none;
+            box-sizing: content-box;
+    
+            transition: background-color 0.2s ease-in-out , width 0.3s ease, height 0.3s ease;;
+
+            &:hover {
+                background-color: var(--theme-color);
+                color: white;
+            }
+            
+            .buttonText1 {
+                flex-shrink: 0;
+                text-align: center;
+                margin-top: 10px;
+                // align-self: flex-start;
+                // white-space: nowrap; /* Prevent text from wrapping */
+                overflow: hidden; /* Hide overflow text */
+                text-wrap: wrap;
+                text-overflow: ellipsis; /* Show ellipsis for overflow text */
+                font-size: 15px;
+                width: 80%;
+            }
+
+
+            .buttonText2 {
+                flex-shrink: 0;
+                text-align: center;
+                // align-self: flex-end;
+                // white-space: nowrap; /* Prevent text from wrapping */
+                overflow: hidden; /* Hide overflow text */
+                text-wrap: wrap;
+                text-overflow: ellipsis; /* Show ellipsis for overflow text */
+                font-size: 10px;
+                margin-bottom: 10px;
+                width: 80%;
+            }
+
+
+            .buttonText3 {
+                flex-shrink: 0;
+                text-align: center;
+                line-height: 100%;
+                // white-space: nowrap; /* Prevent text from wrapping */
+                overflow: hidden; /* Hide overflow text */
+                text-wrap: wrap;
+                text-overflow: ellipsis; /* Show ellipsis for overflow text */
+                font-size: 15px;
+                width: 80%;
+            }
+    
+            .buttonImage {
+                position: absolute;
+                top:50%;
+                right: 10px;
+                transform: translateY(-50%);
+                width: 25px;
+                height:25px;
             }
 
         }
@@ -115,7 +191,7 @@
 }
 
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
     
 .container {
 
@@ -123,10 +199,7 @@
 
     .buttonGroupContainer {
 
-      
-        gap: 60px;
-
-        .buttonContainer {
+        .buttonContainer1 {
             width: 150px;
             height: 80px;
         }
