@@ -18,8 +18,8 @@ function LandingPage() {
                 <Hero></Hero>
                 <Explore></Explore>
                 <ClientSupport></ClientSupport>
-                <WorkFlow></WorkFlow>
                 <Projects></Projects>
+                <WorkFlow></WorkFlow>
             </div>
         </div>
     )

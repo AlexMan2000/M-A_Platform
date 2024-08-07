@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({ id, date, image, title, revenue, region, pr
         <div className={styles.detailsList}>
           <div className={styles.listItem}>
             <div className={styles.listLabel}>
-              Sales:
+              Turnover:
             </div>
             <div className={styles.listDesc}>
               {revenue}
@@ -43,7 +43,7 @@ const Card: React.FC<CardProps> = ({ id, date, image, title, revenue, region, pr
           </div>
           <div className={styles.listItem}>
             <div className={styles.listLabel}>
-              Merge Price:
+              Asking Price:
               </div>
             <div className={styles.listDesc}>
               {price}
@@ -51,7 +51,7 @@ const Card: React.FC<CardProps> = ({ id, date, image, title, revenue, region, pr
           </div>
           <div className={styles.listItem}>
             <div className={styles.listLabel}>
-              Revenue:
+              Operating Profits:
               </div>
             <div className={styles.listDesc}>
               {revenue}

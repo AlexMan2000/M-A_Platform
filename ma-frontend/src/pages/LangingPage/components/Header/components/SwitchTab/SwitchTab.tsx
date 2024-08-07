@@ -9,11 +9,11 @@ interface NavItem {
   }
   
   const navItems: NavItem[] = [
-    { title: 'Why Choose Us' },
-    { title: 'Fee Structure', subItems: ["subitem 1", "sub item 2", "sub item 3"] },
-    { title: 'Successful Deals', subItems: ["proj 1", "proj 2", "proj 3"] },
-    { title: 'M&A Cases', subItems: ["proj 1", "proj 2", "proj 3"] },
-    { title: 'FAQs', subItems: ["proj 1", "proj 2", "proj 3"] },
+    { title: 'About Us' },
+    { title: 'Our Services', subItems: ["subitem 1", "sub item 2", "sub item 3"] },
+    { title: 'Project Information', subItems: ["proj 1", "proj 2", "proj 3"] },
+    { title: 'Contact', subItems: ["proj 1", "proj 2", "proj 3"] },
+    // { title: 'FAQs', subItems: ["proj 1", "proj 2", "proj 3"] },
   ];
 
 

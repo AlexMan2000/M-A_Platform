@@ -18,10 +18,10 @@ const buttonInfos: buttonInfo[] = [
         img: ForwardArrow,
         underline: "Get a Free Consultation"
     }
-    ,{
-        text: "Free Preliminary Valuation Service",
-        img: ForwardArrow,
-    }
+    // ,{
+    //     text: "Free Preliminary Valuation Service",
+    //     img: ForwardArrow,
+    // }
 ]
 
 
@@ -41,12 +41,12 @@ function FloatingHeading() {
             <div className={styles.buttonGroupContainer}>
             <Grid container spacing={2}>
                 {buttonInfos.map((elem: buttonInfo, index: number) => (
-                    <Grid item xs={4} md={4}>
+                    <Grid item xs={6} md={6}>
                         <div className={styles.buttonContainer1} 
                         key={elem.toString() + index}
                         style ={{
                             flexDirection: elem.underline? "column":"row",
-                            justifyContent: elem.underline? "space-between": "center",
+                            justifyContent: elem.underline? "center": "center",
                             alignItems: elem.underline? "center": "center"
                         }}
                         >
@@ -75,7 +75,7 @@ function FloatingHeading() {
                     <div className={styles.buttonContainer2}
                      key={"Prelim Valudation"}
                      >
-                            <div className={styles.buttonText3}>Premium Evaluation</div>
+                            <div className={styles.buttonText3}>Free Preliminary Valuation Service</div>
                             {/* <img className={styles.buttonImage} src={elem.img}></img> */}
                     </div>
                 </Grid>

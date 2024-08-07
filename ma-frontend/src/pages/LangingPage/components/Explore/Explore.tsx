@@ -16,7 +16,9 @@ const stories= [
         floating_image: STORY1,
         button_link:"",
         bullet_points: [
-            {"text":"中小企业支援33年"}
+            {"text":"One-Stop M&A Brokerage Service"},
+            {"text": "Founder-Led or Family Business Sales"},
+            {"text":"Deal Size Between $500K to $50 Million"},
         ]
     },
     {
@@ -27,25 +29,36 @@ const stories= [
         floating_image: STORY2,
         button_link:"",
         bullet_points: [
-            {"text":"中小企业支援333年"},
-            {"text":"中业支援333年"},
+            {"text":"Locally Rooted M&A Consultants"},
+            {"text":"Deep Understandinf of Business Owners' Needs"},
+            {"text":"Global Team with Cross-Border Expertise"},
         ]
     },
     {
         index: 3,
         title: "Extensive Network",
-        intro: "Access to a vast network of domestic and international buyers and sellers, facilitating connections and enhancing opportunities for successful deal-making.",
+        intro: "Our extensive database connects committed buyers and sellers, ensuring serious engagement in every transaction. This network enhances matching opportunities and provides access to exclusive deals, setting us apart from traditional financial advisors. ",
         align_type: "double", 
         floating_image: STORY3,
-        button_link:""
+        button_link:"",
+        bullet_points: [
+            {"text":"Vast Database of Committed Buyers and Sellers"},
+            {"text": "Enhanced Matching Opportunities"},
+            {"text":"Strategic Relationships"},
+        ]
     },
     {
         index: 4,
         title: "Technology-Driven Solutions",
-        intro: "Utilizing advanced AI technology for efficient buyer-seller matching and data-driven insights, streamlining the M&A process for our clients.",
+        intro: "We leverage cutting-edge digital tools and AI-powered matching to streamline the M&A process, targeting deal closures within 6-8 months—significantly faster than the typical 12 months required by traditional financial advisors.",
         align_type: "plain", 
         floating_image: STORY4,
-        button_link:""
+        button_link:"",
+        bullet_points: [
+            {"text":"M&A Process Digitalization"},
+            {"text": "AI-Powered Buyer-Seller Matching"},
+            {"text":"Accelerated Deal Closure"},
+        ]
     },
   ];
 
@@ -70,7 +83,7 @@ function Explore () {
                 
                 }}></Divider>
             <div className={styles.subheadingContainer}>
-                Why Choose LegacyLink M&A?
+                Why Choose Prosperity Bridge M&A?
             </div>
             <div className={styles.storyContainer}>
                 {stories && stories.length > 0 &&

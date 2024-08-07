@@ -14,21 +14,31 @@ interface CarouselProps {
     region: string;
     price: string;
     profit: string;
-  }>;
+  }>
+  scrollSpeed?:string;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ cards }) => {
+const Carousel: React.FC<CarouselProps> = ({ cards, scrollSpeed }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+
+
+  const scrollSpeedToPixel = {
+    "slow": 300,
+    "medium": 600,
+    "fast": 900
+  }
+
+  const defaultScrollSpeed = 600;
 
   const scrollLeft = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left: scrollSpeed ? -scrollSpeedToPixel[scrollSpeed] : defaultScrollSpeed, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left:  scrollSpeed ? scrollSpeedToPixel[scrollSpeed] : defaultScrollSpeed, behavior: 'smooth' });
     }
   };
 

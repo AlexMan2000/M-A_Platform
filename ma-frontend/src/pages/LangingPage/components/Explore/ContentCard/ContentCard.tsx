@@ -37,10 +37,10 @@ const ContentCard = (data: IStoryCard) => {
                     }
                 </div>
             }
-            <div className={`${styles.button} ${styles[align_type]}`}
+            {/* <div className={`${styles.button} ${styles[align_type]}`}
             onClick={handleClick}>
                 Details
-            </div>
+            </div> */}
         </div>
        
     )

@@ -1,37 +1,125 @@
+:root {
+  --timeline-color-1: #4da08b;
+  --timeline-color-2: #34806b;
+  --timeline-color-3: #2C5C4F;
+  --text-color: #fff;
+}
+
+
 .container {
+
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+
 
   .workFlowTitle {
     height: 100px;
-    margin-top: 30px;
+    // margin-top: 30px;
+    padding: 30px;
     text-align: center;
     font-size: 40px;
     color: var(--theme-color);
     font-weight: 600;
   }
 
+
+  .projectTimeline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1350px;
+    margin-bottom: 20px;
+    
+    .timelineItem {
+      align-self: center;
+      position: relative;
+      background-color: var(--timeline-color-1);
+      color: var(--text-color);
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+
+      &:nth-child(1) {
+        width: 540px;
+      }
+
+      &:nth-child(2) {
+        background-color: var(--timeline-color-2);
+        width: 540px;
+      }
+
+
+      &:nth-child(3) {
+        background-color: var(--timeline-color-3);
+        width: 350px;
+      }
+
+      &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -15px;
+        width: 0;
+        height: 0;
+        border-top: 40px solid transparent;
+        border-bottom: 40px solid transparent;
+        border-left: 15px solid var(--timeline-color-2);
+      }
+
+
+      &:nth-child(2):not(:last-child)::after {
+        border-left-color: var(--timeline-color-3);
+      }
+
+      &:nth-child(1)::after {
+        border-left-color: var(--timeline-color-2);
+      }
+
+
+      & span {
+        position: relative;
+        z-index: 1;
+      }
+
+
+      &:nth-child(1) {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+    }
+  }
+
   .cardContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: #fff;
     gap: 10px;
   
     .workflowCard {
         position: relative;
         width: 160px;
-        // padding: 10px;
-        
-        height: 400px;
+        height: 450px;
         background-color: white;
         border-radius: 8px;
         display:flex;
         flex-direction: column;
         align-items: center;
+
         text-align: start;
         box-sizing: content-box;
         user-select: none;
         cursor: pointer;
-        border: 1px solid #fff;
+        border: 1px solid rgba(130, 122, 122, 0.5);
         background: #f0f0f0;
 
         &:hover {
@@ -105,6 +193,7 @@
         .titleContainer {
           position: relative;
           font-size: 15px;
+          flex-shrink: 0;
           height: 120px;
           width: 160px;
           font-weight: bold;
@@ -116,6 +205,7 @@
 
           .titleText {
             position: absolute;
+
             top:50%;
             left:0%;
             transform: translateX(-50%);
@@ -151,13 +241,27 @@
           
           }
         }
+
+
+        .titlePrice {
+          position: absolute;
+          width: 100px;
+          height:25px;
+          top: 95px;
+          right: 0px;
+          z-index:4;
+          background-color: var(--theme-color);
+          color: white;
+          font-size: 10px;
+          line-height: 25px;
+          text-align: center;
+          border-radius: 25% 0 0 0;
+        }
     
-        .description {
-          padding: 20px;
-          text-align: left;
-          font-size: 14px;
+        .listDesc {
+          padding: 10px;
           color: #555;
-          
+
         }
     }
   }
@@ -168,7 +272,21 @@
     font-size: 30px;
     font-weight: 350;
     padding: 35px;
+    animation: bounce 2s infinite;
   }
+
+  
 }
 
 
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}

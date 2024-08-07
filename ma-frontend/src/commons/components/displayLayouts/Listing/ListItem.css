@@ -1,0 +1,42 @@
+
+:root {
+    --bullet-size: 7px;
+    --image-size: 15px;
+    --default-color:  #2C5C4F;
+    --font-size: 13px;
+  }
+
+.list-item  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    
+}
+
+
+.list-item-text  {
+    font-size: var(--font-size);
+    text-align: start;
+
+}
+
+
+.list-item-bullet {
+    flex-shrink: 0;
+    width: var(--bullet-size);
+    height: var(--bullet-size);
+    background-color: var(--default-color);
+    border-radius: 50%;
+
+}
+
+
+
+.list-item-bullet-image {
+    flex-shrink: 0;
+    width: var(--image-size);
+    height: var(--image-size);
+    object-fit: contain;
+}

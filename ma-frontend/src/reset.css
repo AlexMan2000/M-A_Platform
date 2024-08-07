@@ -51,5 +51,6 @@ button {
 
 /* Root color */
 :root {
-  --theme-color: #12837b;
+  /* --theme-color: #12837b; */
+  --theme-color: #2C5C4F;
 }

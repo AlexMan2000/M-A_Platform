@@ -27,8 +27,8 @@ const slides = [
 
 const videos = [
     ShanghaiClip1,
-    ShanghaiClip2,
-    HongkongClip1
+    // ShanghaiClip2,
+    // HongkongClip1
 ]
 
 function Slider () {
@@ -49,10 +49,12 @@ function Slider () {
             pagination={{
                 dynamicBullets: true,
               }}
-            navigation={{
-                nextEl: ".swiper-button-next" ,
-                prevEl: ".swiper-button-prev"
-            }}
+            // navigation={{
+            //     nextEl: ".swiper-button-next" ,
+            //     prevEl: ".swiper-button-prev"
+            // }}
+
+            navigation={false}
             
             modules={[Pagination, Navigation]}
             slidesPerView={'auto'}
@@ -75,12 +77,12 @@ function Slider () {
                 ))}   
         </Swiper>
         
-        <div className="swiper-button-next">
+        {/* <div className="swiper-button-next">
             <img src={NextArrow} className="swiper-button-img"></img>
         </div>
         <div className="swiper-button-prev">
             <img src={BackArrow} className="swiper-button-img"></img>
-        </div>
+        </div> */}
         </>
     )
 }

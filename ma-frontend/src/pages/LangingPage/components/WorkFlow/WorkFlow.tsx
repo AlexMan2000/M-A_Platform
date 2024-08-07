@@ -3,55 +3,110 @@ import styles from './WorkFlow.module.less';
 import Building from "@/assets/svgs/buildings.svg"
 import BusinessMeeting from "@/assets/jpgs/business-meeting.jpg"
 import BusinessMan from "@/assets/jpgs/businessman.jpg"
+import List from '@/commons/components/displayLayouts/Listing/List';
+import TickImage from "@/assets/pngs/bullet_point.png"
+import BouncingTextLine from '@/commons/components/animated/bouncing/BouncingTextLine';
+import { fontWeight } from '@mui/system';
 
 const steps = [
   {
     step: "1",
     title: "Pre-consultation",
-    description: "Family business succession planning, M&A advisory for smooth ownership changes, Ensuring business continuity through transitions",
+    description: [
+      "Initial meeting with potential client",
+      "Understand client's goals and objectives",
+      "Assess business readiness for sale",
+      "Provide preliminary valuation insights"
+    ],
     icon: BusinessMeeting,
+    price:"free",
     progress: 14,
   },
   {
     step: "2",
     title: "Preliminary strategy proposal",
-    description: "Regulatory change adaptation support, Consolidation restructuring expertise, Digital transformation consulting",
+    description: [
+      "Develop tailored M&A strategy",
+      "Outline potential buyer profiles",
+      "Propose timeline and process overview",
+      "Present initial valuation range"
+    ],
     icon: BusinessMeeting,
+    price:"free",
     progress: 28,
   },
   {
     step: "3",
     title: "Sell-side advisory contract",
-    description: "Market entry strategy development, Cross-border M&A facilitation, Fostering local partnership networks",
+    description:  [
+      "Create comprehensive information memorandum",
+      "Develop executive summary or teaser",
+      "Prepare financial models and projections",
+      "Compile due diligence documentation"
+    ],
     icon: BusinessMeeting,
+    price:"free",
     progress: 42,
   },
   {
     step: "4",
-    title: "Preparation of presentation materials",
-    description: "Tailored growth strategy development, Proactive search for acquisition and investment targets, Connecting clients with PE funds, search funds, and partners",
+    title: "Preparation of materials",
+    description:[
+      "Identify and qualify potential buyers",
+      "Execute targeted marketing campaign",
+      "Manage initial inquiries and information requests",
+      "Facilitate NDAs with interested parties"
+    ],
     icon: BusinessMeeting,
+    price:"free",
     progress: 56,
   },
   {
     step: "5",
     title: "Potential buyers outreach",
-    description: "Tailored growth strategy development, Proactive search for acquisition and investment targets, Connecting clients with PE funds, search funds, and partners",
+    description: [
+      "Coordinate management presentations and site visits",
+      "Assist in evaluating and comparing offers",
+      "Support negotiations on price and terms"
+    ],
     icon: BusinessMeeting,
+    price:"free",
     progress: 70,
   },
   {
     step: "6",
-    title: "Negotiation and conclusion",
-    description: "Tailored growth strategy development, Proactive search for acquisition and investment targets, Connecting clients with PE funds, search funds, and partners",
+    title: "Negotiation",
+    description: [
+      "Coordinate management presentations and site visits",
+      "Assist in evaluating and comparing offers",
+      "Support negotiations on price and terms"
+    ],
     icon: BusinessMeeting,
-    progress: 84,
+    price:"free",
+    progress: 100,
   },
   {
     step: "7",
-    title: "Post-merger integration",
-    description: "Tailored growth strategy development, Proactive search for acquisition and investment targets, Connecting clients with PE funds, search funds, and partners",
+    title: "Concluding Agreements",
+    description:[
+      "Facilitate due diligence process",
+      "Coordinate with legal teams for final documentation",
+      "Ensure all parties agree on terms"
+    ],
     icon: BusinessMeeting,
+    price:"free",
+    progress: 84,
+  },
+  {
+    step: "8",
+    title: "Closing",
+    description: [
+      "Manage the final transaction process",
+      "Oversee the transfer of ownership",
+      "Ensure compliance with all legal requirements"
+    ],
+    icon: BusinessMeeting,
+    price:"",
     progress: 100,
   },
 ];
@@ -60,6 +115,17 @@ const WorkFlow = () => {
   return (
     <div className={styles.container}>
       <div className={styles.workFlowTitle}>How does M&A Work</div>
+      <div className={styles.projectTimeline}>
+        <div className={styles.timelineItem}>
+            <span>1 week to 1 month</span>
+        </div>
+        <div className={styles.timelineItem}>
+            <span>1 week to 1 month</span>
+        </div>
+        <div className={styles.timelineItem}>
+            <span>1 to 3 months</span>
+        </div>
+      </div>
       <div className={styles.cardContainer}>
         {steps.map((item, index) => (
           <div className={styles.workflowCard} key={index}>
@@ -73,13 +139,47 @@ const WorkFlow = () => {
               <div className={styles.titleText}>{item.title}</div>
               <div className={styles.titleImageMask}></div>
             </div>
-            <div className={styles.description}>{item.description}</div>
+            {
+              item.price == "free" && <div className={styles.titlePrice}>
+                Free of Charge
+              </div>
+            }
+            {/* <div className={styles.description}>{item.description}</div> */}
+            <List className={styles.listDesc}>
+              { 
+               item.description &&
+               item.description.length > 0 &&
+               item.description.map((text, index) => {
+                  return (
+                    <List.Item 
+                      key={text.toString() + index} 
+                      className={styles.listItem}
+                      bulletImage={TickImage}
+                      itemAlign={"start"}
+                      itemGap={13}
+                      textFontAttr={{
+                        fontSize: 13,
+                        fontWeight: 400
+                      }}
+                      > {text}</List.Item>
+                  )
+               })
+               }
+              
+            </List>
           </div>
         ))}
       </div>
-      <div className={styles.belowLine}>
-      No fees until the deal is closed — we handle everything for you!
-      </div>
+      <BouncingTextLine 
+      style={{
+        padding:"40px"
+      }}
+      textAttr={{
+        fontSize: "35px",
+        fontWeight: "500"
+        }}>
+          No fees until the deal is closed — we handle everything for you!
+      </BouncingTextLine>
     </div>
   )
 };
