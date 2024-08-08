@@ -10,7 +10,6 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
     margin: 10px;
     user-select: none;
     cursor: pointer;
@@ -23,11 +22,18 @@
       box-shadow:0 0 15px var(--theme-color);
     }
   
-    .image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
+    .imageWrapper {
+      height: 170px;
+      flex-shrink: 0;
+
+      .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
+
+   
   
     .content {
       padding: 10px;

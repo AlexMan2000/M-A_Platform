@@ -7,6 +7,17 @@ import Carousel from "./components/Carousel/Carousel";
 import BusinessImage from "@/assets/jpgs/business-meeting.jpg"
 import { priceFormatter, priceParser, priceUnitParser } from "@/commons/utils/priceFormatHandler";
 
+import BangkokHotel from "@/assets/jpgs/bangkok-hotel.jpg"
+import ChineseBusiness from "@/assets/jpgs/china-business-transfer.jpeg"
+import IndiaInternet from "@/assets/jpgs/india-internet.jpg"
+import KoreaMedical from "@/assets/jpgs/korea-medical.jpg"
+import SydneyAustralia from "@/assets/jpgs/sydney-australia.jpg"
+import CaliEnergy from "@/assets/pngs/california-energy.png"
+import ParisFrance from "@/assets/jpgs/paris-france.jpg"
+import ShanghaiECommerce from "@/assets/jpgs/shanghai-ecommerce.jpg"
+import VietnamTech from "@/assets/jpgs/vietnam-tech.jpg"
+import PhilippinesRetail from "@/assets/jpgs/philippines-manila.jpg"
+
 const cards = [
   {
     id: '3121',
@@ -51,7 +62,7 @@ const cards = [
   {
     id: '3129',
     date: 'August 07, 2024',
-    image: BusinessImage,
+    image: VietnamTech,
     title: '【High Growth Potential】Tech Startup in Ho Chi Minh City',
     revenue: '₫20,000,000,000 ~ ₫50,000,000,000',
     region: 'Ho Chi Minh City, Vietnam',
@@ -61,7 +72,7 @@ const cards = [
   {
     id: '3132',
     date: 'August 08, 2024',
-    image: BusinessImage,
+    image: PhilippinesRetail,
     title: '【Strategic Location】Retail Business in Manila',
     revenue: '₱50,000,000 ~ ₱100,000,000',
     region: 'Manila, Philippines',
@@ -81,7 +92,7 @@ const cards = [
   {
     id: '3134',
     date: 'August 10, 2024',
-    image: BusinessImage,
+    image: ShanghaiECommerce,
     title: '【Emerging Market】E-commerce Business in Beijing',
     revenue: '¥100,000,000 ~ ¥200,000,000',
     region: 'Beijing, China',
@@ -101,7 +112,7 @@ const cards = [
   {
     id: '3136',
     date: 'August 12, 2024',
-    image: BusinessImage,
+    image: BangkokHotel,
     title: '【Tourism Hub】Hotel Chain in Bangkok',
     revenue: '฿500,000,000 ~ ฿1,000,000,000',
     region: 'Bangkok, Thailand',
@@ -121,7 +132,7 @@ const cards = [
   {
     id: '3138',
     date: 'August 14, 2024',
-    image: BusinessImage,
+    image: CaliEnergy,
     title: '【Sustainable Energy】Solar Energy Company in California',
     revenue: '$150,000,000 ~ $300,000,000',
     region: 'California, USA',
@@ -131,7 +142,7 @@ const cards = [
   {
     id: '3139',
     date: 'August 15, 2024',
-    image: BusinessImage,
+    image: KoreaMedical,
     title: '【Healthcare Boom】Medical Equipment Manufacturer in Seoul',
     revenue: '₩200,000,000,000 ~ ₩500,000,000,000',
     region: 'Seoul, South Korea',
@@ -141,7 +152,7 @@ const cards = [
   {
     id: '3140',
     date: 'August 16, 2024',
-    image: BusinessImage,
+    image: IndiaInternet,
     title: '【Tech Giant】Internet Service Provider in Bengaluru',
     revenue: '₹5,000,000,000 ~ ₹10,000,000,000',
     region: 'Bengaluru, India',
@@ -151,7 +162,7 @@ const cards = [
   {
     id: '3141',
     date: 'August 17, 2024',
-    image: BusinessImage,
+    image: ParisFrance,
     title: '【Luxury Market】Fashion Brand in Paris',
     revenue: '€200,000,000 ~ €400,000,000',
     region: 'Paris, France',
@@ -161,7 +172,7 @@ const cards = [
   {
     id: '3142',
     date: 'August 18, 2024',
-    image: BusinessImage,
+    image: SydneyAustralia,
     title: '【Food & Beverage】Organic Food Chain in Sydney',
     revenue: 'A$100,000,000 ~ A$200,000,000',
     region: 'Sydney, Australia',

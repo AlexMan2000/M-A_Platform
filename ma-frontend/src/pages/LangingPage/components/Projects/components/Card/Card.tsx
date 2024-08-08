@@ -17,7 +17,9 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ id, date, image, title, revenue, region, price, profit }) => {
   return (
     <div className={styles.card}>
-      <img src={image} alt={title} className={styles.image} />
+      <div className={styles.imageWrapper}>
+        <img src={image} alt={title} className={styles.image} />
+      </div>
       <div className={styles.content}>
         <div className={styles.idDate}>
           <span className={styles.id}>Project ID:{id}</span>
