@@ -18,7 +18,6 @@ function App() {
   
 
   useEffect(() => {
-    console.log("haha");
 
   })
 

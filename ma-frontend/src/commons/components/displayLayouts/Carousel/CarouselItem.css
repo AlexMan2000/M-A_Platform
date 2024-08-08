@@ -1,0 +1,8 @@
+.carousel-item-container {
+    flex: 0 0 auto; 
+    height: 300px;
+    width: 400px;
+    overflow: hidden;
+    background-color: black;
+    border-radius: 20px;
+}

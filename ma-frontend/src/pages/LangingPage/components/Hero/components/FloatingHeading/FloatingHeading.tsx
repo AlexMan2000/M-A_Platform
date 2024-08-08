@@ -41,7 +41,7 @@ function FloatingHeading() {
             <div className={styles.buttonGroupContainer}>
             <Grid container spacing={2}>
                 {buttonInfos.map((elem: buttonInfo, index: number) => (
-                    <Grid item xs={6} md={6}>
+                    <Grid key={elem.toString() + index} item xs={6} md={6}>
                         <div className={styles.buttonContainer1} 
                         key={elem.toString() + index}
                         style ={{

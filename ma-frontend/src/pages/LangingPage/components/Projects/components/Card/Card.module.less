@@ -29,6 +29,11 @@
       .image {
         width: 100%;
         height: 100%;
+        /** 
+          1. contain: maintain aspect ratio, no clip, not fill the whole wrapper
+          2. cover: maintain the aspect ratio, clipped to fill the whole wrapper
+          3. fill: not maintain the aspect ratio, image resized to fill the whole wrapper.
+        */
         object-fit: cover;
       }
     }

@@ -17,7 +17,7 @@ import VideoCard from "../VideoCard/VideoCard";
 import ShanghaiClip1 from "@/assets/mp4s/Shanghai_clip_1.mp4"
 import ShanghaiClip2 from "@/assets/mp4s/Shanghai_clip_2.mp4"
 import HongkongClip1 from "@/assets/mp4s/Hong_Kong_clip_1.mp4"
-
+import BeijingGreatWall from "@/assets/mp4s/Great_Wall_1.mp4"
 const slides = [
     FamilyBusiness,
     ShanghaiSkyline,
@@ -26,7 +26,8 @@ const slides = [
 
 
 const videos = [
-    ShanghaiClip1,
+    ShanghaiClip1
+    // BeijingGreatWall,
     // ShanghaiClip2,
     // HongkongClip1
 ]

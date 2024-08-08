@@ -28,18 +28,18 @@ function SwitchTab ()  {
             {navItems.map((elem, index, arr) => {
               return (
                   index == arr.length - 1 ? 
-                  <>
-                    <div key={styles.navItem + index} className={styles.navItem}>
+                  <div key={styles.navItem + index} className={styles.navItemWrapper}>
+                    <div className={styles.navItem}>
                         {elem.title}
                     </div>
-                  </>
+                  </div>
                   : 
-                  <>
-                    <div key={styles.navItem + index} className={styles.navItem}>
+                  <div key={styles.navItem + index} className={styles.navItemWrapper}>
+                    <div className={styles.navItem}>
                       {elem.title}
                     </div>
-                    <Divider orientation="vertical" sx={{width: "1px", height: "25px", bgcolor: "#ccc"}}></Divider>
-                  </>
+                    <Divider key={"navItemContainerDivider"} orientation="vertical" sx={{width: "1px", height: "25px", bgcolor: "#ccc"}}></Divider>
+                  </div>
               )
             })}
           </div>
