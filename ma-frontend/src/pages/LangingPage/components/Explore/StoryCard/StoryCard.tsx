@@ -1,6 +1,6 @@
 import ContentCard from "../ContentCard/ContentCard";
 import styles from "./StoryCard.module.less"
-
+import "./StoryCard.css"
 
 
 export interface IBulletBox {
@@ -28,7 +28,7 @@ const StoryCard = ({ data}: StoryCardProps) => {
     const {align_type, floating_image, index} = data;
 
     return (
-        <div className={`${styles.container} ${styles[align_type]}`}>
+        <div className={`${styles.container} story-container ${align_type}`}>
             <div className={styles.backgroundContainer}>
                 {
                     align_type == "double" ? 

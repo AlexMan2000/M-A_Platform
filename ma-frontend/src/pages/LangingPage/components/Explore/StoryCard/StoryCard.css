@@ -1,0 +1,36 @@
+.story-container.double {
+    animation: slide-in-from-left 1s ease forwards;
+    animation-timeline: view();
+    animation-range-start: contain;
+    animation-range-end: contain;
+} 
+
+.story-container.plain {
+    animation: slide-in-from-right 1s ease forwards;
+    animation-timeline: view();
+    animation-range-start: contain;
+    animation-range-end: contain;
+} 
+
+
+@keyframes slide-in-from-left {
+0% {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+100% {
+    transform: translateX(0);
+    opacity: 1;
+}
+}
+
+@keyframes slide-in-from-right {
+0% {
+    transform: translateX(100%);
+    opacity: 0;
+}
+100% {
+    transform: translateX(0);
+    opacity: 1;
+}
+}
