@@ -21,12 +21,7 @@ const AIMatching = () => {
         "Faster Closing"
     ]
 
-    const MiddleDesc =`Using sophisticated models(Transformers), 
-    AI systems analyze a variety of factors such as financial metrics, 
-    market conditions, and business synergies. 
-    This analysis identifies the most promising matches 
-    between buyers and sellers, ensuring a higher probability of successful transactions.
-    AI aids in managing the integration of operations, cultures, and systems by automating administrative tasks and providing decision support. AI-driven project management tools track progress, identify potential bottlenecks, and suggest corrective actions. `
+    const MiddleDesc =`Our proprietary M&A technology leverages digitalization and AI tools to streamline every aspect of the process, from client onboarding to documentation and deal execution. AI enhances the matching of buyers and sellers by analyzing strategic objectives and identifying synergies, significantly improving efficiency and accelerating deal closures compared to traditional financial advisory models.`
     return (
         <div className={styles.container}>
             <ImageBox src={AITechBackgound} 
