@@ -3,10 +3,14 @@
     height: 300px;
     width: 400px;
     overflow: hidden;
-    background-color: black;
     border-radius: 20px;
-    color: white;
     justify-content: center;
-    text-align: center;
-    line-height: 300px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+
+.carousel-item-container:hover {
+    box-shadow:0 0 15px var(--theme-color);
+      
+    
 }

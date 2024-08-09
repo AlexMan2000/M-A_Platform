@@ -5,7 +5,7 @@
     justify-content: center;
     user-select: none;
     position: relative;
-    background-color: green;
+    /* background-color: green; */
     width: 100%;
 }
 
@@ -18,7 +18,7 @@
     gap: 20px;
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch !important;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
     padding: 20px 300px;
     pointer-events: auto;
 }
@@ -53,7 +53,8 @@
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    background-color: rgb(0, 225, 255);
+    z-index: 2;
+    background-color: var(--theme-color);
     text-align: center;
     line-height: 50px;
     font-size: 25px;
@@ -65,7 +66,7 @@
 
 
 .carousel-control:hover {
-    background-color: rgb(0, 145, 255);
+    background-color: #18afa5;
 }
 
 

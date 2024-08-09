@@ -24,17 +24,6 @@ function LandingPage() {
                 <ClientSupport></ClientSupport>
                 <Projects></Projects>
                 <WorkFlow></WorkFlow>
-                {/* <CarouselBox loop = {false} scaleMode={"gaussian"}
-                    // width={1000}
-                >
-                    {
-                        Array(8).fill(0).map((elem, index) => 
-                        <CarouselBox.Item key={encodeToBase64(elem) + index} width={300}>
-                        {index}
-                    </CarouselBox.Item>)
-                    }
-                </CarouselBox> */}
-
                 <AIMatching></AIMatching>
             </div>
         </div>

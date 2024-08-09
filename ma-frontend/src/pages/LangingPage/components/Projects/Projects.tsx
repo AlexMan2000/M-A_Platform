@@ -17,6 +17,9 @@ import ParisFrance from "@/assets/jpgs/paris-france.jpg"
 import ShanghaiECommerce from "@/assets/jpgs/shanghai-ecommerce.jpg"
 import VietnamTech from "@/assets/jpgs/vietnam-tech.jpg"
 import PhilippinesRetail from "@/assets/jpgs/philippines-manila.jpg"
+import CarouselBox from "@/commons/components/displayLayouts/Carousel/CarouselBox";
+import { encodeToBase64 } from "@/commons/utils/encoderHandler";
+import Card from "./components/Card/Card";
 
 const cards = [
   {
@@ -215,7 +218,21 @@ const Projects = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Featured Projects</h1>
-      <Carousel cards={formattedCards} scrollSpeed={"fast"}/>
+      {/* <Carousel cards={formattedCards} scrollSpeed={"fast"}/> */}
+      <CarouselBox loop = {false} 
+                    centerIndex={3}
+                    scaleMode={"gaussian"}
+      >
+          {
+              formattedCards.map((card, index) => 
+                <CarouselBox.Item key={encodeToBase64(card) + index} 
+                  width={300} 
+                  height={480}>
+                  <Card key={card.id} {...card} />
+                </CarouselBox.Item>)
+          }
+      </CarouselBox>
+
     </div>
   );
 };

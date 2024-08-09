@@ -1,120 +1,196 @@
-
 import React, { CSSProperties, isValidElement, ReactNode, useEffect, useRef, useState } from "react";
-import "./CarouselBox.css"
+import "./CarouselBox.css";
 import { classNamesArgs } from "@/commons/utils/classNameHandler";
 import CarouselItem from "./CarouselItem";
-import { encodeToBase64, decodeFromBase64 } from "@/commons/utils/encoderHandler";
+import { off } from "process";
+import { extractNumberAndUnit } from "@/commons/utils/stylesHandler";
 
 export interface CarouselBoxContextProps {
-    isAllCarouselItem: boolean
+    isAllCarouselItem: boolean;
 }
-
 
 interface CarouselBoxProps {
     children: ReactNode;
     centerIndex?: number;
     navigation?: boolean;
+    scrollSpeed?: "slow" | "moderate" | "fast" | "free";
+    pagination?: boolean;
     loop?: boolean;
-    scaleMode?: "linear" | "gaussian";
+    scaleMode?: "linear" | "gaussian" | "none";
     width?: number;
     height?: number;
-    windowSize?: number;
     style?: CSSProperties;
     className?: string;
 }
 
-
 export const CarouselBoxContext = React.createContext({
-    isAllCarouselItem: false
-})
+    isAllCarouselItem: false,
+});
 
+interface CarouselStateProps {
+    childrenRenderArray: ReactNode[];
+    cloneNumber: number;
+}
 
-const CarouselBox = ({children, centerIndex = 3, navigation, loop, scaleMode, width, height, windowSize, style, className}: CarouselBoxProps) => {
+const speedToAmount = {
+    "slow": 1,
+    "moderate": 3,
+    "fast": 5,
+}
 
-
-    // currentIndex is the real index of the element that's being displayed at the center
-    const [currentIndex, setCurrentIndex] = useState<number>(centerIndex);
+const CarouselBox = ({
+    children,
+    centerIndex,
+    navigation = true,
+    scrollSpeed = "moderate",
+    pagination = true,
+    loop = false,
+    scaleMode,
+    width,
+    height,
+    style,
+    className,
+}: CarouselBoxProps) => {
+    const [currentIndex, setCurrentIndex] = useState<number>(centerIndex ? centerIndex : 2);
     const containerRef = useRef<HTMLDivElement>(null);
 
+    const numerOfElement = useRef<number>(children ? React.Children.toArray(children).length : 0);
+    const createLoopElements = (childrenArr: ReactNode) => {
+        const childrenArray = React.Children.toArray(childrenArr);
+        if (childrenArray.length < 3) {
+            throw new Error("Too few slides for a looping effect");
+        }
+        const cloneBefore = childrenArray.slice(-3).map((child, index) =>
+            React.cloneElement(child as React.ReactElement, { key: `clone-before-${index}` })
+        );
+        const cloneAfter = childrenArray.slice(0, 3).map((child, index) =>
+            React.cloneElement(child as React.ReactElement, { key: `clone-after-${index}` })
+        );
+        const childrenRenderArray = [...cloneBefore, ...childrenArray, ...cloneAfter];
+        return childrenRenderArray;
+    };
 
-    // For clone management
-    const numerOfElement = useRef<number>(children ? React.Children.toArray(children).length: 0);
-    const windowWidth = useRef<number>(windowSize ? windowSize : numerOfElement.current == 0 ? numerOfElement.current: 5);
+    const initialState = {
+        childrenRenderArray: createLoopElements(children),
+        cloneNumber: 3,
+    };
+    const [carouselState, setCarouselState] = useState<CarouselStateProps>(initialState);
 
-    // const [elementGap, setElementGap] = useState<number>(0);
-    const [childrenRenderArray, setChildrenRenderArray] = useState<ReactNode[]>(React.Children.toArray(children));
-
-        
     useEffect(() => {
-        setChildrenRenderArray(React.Children.toArray(children));
+        setCarouselState({
+            childrenRenderArray: createLoopElements(children),
+            cloneNumber: 3,
+        });
     }, [children]);
 
     useEffect(() => {
-        updateRenderArray(currentIndex, numerOfElement.current);
+        scrollToIndex(centerIndex  !== undefined  ? centerIndex + (+loop) * carouselState.cloneNumber : 3 + 3);
+    }, [centerIndex, loop]);
+
+    useEffect(() => {
+        updateScales();
     }, [children, currentIndex]);
 
     useEffect(() => {
-        scrollToIndex(centerIndex);
-    }, [centerIndex]);
+        console.log("new CarouselState", carouselState);
+    }, [carouselState]);
 
 
+    const computeScrollEdges = (): number[] => {
+        const {offsetWidth} = containerRef.current!;
+        const paddingSize = Math.floor(offsetWidth / 2);
 
-    const updateRenderArray = (centerIndex: number, windowSize: number) => {
+        const gapSize = extractNumberAndUnit(window.getComputedStyle(containerRef.current!).gap)!.number;
+        const items = containerRef.current!.children;
+
+        let firstElementPositionLeftX = 0, lastRealElementPositionRightX = 0;
+        firstElementPositionLeftX += paddingSize;
+        lastRealElementPositionRightX += paddingSize;
+        for (let i = 0; i < numerOfElement.current + 2 * carouselState.cloneNumber; i++) {
         
-        let newCloneNumber, newCloneState;
+            const item = items[i] as HTMLElement; 
+            const itemWidth = extractNumberAndUnit(window.getComputedStyle(item!).width)!.number;
+            if (i <= carouselState.cloneNumber - 1) {
 
-        setChildrenRenderArray((childrenRenderArray) => {
-            let newRenderArray = childrenRenderArray.slice(0);
-            const halfWindowSize = Math.floor(windowSize / 2);
-            const windowLeftIndex = centerIndex - halfWindowSize + 1;
-            const windowRightIndex = centerIndex + halfWindowSize;
-            if (windowLeftIndex >= 0 && windowRightIndex < numerOfElement.current) {
-                newRenderArray = childrenRenderArray.slice(0);
-                newCloneNumber = 0;
-                newCloneState = 0;
-            } else if (windowLeftIndex < 0) {
-                newCloneNumber = numerOfElement.current - windowRightIndex - 1;
-                
-                for (let i = 0; i < newCloneNumber; i++) {
-                    const popItem = newRenderArray.pop();
-                    newRenderArray.unshift(popItem);
-                }
-                newCloneState = 2;
-            } else if (windowRightIndex >= numerOfElement.current) {
-                newCloneNumber = windowLeftIndex;
-                for (let i = 0; i < newCloneNumber; i++) {
-                    const popItem = newRenderArray.shift();
-                    newRenderArray.push(popItem);
-                }
-                newCloneState = 2;
+                firstElementPositionLeftX += (itemWidth + gapSize)
             }
 
-            return newRenderArray;
-    
-        })
+            if (i <= numerOfElement.current + carouselState.cloneNumber - 1) {
+                lastRealElementPositionRightX  += (itemWidth + gapSize)
+            } else {
+                break;
+            }
+        }
+        return [firstElementPositionLeftX - gapSize, lastRealElementPositionRightX - gapSize]
+    }
 
-    };
-
-
-    const scrollToIndex = (index: number) => {
+    const scrollToIndex = (index: number, behavior: ScrollBehavior = "smooth") => {
+        console.log(behavior)
+        
         if (containerRef.current) {
             const items = containerRef.current.children;
             if (items.length > 0) {
                 const item = items[index] as HTMLElement;
                 const containerRect = containerRef.current.getBoundingClientRect();
                 const itemRect = item.getBoundingClientRect();
-                const scrollPosition = itemRect.left - containerRect.left + containerRef.current.scrollLeft + (itemRect.width / 2) - (containerRect.width / 2);
-                containerRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" });
+                const scrollPosition =
+                    itemRect.left - containerRect.left + containerRef.current.scrollLeft + itemRect.width / 2 - containerRect.width / 2;
+                containerRef.current.scrollTo({ left: scrollPosition, behavior: behavior });
             }
         }
     };
 
+    const handleOnScroll = () => {
+        const newCurrentIndex = getCurrentIndex();
+        /**
+         * 1. scrollLeft: Retrieves the current horizontal scroll position of the carousel container.
+         * 2. offsetWidth: Retrieves the width of the visible area of the carousel container.
+         * 3. scrollWidth: Retrieves the total width of the content inside the carousel container.
+         */
+        // const { scrollLeft, offsetWidth } = containerRef.current!;
+        setCurrentIndex(newCurrentIndex);
+        updateScales();
+    };
+
+    const handleScrollPrev = (event: React.MouseEvent): void => {
+        event.preventDefault();
+        const newIndex = (currentIndex - 1 + numerOfElement.current) % numerOfElement.current;
+        const tempIndex = (currentIndex - 1) + carouselState.cloneNumber;
+        
+        if (loop) {
+            scrollToIndex(tempIndex, "smooth");
+            setTimeout(() => {
+                scrollToIndex(newIndex + (+loop) * carouselState.cloneNumber, "auto"); // Instantly jump to the first real item
+            }, 350); 
+        } else {
+            scrollToIndex(newIndex + (+loop) * carouselState.cloneNumber, "smooth"); // Instantly jump to the first real item
+        }
+       
+
+        setCurrentIndex(newIndex);
+    };
+
+    const handleScrollNext = (event: React.MouseEvent): void => {
+        event.preventDefault();
+        const newIndex = (currentIndex + 1) % numerOfElement.current;
+        const tempIndex = (currentIndex + 1) + carouselState.cloneNumber;
+        
+        if (loop) {
+            scrollToIndex(tempIndex, "smooth");
+            setTimeout(() => {
+                scrollToIndex(newIndex + (+loop) * carouselState.cloneNumber, currentIndex + 1 >= numerOfElement.current? "auto": "smooth");
+            }, 350); 
+        } else {
+            scrollToIndex(newIndex + (+loop) * carouselState.cloneNumber, "smooth");
+
+        }
+        setCurrentIndex(newIndex);
+    };
+
     const getCurrentIndex = (): number => {
         if (containerRef.current) {
-            
             const containerRect = containerRef.current.getBoundingClientRect();
             const containerCenterX = containerRect.left + containerRect.width / 2;
-    
 
             const items = containerRef.current.children;
 
@@ -124,17 +200,15 @@ const CarouselBox = ({children, centerIndex = 3, navigation, loop, scaleMode, wi
             let newCurrentIndex = -1;
             for (let i = 0; i < items.length; i++) {
                 const item = items[i] as HTMLElement;
-                const itemClientRect = item.getBoundingClientRect();
-                const itemLeftX = itemClientRect.left;
-                itemLeftEdgesX.push(itemLeftX);
-                const itemRightX = itemClientRect.right;
-                itemRightEdgesX.push(itemRightX);
-                if (itemLeftX <= containerCenterX && 
-                    containerCenterX <= itemRightX) {
-                        newCurrentIndex = i;
-                        break;
+                const itemRect = item.getBoundingClientRect();
+                const itemLeftX = itemRect.left;
+                const itemRightX = itemRect.right;
+                if (itemLeftX <= containerCenterX && containerCenterX <= itemRightX) {
+                    newCurrentIndex = i ;
+                    break;
                 }
             }
+
 
             // 中轴线不在任何一个元素内部，选择离中轴线更近的元素
             if (newCurrentIndex == -1) {
@@ -154,37 +228,36 @@ const CarouselBox = ({children, centerIndex = 3, navigation, loop, scaleMode, wi
                     }
                 }
             }
-            return newCurrentIndex;
+
+            return newCurrentIndex - (+loop) * carouselState.cloneNumber;
         } else {
             return 0;
         }
-
-    }
+    };
 
     const evaluateGaussian = (x: number, variance: number): number => {
-        return Math.exp(-1 * x ** 2 / (2 * variance ** 2))
-    }
+        return Math.exp(-1 * x ** 2 / (2 * variance ** 2));
+    };
 
     const calculateScale = (distance: number, maxDistance: number, scaleMode?: string): number => {
-        let scale;
+        let scale: number;
         switch (scaleMode) {
             case "linear":
                 scale = 1 - (distance / maxDistance) * 0.5;
                 return Math.max(scale, 0.5);
             case "gaussian":
-                scale = evaluateGaussian(distance / maxDistance, 0.95)
+                scale = evaluateGaussian(distance / maxDistance, 0.95);
                 return Math.max(scale, 0.5);
             default:
-                scale = 1 - (distance / maxDistance) * 0.5;
-                return Math.max(scale, 0.5);
+                return 1;
         }
     };
-    
+
     const updateScales = () => {
         if (containerRef.current) {
             const containerRect = containerRef.current.getBoundingClientRect();
             const containerCenterX = containerRect.left + containerRect.width / 2;
-    
+
             const maxDistance = containerCenterX;
             const items = containerRef.current.children;
 
@@ -194,93 +267,39 @@ const CarouselBox = ({children, centerIndex = 3, navigation, loop, scaleMode, wi
                 const itemCenterX = itemRect.left + itemRect.width / 2;
                 const distanceToCenter = Math.abs(containerCenterX - itemCenterX);
                 const scale = calculateScale(distanceToCenter, maxDistance, scaleMode);
-                item.style.transform = `scale(${scale})`;
+                item.style.transform =`scale(${scale})`;
             }
         }
     };
-    
-    
-    // Check if all the children of <CarouselBox> are of <CarouselItem>
-    const validateChildren = (children: ReactNode) => {
-        React.Children.forEach(children, (child)=> {
-            if (!isValidElement(child) || child.type !== CarouselItem) {
-                throw new Error("<CarouselBox> only accepts <CarouselItem> as children");
-            }
-        })
-    }
 
-    validateChildren(children);
+    const padding = `20px ${width ? `${Math.floor(width / 2)}px` : "50%"}`;
 
-    const handleScrollPrev = (event: React.MouseEvent ): void =>  {
-        event.preventDefault();
-        // if (containerRef.current) {
-        //     containerRef.current.scrollBy({ left: -300, behavior: "smooth"})
-        // }
-        scrollToIndex((currentIndex - 1 + numerOfElement.current) %  numerOfElement.current)
-    }
-
-    const handleScrollNext = (event: React.MouseEvent): void => {
-        event.preventDefault();
-        // if (containerRef.current) {
-        //     containerRef.current.scrollBy({ left: 300, behavior: "smooth"})
-        // }
-        scrollToIndex((currentIndex + 1 +  numerOfElement.current) %  numerOfElement.current)
-
-    }
-
-    const handleOnScroll = () => {
-        const newCurrentIndex = getCurrentIndex();
-        // updateRenderArray(newCurrentIndex,  numerOfElement.current);
-        updateScales();
-        setCurrentIndex(newCurrentIndex);
-    }
-
-    // console.log(childrenRenderArray)
-    
-    
-    const padding = `20px ${width ? `${Math.floor(width / 2)}px`: "50%"}`;
-    /**     
-     *  标准结构为
-     *  <Wrapper>
-     *      <NavButtonPrev></NavButtonPrev> // 相对于Wrapper绝对定位
-     *      <Container>
-     *          {children}
-     *         
-     *      </Container>
-     *      <NavButtonAfter></NavButtonAfter> // 相对于Wrapper绝对定位
-     *      <EdgeMask></EdgeMask> // 遮罩Wrapper, 所以包在里面， 同时相对于Wrapper绝对定位
-     *  </Wrapper>
-    */
     return (
-        <CarouselBoxContext.Provider value={{isAllCarouselItem: true}}>
-            <div className={classNamesArgs("carousel-wrapper", className)}
-                style={
-                    {
-                        width, height, ...style
-                    }
-                }
-            >
-            
-                <div className={classNamesArgs("carousel-container", className)}
+        <CarouselBoxContext.Provider value={{ isAllCarouselItem: true }}>
+            <div className={classNamesArgs("carousel-wrapper", className)} style={{ width, height, ...style }}>
+                <div
+                    className={classNamesArgs("carousel-container", className)}
                     ref={containerRef}
-                    style={
-                        {
-                            width, height, padding: padding , ...style
-                        }
-                    }
+                    style={{ width, height, padding: padding, ...style }}
                     onScroll={handleOnScroll}
                 >
-                    {loop? childrenRenderArray: children}
-                    {/* {children} */}
+                    {loop ? carouselState.childrenRenderArray : children}
                 </div>
                 <div className={classNamesArgs("carousel-container-mask", className)}></div>
-                <div className={classNamesArgs("carousel-control", "prev", className)} onClick={handleScrollPrev}>❮</div>
-                <div className={classNamesArgs("carousel-control", "after" ,className)} onClick={handleScrollNext}>❯</div>
+                {navigation &&      
+                    <>
+                        <div className={classNamesArgs("carousel-control", "prev", className)} onClick={handleScrollPrev}>
+                            ❮
+                        </div>
+                        <div className={classNamesArgs("carousel-control", "after", className)} onClick={handleScrollNext}>
+                            ❯
+                        </div>
+                    </>
+                }
             </div>
         </CarouselBoxContext.Provider>
-    )
-}
-
+    );
+};
 
 CarouselBox.Item = CarouselItem;
 
