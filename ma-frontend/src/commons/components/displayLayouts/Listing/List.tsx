@@ -20,13 +20,15 @@ export const ListContext = React.createContext<ListContextType>(defaultContextVa
 
 interface ListProps {
     children: ReactNode;
+    orientation: string;
+    listGap?: string;
     className?:string;
     style?:CSSProperties;
     theme?:string;
 }
 
 
-const List: FC<ListProps>& { Item: typeof ListItem } = ({children, className, style, theme}) => {
+const List: FC<ListProps>& { Item: typeof ListItem } = ({children, orientation, listGap, className, style, theme}) => {
 
 
     const validateChildren = (children: ReactNode) => {
@@ -39,9 +41,22 @@ const List: FC<ListProps>& { Item: typeof ListItem } = ({children, className, st
 
     validateChildren(children);
 
+
     return (
         <ListContext.Provider value={{isAllListItem: true, themeColor:theme}}>
-            <div className={classNames(["list", className])} style={{...style}}>
+            <div className={classNames(["list", className])} 
+                style={{...orientation === "vertical" ?
+                    {
+                        display: "flex",
+                        flexDirection: "column",
+                    }
+                    :
+                    {
+                        display: "flex",
+                        flexDirection: "row",
+                    } ,           
+                    gap: listGap ? listGap: "15px",
+                    ...style }}>
                 {children}
             </div>
         </ListContext.Provider>

@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
     justify-content: space-between;
     gap: 15px;
     
@@ -40,3 +41,22 @@
     height: var(--image-size);
     object-fit: contain;
 }
+
+.list-item-container-background-image-container {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    transform: translateX(-10%) translateY(-10%);
+    /* background-color: blue; */
+    width: 180%;
+    height: 250%;
+    border: none;
+}   
+
+
+.list-item-container-background-image {
+    width: 80%;
+    height: 80%;
+    /* border: none; */
+    object-fit:fill;
+}   

@@ -9,6 +9,9 @@ import WorkFlow from "./components/WorkFlow/WorkFlow";
 import styles from "./LandingPage.module.less"
 import ShanghaiClip from "@/assets/mp4s/Shanghai_clip_1.mp4"
 import AIMatching from "./components/AIMathcing/AIMatching";
+import { encodeToBase64 } from "@/commons/utils/encoderHandler";
+
+
 function LandingPage() {
 
     return (
@@ -24,15 +27,12 @@ function LandingPage() {
                 {/* <CarouselBox loop = {false} scaleMode={"gaussian"}
                     // width={1000}
                 >
-                    <CarouselBox.Item width={200}>
-                        0
-                    </CarouselBox.Item>
-                    <CarouselBox.Item width={200}>1</CarouselBox.Item>
-                    <CarouselBox.Item width={200}>2</CarouselBox.Item>
-                    <CarouselBox.Item width={200}>3</CarouselBox.Item>
-                    <CarouselBox.Item width={200}>4</CarouselBox.Item>
-                    <CarouselBox.Item width={200}>5</CarouselBox.Item>
-                    <CarouselBox.Item width={200}>6</CarouselBox.Item>
+                    {
+                        Array(8).fill(0).map((elem, index) => 
+                        <CarouselBox.Item key={encodeToBase64(elem) + index} width={300}>
+                        {index}
+                    </CarouselBox.Item>)
+                    }
                 </CarouselBox> */}
 
                 <AIMatching></AIMatching>

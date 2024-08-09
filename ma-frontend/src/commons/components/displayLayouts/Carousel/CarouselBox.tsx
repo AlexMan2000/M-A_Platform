@@ -49,56 +49,9 @@ const CarouselBox = ({children, centerIndex = 3, navigation, loop, scaleMode, wi
         setChildrenRenderArray(React.Children.toArray(children));
     }, [children]);
 
-    // useEffect(() => {
-    //     const parseGap = (gap: string | number): number => {
-    //         if (typeof gap == "number") {
-    //             return gap;
-    //         } else {
-    //             const gapNumber =  /^\d+\w/.exec(gap);
-    //             if (gapNumber) {
-    //                 return Number.parseInt(gapNumber[0]);
-    //             } else {
-    //                 return 20;
-    //             }
-    //         }
-    //     }
-    //     if (containerRef.current) {
-    //         setElementGap(parseGap(containerRef.current.style.gap));
-    //     }
-    // })
-
     useEffect(() => {
         updateRenderArray(currentIndex, numerOfElement.current);
     }, [children, currentIndex]);
-
-
-
-    // useEffect(() => {
-    //     if (containerRef.current) {
-    //         const items = containerRef.current.children;
-    //         const containerWidth = containerRef.current.clientWidth;
-    //         const totalItemsWidth = Array.from(items).reduce((acc, item) => acc + (item as HTMLElement).offsetWidth, 0);
-    //         const extraWidth = containerWidth - totalItemsWidth;
-    //         if (extraWidth > 0) {
-    //             containerRef.current.style.paddingRight = `${extraWidth}px`;
-    //         }
-    //     }
-    // }, [children]);
-
-    useEffect(() => {
-        updateScales();
-        getCurrentIndex();
-        if (containerRef.current) {
-            containerRef.current.addEventListener("scroll", updateScales);
-        }
-
-        return () => {
-            if (containerRef.current) {
-                containerRef.current.removeEventListener("scroll", updateScales);
-            }
-        };
-    }, [scaleMode, children]);
-
 
     useEffect(() => {
         scrollToIndex(centerIndex);
@@ -278,6 +231,7 @@ const CarouselBox = ({children, centerIndex = 3, navigation, loop, scaleMode, wi
     const handleOnScroll = () => {
         const newCurrentIndex = getCurrentIndex();
         // updateRenderArray(newCurrentIndex,  numerOfElement.current);
+        updateScales();
         setCurrentIndex(newCurrentIndex);
     }
 

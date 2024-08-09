@@ -146,7 +146,9 @@ const WorkFlow = () => {
               Success Fee</div>
             }
             {/* <div className={styles.description}>{item.description}</div> */}
-            <List className={styles.listDesc}>
+            <List className={styles.listDesc}
+              orientation='vertical'
+            >
               { 
                item.description &&
                item.description.length > 0 &&
@@ -159,8 +161,8 @@ const WorkFlow = () => {
                       itemAlign={"start"}
                       itemGap={13}
                       textFontAttr={{
-                        fontSize: 13,
-                        fontWeight: 400
+                        fontSize: "13px",
+                        fontWeight: "400"
                       }}
                       > {text}</List.Item>
                   )

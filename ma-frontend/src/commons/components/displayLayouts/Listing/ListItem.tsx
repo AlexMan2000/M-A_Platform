@@ -2,16 +2,17 @@
 import { CSSProperties, FC, ReactNode, useContext, useState } from 'react';
 import { ListContext } from './List';
 import "./ListItem.css"
-import { classNames } from '@/commons/utils/classNameHandler';
+import { classNames, classNamesArgs } from '@/commons/utils/classNameHandler';
 
 
 
 interface ListItemProps {
    children: ReactNode,
    bulletImage?:string,
+   backgroundImage?: string,
    imageAttr?:{[key: string]: string},
    itemAlign?: string,
-   itemGap?: number,
+   itemGap?: string,
    textFontAttr?:{[key: string]: string},
    className?:string;
    style?:CSSProperties;
@@ -20,6 +21,7 @@ interface ListItemProps {
 const ListItem: FC<ListItemProps> = ({ 
   children, 
   bulletImage, 
+  backgroundImage,
   imageAttr,
   itemAlign, 
   itemGap,
@@ -27,8 +29,8 @@ const ListItem: FC<ListItemProps> = ({
   className, 
   style}) => {
   const isListItem = useContext(ListContext);
-  const [imageError, setImageError] = useState(false);
-
+  const [bulletImageError, setBulletImageError] = useState(false);
+  const [backgroundImageError, setBackgroundImageError] = useState(false);
 
   if (!isListItem) {
     throw new Error("ListItem must be used within a List");
@@ -46,17 +48,18 @@ const ListItem: FC<ListItemProps> = ({
     marginTop: 0
   }
 
-  return <div className={classNames(["list-item", className])} 
-  style={{gap: itemGap, ...style}}>
+  return <div 
+        className={classNames(["list-item", className])} 
+        style={{gap: itemGap, ...style}}>
 
-     {bulletImage && !imageError ? (
+          {bulletImage && !bulletImageError ? (
 
             <img
                 src={bulletImage}
                 alt="bullet"
                 className={classNames(["list-item-bullet-image", className])}
                 style={ {...bulletImageAlign, ...imageAttr, ...style} }
-                onError={() => setImageError(true)}
+                onError={() => setBulletImageError(true)}
             />
             ) : (
                 <div className={classNames(["list-item-bullet", className])}
@@ -66,6 +69,12 @@ const ListItem: FC<ListItemProps> = ({
             <div className={classNames(["list-item-text", className])}
               style={{...textFontAttr,...style}}
             >{children}</div>
+            <div className={classNamesArgs("list-item-container-background-image-container", className)}>
+              {backgroundImage && !backgroundImageError && <img src={backgroundImage}
+              className={classNamesArgs("list-item-container-background-image", className)}
+                onError={() => setBackgroundImageError(true)}
+              ></img>}
+            </div>
   </div>;
 };
 
