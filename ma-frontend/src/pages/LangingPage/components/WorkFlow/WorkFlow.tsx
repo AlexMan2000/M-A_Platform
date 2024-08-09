@@ -106,7 +106,7 @@ const steps = [
       "Ensure compliance with all legal requirements"
     ],
     icon: BusinessMeeting,
-    price:"",
+    price:"success-fee",
     progress: 100,
   },
 ];
@@ -140,9 +140,10 @@ const WorkFlow = () => {
               <div className={styles.titleImageMask}></div>
             </div>
             {
-              item.price == "free" && <div className={styles.titlePrice}>
+              item.price == "free" ? <div className={styles.titlePrice}>
                 Free of Charge
-              </div>
+              </div>: <div className={`${styles.titlePrice} ${styles["success"]}`}>
+              Success Fee</div>
             }
             {/* <div className={styles.description}>{item.description}</div> */}
             <List className={styles.listDesc}>

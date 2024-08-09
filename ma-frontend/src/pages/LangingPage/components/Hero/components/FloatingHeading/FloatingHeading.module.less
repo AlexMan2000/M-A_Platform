@@ -35,7 +35,7 @@
         color: white;
         align-items: center;
         margin-bottom: -80px;
-        
+        align-items: stretch;  
         justify-content: space-between;
         height: 150px;
 
@@ -51,6 +51,7 @@
             border-radius: 10px;
             cursor: pointer;
             height: 80px;
+            height: 100%;
             user-select: none;
             box-sizing: content-box;
     
@@ -65,7 +66,7 @@
                 flex-shrink: 0;
                 text-align: center;
                 margin-top: 10px;
-                // align-self: flex-start;
+                justify-self:center;
                 // white-space: nowrap; /* Prevent text from wrapping */
                 overflow: hidden; /* Hide overflow text */
                 text-wrap: wrap;
@@ -79,6 +80,7 @@
                 flex-shrink: 0;
                 text-align: center;
                 // align-self: flex-end;
+                justify-items: last baseline;
                 // white-space: nowrap; /* Prevent text from wrapping */
                 overflow: hidden; /* Hide overflow text */
                 text-wrap: wrap;

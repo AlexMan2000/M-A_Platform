@@ -41,7 +41,7 @@ const List: FC<ListProps>& { Item: typeof ListItem } = ({children, className, st
 
     return (
         <ListContext.Provider value={{isAllListItem: true, themeColor:theme}}>
-            <div className={classNames(["list", className])} style={style}>
+            <div className={classNames(["list", className])} style={{...style}}>
                 {children}
             </div>
         </ListContext.Provider>

@@ -3,7 +3,7 @@ import React, { CSSProperties, isValidElement, ReactNode, useEffect, useRef, use
 import "./CarouselBox.css"
 import { classNamesArgs } from "@/commons/utils/classNameHandler";
 import CarouselItem from "./CarouselItem";
-
+import { encodeToBase64, decodeFromBase64 } from "@/commons/utils/encoderHandler";
 
 export interface CarouselBoxContextProps {
     isAllCarouselItem: boolean
@@ -18,10 +18,10 @@ interface CarouselBoxProps {
     scaleMode?: "linear" | "gaussian";
     width?: number;
     height?: number;
+    windowSize?: number;
     style?: CSSProperties;
     className?: string;
 }
-
 
 
 export const CarouselBoxContext = React.createContext({
@@ -29,14 +29,61 @@ export const CarouselBoxContext = React.createContext({
 })
 
 
-const CarouselBox = ({children, centerIndex = 0, navigation, loop, scaleMode, width, height, style, className}: CarouselBoxProps) => {
+const CarouselBox = ({children, centerIndex = 3, navigation, loop, scaleMode, width, height, windowSize, style, className}: CarouselBoxProps) => {
 
 
-    const [currentIndex, setCurrentIndex] = useState<number | null | undefined>(centerIndex);
+    // currentIndex is the real index of the element that's being displayed at the center
+    const [currentIndex, setCurrentIndex] = useState<number>(centerIndex);
     const containerRef = useRef<HTMLDivElement>(null);
 
 
-    const loopedChildren = 
+    // For clone management
+    const numerOfElement = useRef<number>(children ? React.Children.toArray(children).length: 0);
+    const windowWidth = useRef<number>(windowSize ? windowSize : numerOfElement.current == 0 ? numerOfElement.current: 5);
+
+    // const [elementGap, setElementGap] = useState<number>(0);
+    const [childrenRenderArray, setChildrenRenderArray] = useState<ReactNode[]>(React.Children.toArray(children));
+
+        
+    useEffect(() => {
+        setChildrenRenderArray(React.Children.toArray(children));
+    }, [children]);
+
+    // useEffect(() => {
+    //     const parseGap = (gap: string | number): number => {
+    //         if (typeof gap == "number") {
+    //             return gap;
+    //         } else {
+    //             const gapNumber =  /^\d+\w/.exec(gap);
+    //             if (gapNumber) {
+    //                 return Number.parseInt(gapNumber[0]);
+    //             } else {
+    //                 return 20;
+    //             }
+    //         }
+    //     }
+    //     if (containerRef.current) {
+    //         setElementGap(parseGap(containerRef.current.style.gap));
+    //     }
+    // })
+
+    useEffect(() => {
+        updateRenderArray(currentIndex, numerOfElement.current);
+    }, [children, currentIndex]);
+
+
+
+    // useEffect(() => {
+    //     if (containerRef.current) {
+    //         const items = containerRef.current.children;
+    //         const containerWidth = containerRef.current.clientWidth;
+    //         const totalItemsWidth = Array.from(items).reduce((acc, item) => acc + (item as HTMLElement).offsetWidth, 0);
+    //         const extraWidth = containerWidth - totalItemsWidth;
+    //         if (extraWidth > 0) {
+    //             containerRef.current.style.paddingRight = `${extraWidth}px`;
+    //         }
+    //     }
+    // }, [children]);
 
     useEffect(() => {
         updateScales();
@@ -50,12 +97,50 @@ const CarouselBox = ({children, centerIndex = 0, navigation, loop, scaleMode, wi
                 containerRef.current.removeEventListener("scroll", updateScales);
             }
         };
-    }, [scaleMode]);
+    }, [scaleMode, children]);
 
 
     useEffect(() => {
         scrollToIndex(centerIndex);
     }, [centerIndex]);
+
+
+
+    const updateRenderArray = (centerIndex: number, windowSize: number) => {
+        
+        let newCloneNumber, newCloneState;
+
+        setChildrenRenderArray((childrenRenderArray) => {
+            let newRenderArray = childrenRenderArray.slice(0);
+            const halfWindowSize = Math.floor(windowSize / 2);
+            const windowLeftIndex = centerIndex - halfWindowSize + 1;
+            const windowRightIndex = centerIndex + halfWindowSize;
+            if (windowLeftIndex >= 0 && windowRightIndex < numerOfElement.current) {
+                newRenderArray = childrenRenderArray.slice(0);
+                newCloneNumber = 0;
+                newCloneState = 0;
+            } else if (windowLeftIndex < 0) {
+                newCloneNumber = numerOfElement.current - windowRightIndex - 1;
+                
+                for (let i = 0; i < newCloneNumber; i++) {
+                    const popItem = newRenderArray.pop();
+                    newRenderArray.unshift(popItem);
+                }
+                newCloneState = 2;
+            } else if (windowRightIndex >= numerOfElement.current) {
+                newCloneNumber = windowLeftIndex;
+                for (let i = 0; i < newCloneNumber; i++) {
+                    const popItem = newRenderArray.shift();
+                    newRenderArray.push(popItem);
+                }
+                newCloneState = 2;
+            }
+
+            return newRenderArray;
+    
+        })
+
+    };
 
 
     const scrollToIndex = (index: number) => {
@@ -71,23 +156,54 @@ const CarouselBox = ({children, centerIndex = 0, navigation, loop, scaleMode, wi
         }
     };
 
-    const getCurrentIndex = () => {
+    const getCurrentIndex = (): number => {
         if (containerRef.current) {
-            const containerCenterX = window.innerWidth / 2;
+            
+            const containerRect = containerRef.current.getBoundingClientRect();
+            const containerCenterX = containerRect.left + containerRect.width / 2;
+    
+
             const items = containerRef.current.children;
-            let newCurrentIndex = 0;
+
+            const itemLeftEdgesX: number[] = []
+            const itemRightEdgesX: number[] = []
+
+            let newCurrentIndex = -1;
             for (let i = 0; i < items.length; i++) {
                 const item = items[i] as HTMLElement;
                 const itemClientRect = item.getBoundingClientRect();
                 const itemLeftX = itemClientRect.left;
+                itemLeftEdgesX.push(itemLeftX);
                 const itemRightX = itemClientRect.right;
+                itemRightEdgesX.push(itemRightX);
                 if (itemLeftX <= containerCenterX && 
                     containerCenterX <= itemRightX) {
                         newCurrentIndex = i;
                         break;
                 }
             }
-            setCurrentIndex(newCurrentIndex);
+
+            // 中轴线不在任何一个元素内部，选择离中轴线更近的元素
+            if (newCurrentIndex == -1) {
+                for (let i = 1; i < itemLeftEdgesX.length; i++) {
+                    const nextElementLeft = itemLeftEdgesX[i];
+                    const prevElementRight = itemRightEdgesX[i - 1];
+                    if (prevElementRight <= containerCenterX 
+                        && containerCenterX <= nextElementLeft
+                    ) {
+                        const distanceToLeft = containerCenterX - prevElementRight;
+                        const distanceToRight = nextElementLeft - containerCenterX;
+                        if (distanceToLeft > distanceToRight) {
+                            newCurrentIndex = i;
+                        } else {
+                            newCurrentIndex = i - 1;
+                        }
+                    }
+                }
+            }
+            return newCurrentIndex;
+        } else {
+            return 0;
         }
 
     }
@@ -113,7 +229,9 @@ const CarouselBox = ({children, centerIndex = 0, navigation, loop, scaleMode, wi
     
     const updateScales = () => {
         if (containerRef.current) {
-            const containerCenterX = window.innerWidth / 2;
+            const containerRect = containerRef.current.getBoundingClientRect();
+            const containerCenterX = containerRect.left + containerRect.width / 2;
+    
             const maxDistance = containerCenterX;
             const items = containerRef.current.children;
 
@@ -142,21 +260,31 @@ const CarouselBox = ({children, centerIndex = 0, navigation, loop, scaleMode, wi
 
     const handleScrollPrev = (event: React.MouseEvent ): void =>  {
         event.preventDefault();
-        if (containerRef.current) {
-            containerRef.current.scrollBy({ left: -300, behavior: "smooth"})
-        }
-        getCurrentIndex();
+        // if (containerRef.current) {
+        //     containerRef.current.scrollBy({ left: -300, behavior: "smooth"})
+        // }
+        scrollToIndex((currentIndex - 1 + numerOfElement.current) %  numerOfElement.current)
     }
 
     const handleScrollNext = (event: React.MouseEvent): void => {
         event.preventDefault();
-        if (containerRef.current) {
-            containerRef.current.scrollBy({ left: 300, behavior: "smooth"})
-        }
-        getCurrentIndex();
+        // if (containerRef.current) {
+        //     containerRef.current.scrollBy({ left: 300, behavior: "smooth"})
+        // }
+        scrollToIndex((currentIndex + 1 +  numerOfElement.current) %  numerOfElement.current)
+
     }
 
+    const handleOnScroll = () => {
+        const newCurrentIndex = getCurrentIndex();
+        // updateRenderArray(newCurrentIndex,  numerOfElement.current);
+        setCurrentIndex(newCurrentIndex);
+    }
 
+    // console.log(childrenRenderArray)
+    
+    
+    const padding = `20px ${width ? `${Math.floor(width / 2)}px`: "50%"}`;
     /**     
      *  标准结构为
      *  <Wrapper>
@@ -183,11 +311,13 @@ const CarouselBox = ({children, centerIndex = 0, navigation, loop, scaleMode, wi
                     ref={containerRef}
                     style={
                         {
-                            width, height, ...style
+                            width, height, padding: padding , ...style
                         }
                     }
+                    onScroll={handleOnScroll}
                 >
-                    {children}
+                    {loop? childrenRenderArray: children}
+                    {/* {children} */}
                 </div>
                 <div className={classNamesArgs("carousel-container-mask", className)}></div>
                 <div className={classNamesArgs("carousel-control", "prev", className)} onClick={handleScrollPrev}>❮</div>

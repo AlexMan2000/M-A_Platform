@@ -5,4 +5,8 @@
     overflow: hidden;
     background-color: black;
     border-radius: 20px;
+    color: white;
+    justify-content: center;
+    text-align: center;
+    line-height: 300px;
 }

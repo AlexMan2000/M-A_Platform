@@ -6,6 +6,7 @@
     user-select: none;
     position: relative;
     background-color: green;
+    width: 100%;
 }
 
 /** Inner Container for Sliding */
@@ -16,11 +17,19 @@
     height: 500px;
     gap: 20px;
     overflow-x: scroll;
+    -webkit-overflow-scrolling: touch !important;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    padding: 20px 100px;
+    padding: 20px 300px;
     pointer-events: auto;
 }
+
+.carousel-container::before {
+    width: 200px;
+    height: 200px;
+    display: block;
+    /* background-color: blue; */
+}
+
 
 .carousel-container-mask {
     position: absolute;

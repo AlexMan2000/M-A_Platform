@@ -46,7 +46,7 @@ function FloatingHeading() {
                         key={elem.toString() + index}
                         style ={{
                             flexDirection: elem.underline? "column":"row",
-                            justifyContent: elem.underline? "center": "center",
+                            justifyContent: elem.underline? "space-between": "center",
                             alignItems: elem.underline? "center": "center"
                         }}
                         >

@@ -9,9 +9,10 @@ import { classNames } from '@/commons/utils/classNameHandler';
 interface ListItemProps {
    children: ReactNode,
    bulletImage?:string,
+   imageAttr?:{[key: string]: string},
    itemAlign?: string,
    itemGap?: number,
-   textFontAttr?:{[key: string]: number},
+   textFontAttr?:{[key: string]: string},
    className?:string;
    style?:CSSProperties;
 }
@@ -19,6 +20,7 @@ interface ListItemProps {
 const ListItem: FC<ListItemProps> = ({ 
   children, 
   bulletImage, 
+  imageAttr,
   itemAlign, 
   itemGap,
   textFontAttr, 
@@ -44,13 +46,6 @@ const ListItem: FC<ListItemProps> = ({
     marginTop: 0
   }
 
-  const fontAttr = textFontAttr ? {
-    fontSize: `${textFontAttr.fontSize}px`,
-    fontWeight: textFontAttr.fontWeight
-  } : {
-
-  }
-
   return <div className={classNames(["list-item", className])} 
   style={{gap: itemGap, ...style}}>
 
@@ -60,7 +55,7 @@ const ListItem: FC<ListItemProps> = ({
                 src={bulletImage}
                 alt="bullet"
                 className={classNames(["list-item-bullet-image", className])}
-                style={ {...bulletImageAlign, ...style} }
+                style={ {...bulletImageAlign, ...imageAttr, ...style} }
                 onError={() => setImageError(true)}
             />
             ) : (
@@ -69,7 +64,7 @@ const ListItem: FC<ListItemProps> = ({
                 ></div>
             )}
             <div className={classNames(["list-item-text", className])}
-              style={{...fontAttr, ...style}}
+              style={{...textFontAttr,...style}}
             >{children}</div>
   </div>;
 };
