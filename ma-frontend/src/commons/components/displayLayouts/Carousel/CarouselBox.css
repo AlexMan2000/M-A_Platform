@@ -18,8 +18,6 @@
     gap: 20px;
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch !important;
-    /* scroll-behavior: smooth; */
-    padding: 20px 300px;
     pointer-events: auto;
 }
 

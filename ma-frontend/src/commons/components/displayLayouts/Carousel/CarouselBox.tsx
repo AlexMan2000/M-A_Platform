@@ -1,8 +1,7 @@
-import React, { CSSProperties, isValidElement, ReactNode, useEffect, useRef, useState } from "react";
+import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from "react";
 import "./CarouselBox.css";
 import { classNamesArgs } from "@/commons/utils/classNameHandler";
 import CarouselItem from "./CarouselItem";
-import { off } from "process";
 import { extractNumberAndUnit } from "@/commons/utils/stylesHandler";
 
 export interface CarouselBoxContextProps {
@@ -69,7 +68,7 @@ const CarouselBox = ({
         const childrenRenderArray = [...cloneBefore, ...childrenArray, ...cloneAfter];
         return childrenRenderArray;
     };
-
+ 
     const initialState = {
         childrenRenderArray: createLoopElements(children),
         cloneNumber: 3,
@@ -87,12 +86,20 @@ const CarouselBox = ({
         scrollToIndex(centerIndex  !== undefined  ? centerIndex + (+loop) * carouselState.cloneNumber : 3 + 3);
     }, [centerIndex, loop]);
 
+
+    useEffect(() => {
+        window.addEventListener("resize", updateScales);
+        return () => {
+            window.removeEventListener("resize", updateScales);
+        }
+    }, []);
+
+
     useEffect(() => {
         updateScales();
     }, [children, currentIndex]);
 
     useEffect(() => {
-        console.log("new CarouselState", carouselState);
     }, [carouselState]);
 
 
@@ -125,7 +132,6 @@ const CarouselBox = ({
     }
 
     const scrollToIndex = (index: number, behavior: ScrollBehavior = "smooth") => {
-        console.log(behavior)
         
         if (containerRef.current) {
             const items = containerRef.current.children;

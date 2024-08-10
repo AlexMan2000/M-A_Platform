@@ -1,4 +1,3 @@
-import CarouselBox from "@/commons/components/displayLayouts/Carousel/CarouselBox";
 import ClientSupport from "./components/ClientSupport/ClientSupport";
 import Explore from "./components/Explore/Explore";
 import NavigateBar from "./components/Header/components/NavigateBar/NavigateBar";
@@ -7,10 +6,7 @@ import Hero from "./components/Hero/Hero";
 import Projects from "./components/Projects/Projects";
 import WorkFlow from "./components/WorkFlow/WorkFlow";
 import styles from "./LandingPage.module.less"
-import ShanghaiClip from "@/assets/mp4s/Shanghai_clip_1.mp4"
 import AIMatching from "./components/AIMathcing/AIMatching";
-import { encodeToBase64 } from "@/commons/utils/encoderHandler";
-
 
 function LandingPage() {
 
