@@ -7,8 +7,14 @@ import Projects from "./components/Projects/Projects";
 import WorkFlow from "./components/WorkFlow/WorkFlow";
 import styles from "./LandingPage.module.less"
 import AIMatching from "./components/AIMathcing/AIMatching";
+import DragButton from "@/commons/components/buttons/DragButton/DragButton";
+import Ws from "@/services/wsServices/ws";
+
 
 function LandingPage() {
+
+
+
 
     return (
         <div className={styles.container}>
@@ -21,6 +27,29 @@ function LandingPage() {
                 <Projects></Projects>
                 <WorkFlow></WorkFlow>
                 <AIMatching></AIMatching>
+                {/* <VideoBox src={ShanghaiClip}
+                    style = {
+                        {
+                            width: "100%",
+                            height: "800px"
+                        }
+                    }
+                ></VideoBox> */}
+                <DragButton 
+                    top={1000}
+                    right={20}
+                    width={100}
+                    height={100}
+                    draggable={false} 
+                    clickCallback={async () => {
+                        let ws: Ws;
+                        ws = await Ws.create("ws://localhost:8001");
+                        if (ws.readyState == WebSocket.OPEN) {
+                            console.log(ws)
+                            ws.sendMsg("haha");
+                        }
+                        
+                }}> click me send</DragButton>
             </div>
         </div>
     )

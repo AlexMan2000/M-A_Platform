@@ -52,23 +52,10 @@ const CarouselBox = ({
 }: CarouselBoxProps) => {
     const [currentIndex, setCurrentIndex] = useState<number>(centerIndex ? centerIndex : 2);
     const containerRef = useRef<HTMLDivElement>(null);
+    const buttonPrevLock = useRef<boolean>(false);
+    const buttonNextLock = useRef<boolean>(false);
 
     const numerOfElement = useRef<number>(children ? React.Children.toArray(children).length : 0);
-    const createLoopElements = (childrenArr: ReactNode) => {
-        const childrenArray = React.Children.toArray(childrenArr);
-        if (childrenArray.length < 3) {
-            throw new Error("Too few slides for a looping effect");
-        }
-        const cloneBefore = childrenArray.slice(-3).map((child, index) =>
-            React.cloneElement(child as React.ReactElement, { key: `clone-before-${index}` })
-        );
-        const cloneAfter = childrenArray.slice(0, 3).map((child, index) =>
-            React.cloneElement(child as React.ReactElement, { key: `clone-after-${index}` })
-        );
-        const childrenRenderArray = [...cloneBefore, ...childrenArray, ...cloneAfter];
-        return childrenRenderArray;
-    };
- 
     const initialState = {
         childrenRenderArray: createLoopElements(children),
         cloneNumber: 3,
@@ -102,6 +89,22 @@ const CarouselBox = ({
     useEffect(() => {
     }, [carouselState]);
 
+
+
+    function createLoopElements (childrenArr: ReactNode) {
+        const childrenArray = React.Children.toArray(childrenArr);
+        if (childrenArray.length < 3) {
+            throw new Error("Too few slides for a looping effect");
+        }
+        const cloneBefore = childrenArray.slice(-3).map((child, index) =>
+            React.cloneElement(child as React.ReactElement, { key: `clone-before-${index}` })
+        );
+        const cloneAfter = childrenArray.slice(0, 3).map((child, index) =>
+            React.cloneElement(child as React.ReactElement, { key: `clone-after-${index}` })
+        );
+        const childrenRenderArray = [...cloneBefore, ...childrenArray, ...cloneAfter];
+        return childrenRenderArray;
+    };
 
     const computeScrollEdges = (): number[] => {
         const {offsetWidth} = containerRef.current!;
@@ -159,6 +162,9 @@ const CarouselBox = ({
     };
 
     const handleScrollPrev = (event: React.MouseEvent): void => {
+        if (buttonPrevLock.current) {
+            return;
+        }
         event.preventDefault();
         const newIndex = (currentIndex - 1 + numerOfElement.current) % numerOfElement.current;
         const tempIndex = (currentIndex - 1) + carouselState.cloneNumber;
@@ -172,11 +178,17 @@ const CarouselBox = ({
             scrollToIndex(newIndex + (+loop) * carouselState.cloneNumber, "smooth"); // Instantly jump to the first real item
         }
        
-
+        buttonPrevLock.current = true;
+        setTimeout(() => {
+            buttonPrevLock.current = false;
+        }, 350)
         setCurrentIndex(newIndex);
     };
 
     const handleScrollNext = (event: React.MouseEvent): void => {
+        if (buttonNextLock.current) {
+            return;
+        }
         event.preventDefault();
         const newIndex = (currentIndex + 1) % numerOfElement.current;
         const tempIndex = (currentIndex + 1) + carouselState.cloneNumber;
@@ -190,6 +202,10 @@ const CarouselBox = ({
             scrollToIndex(newIndex + (+loop) * carouselState.cloneNumber, "smooth");
 
         }
+        buttonNextLock.current = true;
+        setTimeout(() => {
+            buttonNextLock.current = false;
+        }, 350)
         setCurrentIndex(newIndex);
     };
 

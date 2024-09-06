@@ -11,8 +11,9 @@ interface ListContextType {
     themeColor?: string;
   }
   
+  
 const defaultContextValue: ListContextType = {
-    isAllListItem: true,
+    isAllListItem: false,
     themeColor: "#2C5C4F"
 };
 
@@ -28,6 +29,7 @@ interface ListProps {
 }
 
 
+/** { Item: typeof ListItem } means that this component will have a static property called Item that is of the same type as ListItem. */
 const List: FC<ListProps>& { Item: typeof ListItem } = ({children, orientation, listGap, className, style, theme}) => {
 
 

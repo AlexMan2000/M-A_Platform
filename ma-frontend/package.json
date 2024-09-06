@@ -16,8 +16,8 @@
     "@mui/icons-material": "^5.15.15",
     "@mui/lab": "^5.0.0-alpha.172",
     "@mui/material": "^5.16.0",
-    "@mui/system": "^5.14.20",
     "@mui/styled-engine-sc": "6.0.0-alpha.18",
+    "@mui/system": "^5.14.20",
     "@reduxjs/toolkit": "^2.2.3",
     "@types/redux-logger": "^3.0.13",
     "ahooks": "^3.8.0",
@@ -39,7 +39,9 @@
     "style-loader": "^4.0.0",
     "styled-components": "^6.1.8",
     "swiper": "^11.1.4",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "uuid": "^10.0.0",
+    "ws": "^8.18.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",

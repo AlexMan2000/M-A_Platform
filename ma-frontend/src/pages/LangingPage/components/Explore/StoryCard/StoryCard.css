@@ -1,14 +1,14 @@
 .story-container.double {
     animation: slide-in-from-left 1s ease forwards;
     animation-timeline: view();
-    animation-range-start: contain;
+    animation-range-start: cover;
     animation-range-end: contain;
 } 
 
 .story-container.plain {
     animation: slide-in-from-right 1s ease forwards;
     animation-timeline: view();
-    animation-range-start: contain;
+    animation-range-start: cover;
     animation-range-end: contain;
 } 
 

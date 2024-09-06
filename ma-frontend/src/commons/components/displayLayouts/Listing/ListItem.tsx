@@ -28,6 +28,13 @@ const ListItem: FC<ListItemProps> = ({
   textFontAttr, 
   className, 
   style}) => {
+
+
+  /** 
+   * If a component that calls useContext(MyContext) is not wrapped in a corresponding MyContext.Provider, 
+   * the useContext hook will return the defaultValue that was passed when the context was created using 
+   * React.createContext(defaultValue). 
+   * */
   const isListItem = useContext(ListContext);
   const [bulletImageError, setBulletImageError] = useState(false);
   const [backgroundImageError, setBackgroundImageError] = useState(false);
