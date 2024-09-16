@@ -6,7 +6,7 @@ function Header() {
     return  (
         <div className={styles.container}>
             <UpperHeader></UpperHeader>
-            <NavigateBar></NavigateBar>
+            {/* <NavigateBar></NavigateBar> */}
         </div>
     )
 }

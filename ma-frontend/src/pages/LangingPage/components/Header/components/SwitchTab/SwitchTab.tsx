@@ -3,29 +3,30 @@ import { useState } from "react";
 import styles from "./SwitchTab.module.less"
 import { Divider } from "@mui/material";
 
-interface NavItem {
+export interface NavItem {
     title: string;
     subItems?: string[];
   }
+
+  interface SwitchTabProps {
+    navItems: NavItem[],
+    bgColor?: string,
+  }
   
-  const navItems: NavItem[] = [
-    { title: 'About Us' },
-    { title: 'Our Services', subItems: ["subitem 1", "sub item 2", "sub item 3"] },
-    { title: 'Project Information', subItems: ["proj 1", "proj 2", "proj 3"] },
-    { title: 'Contact', subItems: ["proj 1", "proj 2", "proj 3"] },
-    // { title: 'FAQs', subItems: ["proj 1", "proj 2", "proj 3"] },
-  ];
 
+function SwitchTab (props: SwitchTabProps)  {
 
-function SwitchTab ()  {
-
+  const {navItems, bgColor} = props;
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
 
-
   return (
-        <div className={styles.container}>
+        <div className={styles.container}
+          style={{
+            "backgroundColor": bgColor
+          }}
+        >
           <div className={styles.navItemContainer}>
-            {navItems.map((elem, index, arr) => {
+            {navItems?.map((elem, index, arr) => {
               return (
                   index == arr.length - 1 ? 
                   <div key={styles.navItem + index} className={styles.navItemWrapper}>
@@ -38,7 +39,7 @@ function SwitchTab ()  {
                     <div className={styles.navItem}>
                       {elem.title}
                     </div>
-                    <Divider key={"navItemContainerDivider"} orientation="vertical" sx={{width: "1px", height: "25px", bgcolor: "#ccc"}}></Divider>
+                    {/* <Divider key={"navItemContainerDivider"} orientation="vertical" sx={{width: "1px", height: "25px", bgcolor: "#ccc"}}></Divider> */}
                   </div>
               )
             })}

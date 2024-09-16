@@ -15,26 +15,26 @@ const CustomFormControl = styled(FormControl)({
     },
     '&:hover fieldset': {
       transition: "border-color 0.3s ease-in-out",
-      borderColor: '#12837b',
+      borderColor: '#ccc',
     },
     '&.Mui-focused fieldset': {
       transition: "border-color 0.3s ease-in-out",
-      borderColor: '#12837b',
+      borderColor: '#ccc',
     },
   },
   '& .MuiInputLabel-outlined.Mui-focused': {
-    color: '#12837b',
+    color: '#ccc',
   },
 });
 
 
 const CustomMenuItem = styled(MenuItem)({
  '&.Mui-selected': {
-    backgroundColor: '#12837b !important', // Ensure the custom color is applied
+    backgroundColor: '#ccc !important', // Ensure the custom color is applied
     color: '#fff !important', // Ensure the text color is white
     
     '&:hover': {
-      backgroundColor: '#12837b !important', // Ensure the hover color remains the same
+      backgroundColor: '#ccc !important', // Ensure the hover color remains the same
     },
   },
 });
@@ -68,7 +68,8 @@ const LanguageSwitcher = () => {
           height: "35px"
         }}
       >
-        <CustomMenuItem value="zh">中文</CustomMenuItem>
+        <CustomMenuItem value="zh-s">简体中文</CustomMenuItem>
+        <CustomMenuItem value="zh-f">繁体中文</CustomMenuItem>
         <CustomMenuItem value="en">English</CustomMenuItem>
         <CustomMenuItem value="malay">Malay</CustomMenuItem>
       </Select>

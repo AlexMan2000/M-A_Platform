@@ -66,24 +66,24 @@ function Explore () {
 
     return (
         <div className={styles.container}>
-            <div className={styles.headingContainer}>
+            {/* <div className={styles.headingContainer}>
                 <div className={styles.headingTitle}>
                 Leading Business Succession and M&A Solutions for SMEs across Greater China and Southeast Asia
                 </div>
            
                 <div className={styles.headingIntro}>
                 Connecting businesses for successful transitions and growth                </div>
-            </div>
-            <Divider orientation="horizontal" 
+            </div> */}
+            {/* <Divider orientation="horizontal" 
                 sx={{ width : "50%", 
                 bgcolor: "#12837b", 
                 height: "1px", 
                 transform: "translateX(50%)",
                 opacity: "0.4"
                 
-                }}></Divider>
+                }}></Divider> */}
             <div className={styles.subheadingContainer}>
-                Why Choose Prosperity Bridge M&A?
+                Why Choose Us
             </div>
             <div className={styles.storyContainer}>
                 {stories && stories.length > 0 &&

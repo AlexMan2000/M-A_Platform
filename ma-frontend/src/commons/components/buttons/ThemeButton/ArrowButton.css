@@ -1,0 +1,54 @@
+.arrow-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 251px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: rgba(135, 135, 135, 0.75);
+    box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+}
+
+
+.arrow-button-container:hover {
+    transform: translateY(-5%);
+    box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.33);
+}
+
+.left-text-container {
+    color: #FFF;
+    text-align: center;
+    white-space: pre-wrap;
+
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Nunito Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    /* line-height: 20px; 142.857% */
+    letter-spacing: 0.5px;
+    
+}
+
+.right-img-container {
+    position: absolute;
+    right:10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.right-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

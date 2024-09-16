@@ -20,22 +20,13 @@ function LandingPage() {
         <div className={styles.container}>
             <UpperHeader></UpperHeader>
             <div className={styles.content}>
-                <NavigateBar></NavigateBar>
                 <Hero></Hero>
                 <Explore></Explore>
                 <ClientSupport></ClientSupport>
                 <Projects></Projects>
                 <WorkFlow></WorkFlow>
                 <AIMatching></AIMatching>
-                {/* <VideoBox src={ShanghaiClip}
-                    style = {
-                        {
-                            width: "100%",
-                            height: "800px"
-                        }
-                    }
-                ></VideoBox> */}
-                <DragButton 
+                {/* <DragButton 
                     top={1000}
                     right={20}
                     width={100}
@@ -49,7 +40,7 @@ function LandingPage() {
                             ws.sendMsg("haha");
                         }
                         
-                }}> click me send</DragButton>
+                }}> click me send</DragButton> */}
             </div>
         </div>
     )

@@ -17,12 +17,33 @@
     
 
     .leftContainer {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
         align-items: center;
         align-self: stretch;
+
+
+        .logoText {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            align-items: flex-start;
+            color: grey;
+
+            .topLine {
+
+            }
+
+            .bottomLine {
+
+            }
+        }        
         
         .companyLogo {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             object-fit: cover;
         }
     }
@@ -33,7 +54,7 @@
         flex-direction: row;
         justify-content: end;
         gap: 10px;
-
+        width: 50%;
         align-items: center;
 
 
