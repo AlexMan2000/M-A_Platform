@@ -1,0 +1,164 @@
+.container {
+    position: relative;
+    width: 160px;
+    height: 450px;
+    background-color: white;
+    border-radius: 8px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: start;
+    box-sizing: content-box;
+    user-select: none;
+    cursor: pointer;
+    border: 1px solid rgba(130, 122, 122, 0.5);
+    background: #f0f0f0;
+
+    &:hover {
+      // transform: translateY(-10px);
+      box-shadow:0 0 15px var(--theme-color);
+      transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+
+
+    .circleContainer {
+      position: absolute;
+      z-index: 3;
+      top: -3px;
+      right: -3px;
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+
+      .circle {
+        
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.progress14  {
+          background: conic-gradient(var(--theme-color) 0deg 50deg, transparent 50deg);
+        }
+        
+        &.progress28 {
+          background: conic-gradient(var(--theme-color) 0deg 100deg, transparent 100deg);
+        }
+        
+        &.progress42 {
+          background: conic-gradient(var(--theme-color) 0deg 150deg, transparent 150deg);
+        }
+        
+        &.progress56 {
+          background: conic-gradient(var(--theme-color) 0deg 200deg, transparent 200deg);
+        }
+        
+        &.progress70 {
+          background: conic-gradient(var(--theme-color) 0deg 250deg, transparent 250deg);
+        }
+        
+        &.progress84 {
+          background: conic-gradient(var(--theme-color) 0deg 300deg, transparent 300deg);
+        }
+        
+        &.progress100 {
+          background: conic-gradient(var(--theme-color) 0deg 360deg, transparent 360deg);
+        }
+
+      }
+
+      .stepNumber {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+      }
+    }
+    
+    
+    .titleContainer {
+      position: relative;
+      font-size: 15px;
+      flex-shrink: 0;
+      height: 120px;
+      width: 160px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      padding: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+
+
+      .titleText {
+        position: absolute;
+
+        top:50%;
+        left:0%;
+        transform: translateX(-50%);
+        transform: translateY(-50%);
+        z-index: 2;
+        color: white;
+        text-align: center;
+        width: 160px;
+      }
+
+      .titleImage {
+        position: absolute;
+        top:0;
+        left:0;
+        width: 160px;
+        opacity: 0.8;
+        height: 100%;
+      
+      }
+
+
+      .titleImageMask {
+        border-radius: 8px;
+        position: absolute;
+        width: 160px;
+        top:0;
+        left:0;
+        height: 100%;
+        z-index: 1;
+        background-color: black;
+        opacity: 0.5;
+      
+      }
+    }
+
+
+    .titlePrice {
+      position: absolute;
+      width: 100px;
+      height:25px;
+      top: 95px;
+      right: 0px;
+      z-index:4;
+      background-color: var(--theme-color);
+      color: white;
+      font-size: 10px;
+      line-height: 25px;
+      text-align: center;
+      border-radius: 5px 0 0 0;
+
+
+      &.success {
+        background-color: rgb(9, 172, 117);
+        border-radius: 5px 0 0 0;
+      }
+    }
+
+    .listDesc {
+      padding: 10px;
+      color: #555;
+
+    }
+}

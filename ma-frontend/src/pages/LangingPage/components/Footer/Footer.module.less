@@ -1,0 +1,230 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 50px 0px;
+
+    .talk { 
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        .headingGroup {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .headingTitle {
+                color: #000;
+                font-feature-settings: 'liga' off, 'clig' off;
+
+                /* Nunito / Bold / 48 */
+                font-family: "Nunito Sans";
+                font-size: 25px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                letter-spacing: 1.5px;
+            }
+
+            .headingDesc {
+                color: #000;
+                font-feature-settings: 'liga' off, 'clig' off;
+
+                /* Nunito / Bold / 48 */
+                font-family: "Nunito Sans";
+                font-size: 10px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: 1.5px;
+            }
+        }
+
+        .contactNumbers {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .locationGroup {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+
+                .locationImage {
+                    width: 35px;
+                    height: 35px;
+                    flex-shrink: 0;
+                }
+
+                .lineGroup {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+
+                    .topLine {
+                        color: black;
+                        font-family: "Nunito Sans";
+                        font-size: 15px;
+                    }
+
+                    .bottomLine {
+                        color: black;
+                        font-family: "Nunito Sans";
+                        font-size: 15px;
+                    }
+                }
+            }
+
+            .phoneNumber {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+
+                .lineGroup {
+                    .topLine {
+                        color: black;
+                        font-family: "Nunito Sans";
+                        font-size: 15px;
+                    }
+
+                    .bottomLine {
+                        color: black;
+                        font-family: "Nunito Sans";
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    .company {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding-top: 20px;
+
+        .heading {
+            font-family: "Nunito Sans";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: 1.5px;
+        }
+
+        .listDesc {
+            display: flex;
+            padding-left: 20px;
+            flex-direction: column;
+            gap: 15px;
+            list-style-type: disc;
+        }
+    }
+
+    .services {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding-top: 20px;
+
+        .heading {
+            font-family: "Nunito Sans";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: 1.5px;
+        }
+
+        .listDesc {
+            display: flex;
+            padding-left: 20px;
+            flex-direction: column;
+            gap: 15px;
+            list-style-type: disc;
+        }
+    }
+
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding-top: 20px;
+
+        .heading {
+            font-family: "Nunito Sans";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            letter-spacing: 1.5px;
+        }
+
+        .emailInput {
+            background-color: #D9D9D9;
+            width: 200px;
+            height: 35px;
+            border-radius: 6px;
+
+            .input {
+                border-radius: 6px;
+                width: 100%;
+                height: 100%;
+                background-color: #D9D9D9;
+                border: none;
+                outline: none;
+                padding: 20px;
+
+                font-family: "Nunito Sans";
+                font-size: 10px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                letter-spacing: 1.5px;
+            }
+        }
+
+        .messageInput {
+            width: 200px;
+            height: 150px;
+            border-radius: 6px;
+            .input {
+                border-radius: 6px;
+                width: 100%;
+                height: 100%;
+                background-color: #D9D9D9;
+                border: none;
+                outline: none;
+                padding: 20px;
+
+                font-family: "Nunito Sans";
+                font-size: 10px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                letter-spacing: 1.5px;
+            }
+        }
+
+        .submit {
+            width: 200px;
+            height: 50px;
+            border-radius: 6px;
+            color: white;
+            background-color: #878787;
+            box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.2s ease-in-out, filter 0.2s ease-in-out;
+
+            &:hover {
+                filter: brightness(110%);
+                box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.35);
+            }
+        }
+    }
+}

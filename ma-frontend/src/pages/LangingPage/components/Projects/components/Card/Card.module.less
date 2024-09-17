@@ -63,7 +63,7 @@
       }
   
       .title {
-        height: 80px;
+        height: 60px;
         font-size: 16px;
         font-weight: bold;
         margin: 10px 0;
@@ -95,31 +95,51 @@
           margin: 5px 0;
         }
       }
+
+      
+    }
+
+    .button {
+      height: 85px;
+      padding: 10px 40px;
     }
   
-    .button {
+    .idDate {
       background-color: var(--theme-color);
-      color: white;
-      padding: 10px;
-      height: 55px;
-      border: none;
+      border-radius: 0px 0px 12px 12px;
+      background: #F3F3F3;
+      color: #878787;
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: "Nunito Sans";
+      font-size: 5px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 28px; /* 280% */
+      letter-spacing: 0.5px;
+      height: 30px;
+      border: 1px solid #F3F3F3;
       border-radius: 0 0 8px 8px;
       cursor: pointer;
       text-align: center;
       transition: background-color 0.3s ease-in-out;
       position:relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 16px;
+      padding: 0px 5px;
   
-      &:hover {
-        background-color: #1ab0a6;
-      }
+      // &:hover {
+      //   background-color: #1ab0a6;
+      // }
 
-      &::after {
-        position: absolute;
-        content:"❯";
-        top:50%;
-        transform: translateY(-50%);
-        right: 15px;
-      }
+      // &::after {
+      //   position: absolute;
+      //   content:"❯";
+      //   top:50%;
+      //   transform: translateY(-50%);
+      //   right: 15px;
+      // }
     }
   }
   

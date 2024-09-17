@@ -2,6 +2,9 @@
 
 import React from 'react';
 import styles from './Card.module.less';
+import ArrowButton from '@/commons/components/buttons/ThemeButton/ArrowButton';
+// import ForwardArrow from "@/assets/svgs/right_arrow_icon.svg"
+import ForwardArrow from "@/assets/svgs/right_arrow_icon_grey.svg"
 
 interface CardProps {
   id: string;
@@ -16,16 +19,27 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ id, date, image, title, revenue, region, price, profit }) => {
     
+
+  const textStyles = {
+    color: '#878787',
+    textAlign: 'center',
+    fontFeatureSettings: "'liga' off, 'clig' off",
+    fontFamily: '"Nunito Sans"',
+    fontSize: '16px',
+    fontStyle: 'normal',
+    fontWeight: 400,
+    lineHeight: '30px',
+    letterSpacing: '0.5px'
+  };
+
+
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
         <img src={image} alt={title} className={styles.image} />
       </div>
       <div className={styles.content}>
-        <div className={styles.idDate}>
-          <span className={styles.id}>Project ID:{id}</span>
-          <span className={styles.date}>Open Date:{date}</span>
-        </div>
+        
         <h3 className={styles.title}>{title}</h3>
         <div className={styles.detailsList}>
           <div className={styles.listItem}>
@@ -59,13 +73,30 @@ const Card: React.FC<CardProps> = ({ id, date, image, title, revenue, region, pr
             <div className={styles.listDesc}>
               {revenue}
             </div>
-          </div>
+          </div>  
         </div>
+       
       </div>
-      <button className={styles.button}>
-        Show More
+      <div className={styles.button}>
+        <ArrowButton 
+          buttonText={'Show More'} 
+          buttonImage={ForwardArrow} 
+          style={{
+            backgroundColor: "white",
+            border: "1px solid grey",
+            boxShadow: "none",
+            width: "100%",
+            height: "100%",
+          }}
+          textStyle={textStyles}
           
-      </button>
+        ></ArrowButton>
+      </div>
+      <div className={styles.idDate}>
+        <span className={styles.id}>Project ID:{id}</span>
+        <span className={styles.date}>Open Date:{date}</span>
+      </div>
+      
     </div>
   );
 };

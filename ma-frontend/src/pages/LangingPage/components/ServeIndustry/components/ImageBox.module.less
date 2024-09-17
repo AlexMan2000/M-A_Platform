@@ -1,0 +1,34 @@
+.container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+    gap: 15px;
+
+    .imageContainer {
+        width: 160px;
+        height: 160px;
+
+        .image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+    }
+
+
+    .imageDesc {
+        color: rgba(0, 0, 0, 0.60);
+        text-align: center;
+        font-feature-settings: 'liga' off, 'clig' off;
+        font-family: "Nunito Sans";
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 30px; /* 136.364% */
+        letter-spacing: 0.5px;
+        white-space: pre-wrap;
+    }
+}

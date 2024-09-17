@@ -1,30 +1,32 @@
-:root {
-  --timeline-color-1: #4da08b;
-  --timeline-color-2: #34806b;
-  --timeline-color-3: #2C5C4F;
-  --text-color: #fff;
-}
-
-
 .container {
 
-  background-color: #f0f0f0;
+  // background-color: #f0f0f0;
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 50px 0px;
   gap: 20px;
   align-items: center;
   justify-content: center;
-
+  position: relative;
+  
 
   .workFlowTitle {
     height: 100px;
-    // margin-top: 30px;
-    padding: 30px;
+    align-self: flex-start;
+    
+
+    color: var(--Text-Title, #0C144A);
     text-align: center;
-    font-size: 40px;
-    color: var(--theme-color);
-    font-weight: 600;
+    font-feature-settings: 'liga' off, 'clig' off;
+
+    /* Nunito / Bold / 48 */
+    font-family: "Nunito Sans";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.5px;
   }
 
 
@@ -32,64 +34,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1350px;
+    width: 100%;
     margin-bottom: 20px;
-    
+
     .timelineItem {
       align-self: center;
       position: relative;
       background-color: var(--timeline-color-1);
       color: var(--text-color);
       text-align: center;
-      padding: 20px;
+      padding: 15px 0px;
       box-sizing: border-box;
+      width: 33%;
+      background-color: #F6F6F6;
+      border-right: 2px solid #ccc;
+      color: #000;
+      font-family: Nunito;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 28px; /* 175% */
+      letter-spacing: 1px;
+      text-transform: capitalize;
 
-      &:nth-child(1) {
-        width: 540px;
+      &.active {
+        background-color: #D9D9D9;
       }
-
-      &:nth-child(2) {
-        background-color: var(--timeline-color-2);
-        width: 540px;
-      }
-
-
-      &:nth-child(3) {
-        background-color: var(--timeline-color-3);
-        width: 350px;
-      }
-
-      &:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: -15px;
-        width: 0;
-        height: 0;
-        border-top: 40px solid transparent;
-        border-bottom: 40px solid transparent;
-        border-left: 15px solid var(--timeline-color-2);
-      }
-
-
-      &:nth-child(2):not(:last-child)::after {
-        border-left-color: var(--timeline-color-3);
-      }
-
-      &:nth-child(1)::after {
-        border-left-color: var(--timeline-color-2);
-      }
-
-
-      & span {
-        position: relative;
-        z-index: 1;
-      }
-
 
       &:nth-child(1) {
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
+        
       }
 
       &:last-child {
@@ -103,172 +78,62 @@
   .cardContainer {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 20px;
+    width: 100%;
+    gap: 50px;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .navButtonPrev {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #ccc;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    text-align: center;
     justify-content: center;
-    gap: 10px;
-  
-    .workflowCard {
-        position: relative;
-        width: 160px;
-        height: 450px;
-        background-color: white;
-        border-radius: 8px;
-        display:flex;
-        flex-direction: column;
-        align-items: center;
+    line-height: 50px;
+    transition: background-color 0.2s ease-in-out;
 
-        text-align: start;
-        box-sizing: content-box;
-        user-select: none;
-        cursor: pointer;
-        border: 1px solid rgba(130, 122, 122, 0.5);
-        background: #f0f0f0;
+    &:hover {
+      background-color: #D9D9D9;
+      
+    }
+  }
 
-        &:hover {
-          // transform: translateY(-10px);
-          box-shadow:0 0 15px var(--theme-color);
-          transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
+  .navButtonAfter {
+    position: absolute;
+    z-index: 3;
+    background-color: #ccc;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    line-height: 50px;
+    transition: background-color 0.2s ease-in-out;
 
-
-
-        .circleContainer {
-          position: absolute;
-          z-index: 3;
-          top: -3px;
-          right: -3px;
-          width: 40px;
-          height: 40px;
-          margin-bottom: 10px;
-
-          .circle {
-            
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            &.progress14  {
-              background: conic-gradient(var(--theme-color) 0deg 50deg, transparent 50deg);
-            }
-            
-            &.progress28 {
-              background: conic-gradient(var(--theme-color) 0deg 100deg, transparent 100deg);
-            }
-            
-            &.progress42 {
-              background: conic-gradient(var(--theme-color) 0deg 150deg, transparent 150deg);
-            }
-            
-            &.progress56 {
-              background: conic-gradient(var(--theme-color) 0deg 200deg, transparent 200deg);
-            }
-            
-            &.progress70 {
-              background: conic-gradient(var(--theme-color) 0deg 250deg, transparent 250deg);
-            }
-            
-            &.progress84 {
-              background: conic-gradient(var(--theme-color) 0deg 300deg, transparent 300deg);
-            }
-            
-            &.progress100 {
-              background: conic-gradient(var(--theme-color) 0deg 360deg, transparent 360deg);
-            }
-
-          }
-
-          .stepNumber {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 16px;
-            font-weight: bold;
-            color: white;
-          }
-        }
-        
-        
-        .titleContainer {
-          position: relative;
-          font-size: 15px;
-          flex-shrink: 0;
-          height: 120px;
-          width: 160px;
-          font-weight: bold;
-          margin-bottom: 10px;
-          padding: 20px;
-          border-radius: 8px;
-          overflow: hidden;
-
-
-          .titleText {
-            position: absolute;
-
-            top:50%;
-            left:0%;
-            transform: translateX(-50%);
-            transform: translateY(-50%);
-            z-index: 2;
-            color: white;
-            text-align: center;
-            width: 160px;
-          }
-
-          .titleImage {
-            position: absolute;
-            top:0;
-            left:0;
-            width: 160px;
-            opacity: 0.8;
-            height: 100%;
-          
-          }
-
-
-          .titleImageMask {
-            border-radius: 8px;
-            position: absolute;
-            width: 160px;
-            top:0;
-            left:0;
-            height: 100%;
-            z-index: 1;
-            background-color: black;
-            opacity: 0.5;
-          
-          }
-        }
-
-
-        .titlePrice {
-          position: absolute;
-          width: 100px;
-          height:25px;
-          top: 95px;
-          right: 0px;
-          z-index:4;
-          background-color: var(--theme-color);
-          color: white;
-          font-size: 10px;
-          line-height: 25px;
-          text-align: center;
-          border-radius: 5px 0 0 0;
-
-
-          &.success {
-            background-color: rgb(9, 172, 117);
-            border-radius: 5px 0 0 0;
-          }
-        }
-    
-        .listDesc {
-          padding: 10px;
-          color: #555;
-
-        }
+    &:hover {
+      background-color: #D9D9D9;
     }
   }
 

@@ -9,12 +9,12 @@ import styles from "./LandingPage.module.less"
 import AIMatching from "./components/AIMathcing/AIMatching";
 import DragButton from "@/commons/components/buttons/DragButton/DragButton";
 import Ws from "@/services/wsServices/ws";
+import ServeIndustry from "./components/ServeIndustry/ServeIndustry";
+import ManagementTeam from "./components/ManagementTeam/ManagementTeam";
+import Footer from "./components/Footer/Footer";
 
 
 function LandingPage() {
-
-
-
 
     return (
         <div className={styles.container}>
@@ -24,6 +24,8 @@ function LandingPage() {
                 <Explore></Explore>
                 <ClientSupport></ClientSupport>
                 <Projects></Projects>
+                <ServeIndustry></ServeIndustry>
+                <ManagementTeam></ManagementTeam>
                 <WorkFlow></WorkFlow>
                 <AIMatching></AIMatching>
                 {/* <DragButton 
@@ -42,6 +44,7 @@ function LandingPage() {
                         
                 }}> click me send</DragButton> */}
             </div>
+            <Footer></Footer>
         </div>
     )
 }

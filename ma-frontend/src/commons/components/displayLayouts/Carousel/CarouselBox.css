@@ -53,18 +53,23 @@
     border-radius: 50%;
     z-index: 2;
     background-color: var(--theme-color);
+    background-color: #ccc;
+    opacity: 90%;
     text-align: center;
     line-height: 50px;
     font-size: 25px;
     color: white;
     justify-content: center;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
     cursor: pointer;
 }
 
 
 .carousel-control:hover {
     background-color: #18afa5;
+    background-color: #ccc;
+    opacity: 100%;
+    filter: brightness(110%);
 }
 
 

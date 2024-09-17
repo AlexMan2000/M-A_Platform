@@ -3,12 +3,9 @@ import styles from "./Projects.module.less"
 
 // src/App.tsx
 import React, { useState } from 'react';
-import Carousel from "./components/Carousel/Carousel";
 import BusinessImage from "@/assets/jpgs/business-meeting.jpg"
 import { priceFormatter, priceParser, priceUnitParser } from "@/commons/utils/priceFormatHandler";
-
 import BangkokHotel from "@/assets/jpgs/bangkok-hotel.jpg"
-import ChineseBusiness from "@/assets/jpgs/china-business-transfer.jpeg"
 import IndiaInternet from "@/assets/jpgs/india-internet.jpg"
 import KoreaMedical from "@/assets/jpgs/korea-medical.jpg"
 import SydneyAustralia from "@/assets/jpgs/sydney-australia.jpg"

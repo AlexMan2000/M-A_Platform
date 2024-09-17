@@ -36,7 +36,7 @@ const StoryCard = ({ data}: StoryCardProps) => {
                         <div className={styles.leftDouble}>
                         </div>
                         <div className={styles.rightDouble}>
-                            <ContentCard {...data}></ContentCard>
+                            <ContentCard {...data} index={index}></ContentCard>
                         </div>
                     </> : 
                     <>
@@ -53,9 +53,9 @@ const StoryCard = ({ data}: StoryCardProps) => {
                 <div className={`${styles.floatingImageContainer} ${styles[align_type]}`}>
                     <img src={floating_image} className={styles.floatingImg}></img>
                 </div>}
-                <div className={`${styles.floatingIndex} ${styles[align_type]}`}>
+                {/* <div className={`${styles.floatingIndex} ${styles[align_type]}`}>
                     {`0${index}`}
-                </div>
+                </div> */}
             </div>
             
         </div>

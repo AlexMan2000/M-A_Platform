@@ -1,11 +1,14 @@
 import styles from "./ContentCard.module.less"
-import BulletImage from "@/assets/pngs/bullet_point.png"
+// import BulletImage from "@/assets/pngs/bullet_point.png"
+import BulletImage from "@/assets/svgs/bullet_point_grey.svg"
 import { IStoryCard } from "../StoryCard/StoryCard"
 
 
 const ContentCard = (data: IStoryCard) => {
 
-    const {title, intro, align_type, bullet_points, button_link} = data;
+    const {title, intro, align_type, bullet_points, button_link, index} = data;
+
+
 
     const handleClick = () => {
         console.log(button_link)
@@ -15,6 +18,7 @@ const ContentCard = (data: IStoryCard) => {
         <div className={`${styles.container} ${styles[align_type]}`}>
             <div className={styles.headingContainer}>
                 <div className={styles.headingText}>{title}</div>
+                <div className={styles.bulletPoint}>{index}</div>
             </div>
             <div className={styles.subheadingContainer}>
                 <div className={styles.subheadingText}>{intro}</div>

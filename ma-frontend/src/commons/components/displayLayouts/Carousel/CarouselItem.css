@@ -11,6 +11,5 @@
 
 .carousel-item-container:hover {
     box-shadow:0 0 15px var(--theme-color);
-      
-    
+    box-shadow:0 0 15px #ccc;
 }
