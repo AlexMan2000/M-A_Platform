@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import {useRef, useState } from 'react';
 import styles from './WorkFlow.module.less'; 
-import BouncingTextLine from '@/commons/components/animated/bouncing/BouncingTextLine';
 import SimpleWorkFlowCard from './components/SimpleWorkFlowCard';
 import CustomerService from "@/assets/pngs/customer-service.png"
 

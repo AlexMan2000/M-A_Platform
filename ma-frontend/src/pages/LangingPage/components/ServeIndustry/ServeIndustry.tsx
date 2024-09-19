@@ -1,6 +1,5 @@
 import styles from "./ServeIndustry.module.less"
 import IT from "@/assets/pngs/IT.png"
-import Profession from "@/assets/pngs/Professional.png"
 import Retail from "@/assets/pngs/Retail.png"
 import RealEstate from "@/assets/pngs/Real_Estate.png"
 import FoodBeverage from "@/assets/pngs/Food_Beverage.png"

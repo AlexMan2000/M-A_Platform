@@ -1,5 +1,3 @@
-import FloatingHeading from "./components/FloatingHeading/FloatingHeading";
-import Slider from "./components/Slider/Slider";
 import ForwardArrow from "@/assets/svgs/right_arrow_icon.svg"
 import HeroImage from "@/assets/pngs/heroImage.png"
 import HeroImageFull from "@/assets/pngs/heroImageFull.png"

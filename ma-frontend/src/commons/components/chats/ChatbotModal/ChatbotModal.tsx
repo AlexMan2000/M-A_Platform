@@ -4,7 +4,7 @@ import DataLynnIcon from "./assets/DataLynnIcon.png"
 import StatusIcon from "./assets/statusIcon.png"
 import VectorIcon from "./assets/Vector.png"
 import MessageList from "./MessageList/MessageList";
-import { postInitModelApi } from "@/services/api/chatbotApi";
+import { postInitChatBot } from "@/services/chatbotServices/chatBotApi";
 
 
 
@@ -46,7 +46,7 @@ function ChatbotModal({visible,  messageList}) {
             return;
         }
 
-        const res = await postInitModelApi({message: modelInput});
+        const res = await postInitChatBot({message: modelInput});
         setMessages(messages => {
             let return_obj = [{role: "bot", data:{text: "Sorry, I don't understand.", type:"text"}}]
             if (res?.length > 0) {

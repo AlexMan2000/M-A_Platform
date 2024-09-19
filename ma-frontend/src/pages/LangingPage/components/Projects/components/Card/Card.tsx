@@ -17,7 +17,7 @@ interface CardProps {
   profit: string;
 }
 
-const Card: React.FC<CardProps> = ({ id, date, image, title, revenue, region, price, profit }) => {
+const Card: React.FC<CardProps> = ({ id, date, image, title, revenue, region, price }) => {
     
 
   const textStyles = {

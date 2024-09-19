@@ -1,7 +1,4 @@
-
-import { useState } from "react";
 import styles from "./SwitchTab.module.less"
-import { Divider } from "@mui/material";
 
 export interface NavItem {
     title: string;
@@ -17,7 +14,6 @@ export interface NavItem {
 function SwitchTab (props: SwitchTabProps)  {
 
   const {navItems, bgColor} = props;
-  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
 
   return (
         <div className={styles.container}

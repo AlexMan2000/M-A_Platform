@@ -1,7 +1,7 @@
 
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
-import { useIntl } from "react-intl";
+// import { useIntl } from "react-intl";
 import { useAppDispatch } from "@/store/rootHooks";
 import { useSelector } from "react-redux";
 import { selectGlobalState, setLocale } from "@/store/slice/globalSlice/globalSlice";
@@ -42,7 +42,7 @@ const CustomMenuItem = styled(MenuItem)({
 const LanguageSwitcher = () => {
 
   const dispatch = useAppDispatch();
-  const intl = useIntl();
+  // const intl = useIntl();
   const {locale} = useSelector(selectGlobalState)
   const [language, setLanguage] = useState<string>(locale);
 

@@ -22,8 +22,11 @@ const VideoBox = ({src, width, height, className, style}: VideoCardProps) => {
     const [volume, setVolume] = useState<number>(0);
     const [isPlay, setIsPlay] = useState<boolean>(false);
 
+    console.log(volumnBarVisible)
+    console.log(volume)
 
     const handlePlay = () => {
+        setVolume(50);
         if (videoRef.current) {
             if (isPlay) {
                 console.log("ready to pause")
@@ -81,6 +84,10 @@ const VideoBox = ({src, width, height, className, style}: VideoCardProps) => {
         setVolumnBarVisible(true);
     }
 
+
+    handleMute();
+    handleUnmute();
+    handleVolume(30);
 
     return (
         <div className={classNamesArgs("video-box-container",className)}

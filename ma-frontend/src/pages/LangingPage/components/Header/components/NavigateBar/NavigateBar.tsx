@@ -6,7 +6,7 @@ function NavigateBar() {
 
   return (
     <div className={styles.container}>
-      <SwitchTab></SwitchTab>
+      <SwitchTab navItems={[]}></SwitchTab>
     </div>
   )
  

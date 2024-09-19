@@ -1,11 +1,6 @@
 import styles from "./ClientSupport.module.less"
-import PaperPlane from "@/assets/pngs/paper-plane-blue.png"
-import IndustryIcon from "@/assets/pngs/industry-icon-multi.png"
 import International from "@/assets/pngs/international.png"
-import Sustainable from "@/assets/pngs/sustainable.png"
-
 import Transition from "@/assets/svgs/transition_1.svg"
-import Transformation from "@/assets/svgs/transformation_1.svg"
 import Expansion from "@/assets/svgs/expansion_1.svg"
 
 

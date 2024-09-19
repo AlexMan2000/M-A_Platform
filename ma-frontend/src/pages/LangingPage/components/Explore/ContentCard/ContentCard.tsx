@@ -6,13 +6,13 @@ import { IStoryCard } from "../StoryCard/StoryCard"
 
 const ContentCard = (data: IStoryCard) => {
 
-    const {title, intro, align_type, bullet_points, button_link, index} = data;
+    const {title, intro, align_type, bullet_points, index} = data;
 
 
 
-    const handleClick = () => {
-        console.log(button_link)
-    }
+    // const handleClick = () => {
+    //     console.log(button_link)
+    // }
 
     return (
         <div className={`${styles.container} ${styles[align_type]}`}>

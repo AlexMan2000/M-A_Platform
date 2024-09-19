@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { IntlProvider } from 'react-intl'
 import LandingPage from './pages/LangingPage/LandingPage'
@@ -14,7 +14,7 @@ const messages = {
 
 
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
 
   useEffect(() => {

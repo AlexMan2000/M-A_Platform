@@ -2,7 +2,7 @@ import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from "re
 import "./CarouselBox.css";
 import { classNamesArgs } from "@/commons/utils/classNameHandler";
 import CarouselItem from "./CarouselItem";
-import { extractNumberAndUnit } from "@/commons/utils/stylesHandler";
+// import { extractNumberAndUnit } from "@/commons/utils/stylesHandler";
 
 export interface CarouselBoxContextProps {
     isAllCarouselItem: boolean;
@@ -31,18 +31,18 @@ interface CarouselStateProps {
     cloneNumber: number;
 }
 
-const speedToAmount = {
-    "slow": 1,
-    "moderate": 3,
-    "fast": 5,
-}
+// const speedToAmount = {
+//     "slow": 1,
+//     "moderate": 3,
+//     "fast": 5,
+// }
 
 const CarouselBox = ({
     children,
     centerIndex,
     navigation = true,
-    scrollSpeed = "moderate",
-    pagination = true,
+    // scrollSpeed = "moderate",
+    // pagination = true,
     loop = false,
     scaleMode,
     width,
@@ -106,33 +106,33 @@ const CarouselBox = ({
         return childrenRenderArray;
     };
 
-    const computeScrollEdges = (): number[] => {
-        const {offsetWidth} = containerRef.current!;
-        const paddingSize = Math.floor(offsetWidth / 2);
+    // const computeScrollEdges = (): number[] => {
+    //     const {offsetWidth} = containerRef.current!;
+    //     const paddingSize = Math.floor(offsetWidth / 2);
 
-        const gapSize = extractNumberAndUnit(window.getComputedStyle(containerRef.current!).gap)!.number;
-        const items = containerRef.current!.children;
+    //     const gapSize = extractNumberAndUnit(window.getComputedStyle(containerRef.current!).gap)!.number;
+    //     const items = containerRef.current!.children;
 
-        let firstElementPositionLeftX = 0, lastRealElementPositionRightX = 0;
-        firstElementPositionLeftX += paddingSize;
-        lastRealElementPositionRightX += paddingSize;
-        for (let i = 0; i < numerOfElement.current + 2 * carouselState.cloneNumber; i++) {
+    //     let firstElementPositionLeftX = 0, lastRealElementPositionRightX = 0;
+    //     firstElementPositionLeftX += paddingSize;
+    //     lastRealElementPositionRightX += paddingSize;
+    //     for (let i = 0; i < numerOfElement.current + 2 * carouselState.cloneNumber; i++) {
         
-            const item = items[i] as HTMLElement; 
-            const itemWidth = extractNumberAndUnit(window.getComputedStyle(item!).width)!.number;
-            if (i <= carouselState.cloneNumber - 1) {
+    //         const item = items[i] as HTMLElement; 
+    //         const itemWidth = extractNumberAndUnit(window.getComputedStyle(item!).width)!.number;
+    //         if (i <= carouselState.cloneNumber - 1) {
 
-                firstElementPositionLeftX += (itemWidth + gapSize)
-            }
+    //             firstElementPositionLeftX += (itemWidth + gapSize)
+    //         }
 
-            if (i <= numerOfElement.current + carouselState.cloneNumber - 1) {
-                lastRealElementPositionRightX  += (itemWidth + gapSize)
-            } else {
-                break;
-            }
-        }
-        return [firstElementPositionLeftX - gapSize, lastRealElementPositionRightX - gapSize]
-    }
+    //         if (i <= numerOfElement.current + carouselState.cloneNumber - 1) {
+    //             lastRealElementPositionRightX  += (itemWidth + gapSize)
+    //         } else {
+    //             break;
+    //         }
+    //     }
+    //     return [firstElementPositionLeftX - gapSize, lastRealElementPositionRightX - gapSize]
+    // }
 
     const scrollToIndex = (index: number, behavior: ScrollBehavior = "smooth") => {
         

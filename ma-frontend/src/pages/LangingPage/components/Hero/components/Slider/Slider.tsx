@@ -5,25 +5,11 @@ import "./Slider.css" // Set the navigation button styles
 import 'swiper/css/pagination';
 // import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
-import FamilyBusiness from "@/assets/jpgs/family-run-factory.jpg"
-import ShanghaiSkyline from "@/assets/jpgs/shanghai-skylines.jpeg"
-import GreatWall from "@/assets/webps/great-wall-china.webp"
-import NextArrow from "@/assets/svgs/right_arrow_icon.svg"
-import BackArrow from "@/assets/svgs/back_arrow_icon.svg"
 import { useState } from "react";
 import VideoCard from "../VideoCard/VideoCard";
 
 
 import ShanghaiClip1 from "@/assets/mp4s/Shanghai_clip_1.mp4"
-import ShanghaiClip2 from "@/assets/mp4s/Shanghai_clip_2.mp4"
-import HongkongClip1 from "@/assets/mp4s/Hong_Kong_clip_1.mp4"
-import BeijingGreatWall from "@/assets/mp4s/Great_Wall_1.mp4"
-const slides = [
-    FamilyBusiness,
-    ShanghaiSkyline,
-    GreatWall,
-  ];
-
 
 const videos = [
     ShanghaiClip1

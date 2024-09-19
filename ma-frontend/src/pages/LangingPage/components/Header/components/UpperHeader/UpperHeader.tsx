@@ -1,8 +1,6 @@
-import { useIntl } from "react-intl";
+// import { useIntl } from "react-intl";
 import styles from "./UpperHeader.module.less"
 import Logo1 from "@/assets/pngs/LOGO-1.png"
-import Logo2 from "@/assets/pngs/LOGO-2.png"
-import SearchInput from "./components/SearchInput/SearchInput";
 import LanguageSwitcher from "./components/LanguageSwitcher/LanguageSwitcher";
 import SwitchTab, { NavItem } from "../SwitchTab/SwitchTab";
 
@@ -20,7 +18,7 @@ const navItems: NavItem[] = [
 
 function UpperHeader() {
 
-    const intl = useIntl();
+    // const intl = useIntl();
 
     return (
         <div className={styles.container}>

@@ -1,12 +1,10 @@
-import List from "@/commons/components/displayLayouts/Listing/List";
 import styles from "./SimpleWorkFlowCard.module.less"
-import ImageBox from "@/commons/components/medias/ImageBox";
 // import FreeOfCharge from "@/assets/svgs/free-of-charge.svg"
 import FreeOfCharge from "@/assets/pngs/free-of-charge.png"
 
 const SimpleWorkFlowCard = (props) => {
 
-    const {index, step, icon, title, price, description, progress} = props;
+    const {index, step, icon, title, price, description} = props;
 
 
     return (

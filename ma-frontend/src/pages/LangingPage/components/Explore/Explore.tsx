@@ -4,8 +4,6 @@ import STORY1 from "@/assets/jpgs/ma_story_1.jpg"
 import STORY2 from "@/assets/jpgs/ma_story_2.jpg"
 import STORY3 from "@/assets/pngs/ma_story_3.png"
 import STORY4 from "@/assets/pngs/ma_story_4.png"
-import { Divider } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
 
 const stories= [
     {

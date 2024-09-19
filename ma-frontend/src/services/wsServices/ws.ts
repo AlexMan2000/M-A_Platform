@@ -30,6 +30,7 @@ class Ws extends WebSocket {
         super(url); // Here it is trying to set ws's state to OPEN
         this.connectedUrl = url;
         this.uid = uuidv4();
+        console.log(this.uid);
         this.init();
     }
 

@@ -1,5 +1,5 @@
 import { classNames } from "@/commons/utils/classNameHandler"
-import { CSSProperties, ReactNode, useState } from "react";
+import { CSSProperties, useState } from "react";
 import DefaultImage from "@/assets/pngs/default-image.png"
 import "./ImageBox.css"
 

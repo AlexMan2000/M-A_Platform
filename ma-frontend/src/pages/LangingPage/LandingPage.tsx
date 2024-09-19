@@ -1,14 +1,14 @@
 import ClientSupport from "./components/ClientSupport/ClientSupport";
 import Explore from "./components/Explore/Explore";
-import NavigateBar from "./components/Header/components/NavigateBar/NavigateBar";
+// import NavigateBar from "./components/Header/components/NavigateBar/NavigateBar";
 import UpperHeader from "./components/Header/components/UpperHeader/UpperHeader";
 import Hero from "./components/Hero/Hero";
 import Projects from "./components/Projects/Projects";
 import WorkFlow from "./components/WorkFlow/WorkFlow";
 import styles from "./LandingPage.module.less"
 import AIMatching from "./components/AIMathcing/AIMatching";
-import DragButton from "@/commons/components/buttons/DragButton/DragButton";
-import Ws from "@/services/wsServices/ws";
+// import DragButton from "@/commons/components/buttons/DragButton/DragButton";
+// import Ws from "@/services/wsServices/ws";
 import ServeIndustry from "./components/ServeIndustry/ServeIndustry";
 import ManagementTeam from "./components/ManagementTeam/ManagementTeam";
 import Footer from "./components/Footer/Footer";

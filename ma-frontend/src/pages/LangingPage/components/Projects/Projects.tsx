@@ -2,7 +2,7 @@ import styles from "./Projects.module.less"
 
 
 // src/App.tsx
-import React, { useState } from 'react';
+// import { useState } from 'react';
 import BusinessImage from "@/assets/jpgs/business-meeting.jpg"
 import { priceFormatter, priceParser, priceUnitParser } from "@/commons/utils/priceFormatHandler";
 import BangkokHotel from "@/assets/jpgs/bangkok-hotel.jpg"
@@ -186,10 +186,10 @@ const cards = [
 const Projects = () => {
 
 
-  const [region, setRegion] = useState<string>("");
+  // const [region, setRegion] = useState<string>("");
 
 
-  const formattedCards = cards.map((elem, index) => {
+  const formattedCards = cards.map((elem, _) => {
 
     const priceUnit = priceUnitParser(elem.price), 
     [priceLow, priceHigh] = priceParser(elem.price).map((elem) => priceFormatter(elem, 2)),
@@ -207,9 +207,9 @@ const Projects = () => {
   })
 
 
-  const filteredCards = formattedCards.filter((elem, index) => {
-    return region === "" ? true : elem.region === region;
-  })
+  // const filteredCards = formattedCards.filter((elem, index) => {
+  //   return region === "" ? true : elem.region === region;
+  // })
 
 
   return (
