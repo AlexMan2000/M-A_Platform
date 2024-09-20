@@ -9,13 +9,25 @@ interface ArrowButtonProps {
   textStyle?: any
   style?: CSSProperties
   className?: string
+  onClick?: ()=>void;
 }
 
 const ArrowButton: React.FC<ArrowButtonProps> = (props: ArrowButtonProps ) => {
   
-    const {buttonText, buttonImage, style, textStyle, className} = props;
+    const {
+      buttonText, 
+      buttonImage, 
+      style, 
+      textStyle, 
+      className,
+      onClick
+    } = props;
+
     return (
-    <div className={classNamesArgs("arrow-button-container", className)} style={{...style}}>
+    <div 
+        className={classNamesArgs("arrow-button-container", className)} 
+        style={{...style}}
+        onClick={onClick}>
       <div className={classNamesArgs("left-text-container", className)} style={{...textStyle}}>
         {buttonText}
       </div>

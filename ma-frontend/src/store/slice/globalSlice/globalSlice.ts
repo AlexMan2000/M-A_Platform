@@ -5,7 +5,8 @@ import { RootState } from "../../store";
 
 interface GlobalState {
     sessionId: string,
-    locale: string
+    locale: string,
+    pageStatus: string
 }
 
 
@@ -19,6 +20,7 @@ const getInitialLocale = () => {
 const initialState: GlobalState = {
     sessionId: '',
     locale: getInitialLocale(),
+    pageStatus: "/home"
   }
 
 
@@ -32,6 +34,9 @@ export const globalSlice = createSlice({
         setLocale: (state, action) => {
             state.locale = action.payload.locale;
             localStorage.setItem("locale", state.locale);
+        },
+        setPageStatus: (state, action) => {
+            state.pageStatus = action.payload.pageStatus;
         }
     }
 })
