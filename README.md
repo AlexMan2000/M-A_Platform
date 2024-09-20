@@ -8,7 +8,7 @@
 
 ## Run frontend/admin
 
-The web application has been deployed to amazon AWS, visit http://18.188.164.17:5173/#AboutUs to see the current development progress.
+The web application has been deployed to amazon AWS, visit http://18.188.164.17:5173/ to see the current development progress.
 
 
 
