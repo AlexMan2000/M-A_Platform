@@ -16,6 +16,10 @@ The web application has been deployed to amazon AWS, visit http://18.188.164.17:
 
 # Update Log
 
+## **2024/09/21**
+
+- Modify the hero text
+
 ## 2024/09/19
 
 - Add the form page corresponding to "Transfer, Sale and Business Success", "Acquisition Needs" and "Get started with free consultation", click to view.

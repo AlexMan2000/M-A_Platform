@@ -21,7 +21,7 @@ function Hero () {
                         Business Succession {"\n"}and M&A
                     </div>
                     <div className={styles.titleText}>
-                    Leading Business Succession and M&A Solutions for SMEs across Greater China and Southeast Asia, connecting businesses for successful growth.          
+                    Leading AI-powered M&A brokerage platform targeting Greater China and Southeast Asia region. We have an active database with high quality regional SMEs and professional buyers across industries. Through a professional team of consultants and proprietary AI + digitalisation technology, we are able to achieve much faster matching and more efficient M&A process. We provide free consultation and material preparation and only charge a success fee upon deal completion.
                     </div>
                 </div>
                
