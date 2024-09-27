@@ -7,6 +7,7 @@ import TransitionRed from "@/assets/svgs/transition_red.svg"
 import ExpansionRed from "@/assets/svgs/expansion_red.svg"
 import { useSelector } from "react-redux";
 import { selectGlobalState } from "@/store/slice/globalSlice/globalSlice";
+import { useEffect, useState } from "react"
 
 
 
@@ -14,6 +15,23 @@ import { selectGlobalState } from "@/store/slice/globalSlice/globalSlice";
 const ClientSupport = () => {
 
   const { isMobile } = useSelector(selectGlobalState);
+
+    const [windowWidth, setWindowWidth] = useState<number>(0);
+
+    useEffect(() => {
+
+        const resizeHandler = ()=>{
+            setWindowWidth(window.innerWidth);
+        }
+        window.addEventListener("resize", resizeHandler)
+
+        return () => {
+          window.removeEventListener("resize", resizeHandler)
+        }
+    })
+    
+    const mobileDisplay = windowWidth <= 430;
+
 
   const sections = [
     {
@@ -24,7 +42,10 @@ const ClientSupport = () => {
         "M&A advisory for smooth ownership changes",
         "Ensuring business continuity through transitions"
       ],
-      icon: isMobile? TransitionRed:Transition // Replace with actual icon paths
+      icon: {
+        mobile:TransitionRed,
+        desktop: Transition
+      } 
     },
     {
       header: "Strategic Transformation",
@@ -34,7 +55,10 @@ const ClientSupport = () => {
         "Consolidation restructuring expertise",
         "Digital transformation consulting"
       ],
-      icon: isMobile? InternationalRed:International // Replace with actual icon paths
+      icon: {
+        mobile:InternationalRed,
+        desktop: International
+      } 
     },
     {
       header: "Growth Expansion",
@@ -44,7 +68,10 @@ const ClientSupport = () => {
         "Cross-border M&A facilitation",
         "Fostering local partnership networks"
       ],
-      icon: isMobile? ExpansionRed:Expansion// Replace with actual icon paths
+      icon: {
+        mobile:ExpansionRed,
+        desktop: Expansion
+      } 
     },
   ];
 
@@ -59,7 +86,8 @@ const ClientSupport = () => {
         {sections.map((section, index) => (
           <div className={styles.card} key={index}>
             <div className={styles.iconWrapper}>
-              <img src={section.icon} alt={section.header} className={styles.icon} />
+              <img src={section.icon.mobile} alt={section.header} className={styles.mobileIcon} />
+              <img src={section.icon.desktop} alt={section.header} className={styles.desktopIcon} />
             </div>
             <div className={styles.title}>{section.header}</div>
             <ul className={styles.bulletPoints}>

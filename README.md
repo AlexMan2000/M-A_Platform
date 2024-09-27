@@ -16,6 +16,16 @@ The web application has been deployed to amazon AWS, visit http://18.188.164.17:
 
 # Update Log
 
+## **2024/09/27**
+
+- Fix mobile layout issues.
+- Add mobile layout for landing page(finished section 5~9)
+- Add layout transition from 1440px to 430px (1024px, 768px)
+
+
+
+
+
 ## **2024/09/26**
 
 - Add lazy-loading support for landing page.

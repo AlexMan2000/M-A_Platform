@@ -13,6 +13,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+
         .heading {
             text-align: start;
             align-self: flex-start;
@@ -21,7 +22,7 @@
             margin-bottom: 20px;
             color: black;
         }
-    
+
         .desc {
             color: #444;
             font-feature-settings: 'liga' off, 'clig' off;
@@ -29,11 +30,12 @@
             font-size: 22px;
             font-style: normal;
             font-weight: 400;
-            line-height: 32px; /* 145.455% */
-            letter-spacing: 0.5px;  
+            line-height: 32px;
+            /* 145.455% */
+            letter-spacing: 0.5px;
         }
     }
-   
+
 
 
     .imageContainer {
@@ -41,7 +43,10 @@
         flex-direction: row;
         align-self: center;
         justify-content: space-between;
-        gap: 150px; 
+        overflow: auto;
+        scroll-behavior: auto;
+        width: 100%;
+        gap: 150px;
 
         .imageGroup {
             display: flex;
@@ -56,6 +61,7 @@
                 flex-shrink: 0;
                 // background-color: #D9D9D9;
                 border-radius: 50%;
+
                 .image {
                     width: 100%;
                     height: 100%;
@@ -68,38 +74,138 @@
                 display: flex;
                 flex-direction: row;
                 gap: 20px;
+
+
+
+                .tickMobile {
+                    display: none;
+                }
             }
         }
     }
+}
 
 
-    // .floatingContainer {
-    //     position: absolute;
-    //     display:flex;
-    //     flex-direction: column;
-    //     gap: 70px;
-    //     text-wrap: nowrap;
-    //     justify-content: space-between;
-    //     align-items: center;
-    //     top: 50%;
-    //     left: 50%;
-    //     transform: translateX(-50%) translateY(-50%);
+@media (max-width: 430px) {
+    .container {
+        width: 100%;
+        padding: 5px 0px;
+        position: relative;
+        gap: 45px;
 
-    //     .title {
-    //         font-size: 50px;
-    //         font-weight: 600;
-    //         color: white
-    //     }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-    //     .desc {
-    //         color: white;
-    //         font-size: 20px;
-    //         font-weight: 10;
-    //         text-align: center;
-    //         text-wrap: wrap;
-    //     }
-        
-    // }
+        .topContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
 
-    
+            .heading {
+                text-align: start;
+                font-size: 48px;
+                font-weight: 800;
+                margin-bottom: 20px;
+                color: black;
+                text-align: center;
+                font-feature-settings: 'liga' off, 'clig' off;
+                font-family: "Nunito Sans";
+                font-size: 35px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                letter-spacing: 1.5px;
+                position: relative;
+
+                &::after {
+                    position: absolute;
+                    top: -50%;
+                    left: 50%;
+                    content: "";
+                    display: block;
+                    width: 4px;
+                    height: 302px;
+                    transform: rotate(90deg);
+                    flex-shrink: 0;
+                    border-radius: 1px;
+                    background: #9C0404;
+                }
+            }
+
+            .desc {
+                color: #444;
+                text-align: center;
+                font-feature-settings: 'liga' off, 'clig' off;
+                font-family: "Nunito Sans";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 32px; /* 200% */
+                letter-spacing: 0.5px;
+
+            }
+        }
+
+
+
+        .imageContainer {
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            justify-content: space-between;
+            gap: 60px;
+
+            .imageGroup {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+
+                .imageBox {
+                    width: 126px;
+                    height: 126px;
+                    padding: 15px;
+                    flex-shrink: 0;
+                    // background-color: #D9D9D9;
+                    border-radius: 50%;
+
+                    .image {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                        object-fit: contain;
+                    }
+                }
+
+                .desc {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 20px;
+                    color: #000;
+                    font-feature-settings: 'liga' off, 'clig' off;
+                    font-family: "Nunito Sans";
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 40px;
+                    /* 133.333% */
+                    letter-spacing: 0.5px;
+                    text-wrap: nowrap;
+
+
+                    .tickDesktop {
+                        display: none;
+                    }
+
+                    .tickMobile {
+                        display: block;
+                        flex-shrink: 0;
+                        width: 16%;
+                    }
+                }
+            }
+        }
+    }
 }

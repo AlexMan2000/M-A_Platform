@@ -25,7 +25,6 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("haha")
     dispatch(setOSInfo());
   }, [setOSInfo])
 

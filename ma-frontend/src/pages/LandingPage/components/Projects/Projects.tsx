@@ -198,9 +198,6 @@ const Projects = () => {
       profitUnit = priceUnitParser(elem.profit),
       [profitLow, profitHigh] = priceParser(elem.profit).map((elem) => priceFormatter(elem, 2));
 
-
-
-
     return {
       ...elem,
       price: `${priceLow}${priceHigh ? `~${priceHigh}` : " (Negotiable)"} ${priceUnit}`,

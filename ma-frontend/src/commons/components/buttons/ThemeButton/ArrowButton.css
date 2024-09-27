@@ -26,6 +26,7 @@
     color: #FFF;
     text-align: center;
     white-space: pre-wrap;
+    width: 100%;
 
     font-feature-settings: 'liga' off, 'clig' off;
     font-family: "Nunito Sans";

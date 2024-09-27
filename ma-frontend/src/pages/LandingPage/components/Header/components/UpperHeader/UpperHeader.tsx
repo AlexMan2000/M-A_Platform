@@ -3,6 +3,10 @@ import styles from "./UpperHeader.module.less"
 import Logo1 from "@/assets/pngs/LOGO-1.png"
 import LanguageSwitcher from "./components/LanguageSwitcher/LanguageSwitcher";
 import SwitchTab, { NavItem } from "../SwitchTab/SwitchTab";
+import { IconButton } from "@mui/material";
+import { Close, Menu as MenuIcon } from "@mui/icons-material";
+import { useState } from "react";
+
 
 const navItems: NavItem[] = [
     { title: 'ABOUT US', value: "AboutUs" },
@@ -16,6 +20,16 @@ const navItems: NavItem[] = [
 
 
 function UpperHeader() {
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = (event) => {
+        event.stopPropagation();
+        console.log("haha")
+        setIsMenuOpen((prev) => !prev);
+    };
+
+
     return (
         <div className={styles.container}>
             <div className={styles.leftContainer}>
@@ -30,11 +44,14 @@ function UpperHeader() {
                 </div>
             </div>
             <div className={styles.rightContainer}>
-                <SwitchTab navItems={navItems} bgColor="white"></SwitchTab>
+                <SwitchTab isMenuOpen={isMenuOpen} navItems={navItems} bgColor="white"></SwitchTab>
                 <div className={styles.languageButton}>
                     <LanguageSwitcher></LanguageSwitcher>
                 </div>
             </div>
+            <IconButton className={styles.menuIcon} onClick={toggleMenu}>
+                <MenuIcon />
+            </IconButton>
             
         </div>
     )

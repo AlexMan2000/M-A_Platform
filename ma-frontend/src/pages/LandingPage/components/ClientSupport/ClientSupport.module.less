@@ -83,10 +83,16 @@
                 
 
 
-                .icon {
+                .desktopIcon {
+                    display: block;
                     width: 45px;
                     height:45px;
                     object-fit: cover;
+                }
+
+
+                .mobileIcon {
+                    display: none;
                 }
             }
             
@@ -161,7 +167,7 @@
         }
 
 
-        .sectionHeader {
+        .section-header {
             color: #FFF;
             text-align: center;
             font-feature-settings: 'liga' off, 'clig' off;
@@ -230,9 +236,12 @@
                     justify-content: center;
                     align-items: center;
                     
+                    .desktopIcon {
+                        display: none;
+                    }
     
-    
-                    .icon {
+                    .mobileIcon {
+                        display: block;
                         width: 45px;
                         height:45px;
                         object-fit: cover;

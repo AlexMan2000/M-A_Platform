@@ -4,6 +4,8 @@ import SimpleWorkFlowCard from './components/SimpleWorkFlowCard';
 import CustomerService from "@/assets/pngs/customer-service.png"
 import Approval from "@/assets/pngs/approval.png"
 import Advisory from "@/assets/pngs/financial-advisor.png"
+import Polygon from "@/assets/svgs/polygon_white.svg"
+
 
 const steps = [
   {
@@ -113,11 +115,11 @@ const steps = [
 
 const WorkFlow = () => {
 
-
   const [activeGroup, setActiveGroup] = useState<number>(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRefMobile = useRef<HTMLDivElement>(null);
 
-  const scrollToIndex = (index: number, behavior: ScrollBehavior = "smooth") => {
+  const scrollToIndex = (scrollRef, index: number, behavior: ScrollBehavior = "smooth") => {
 
     if (scrollRef.current) {
       const items = scrollRef.current.children;
@@ -134,22 +136,59 @@ const WorkFlow = () => {
 
   const scrollLeft = () => {
     if (scrollRef.current) {
-      scrollToIndex(Math.max(0, activeGroup - 1) * 3 + 2 - 1, "smooth")
+      scrollToIndex(scrollRef, Math.max(0, activeGroup - 1) * 3 + 2 - 1, "smooth")
       setActiveGroup(Math.max(0, activeGroup - 1));
     }
   };
 
   const scrollRight = () => {
     if (scrollRef.current) {
-      scrollToIndex(Math.min(activeGroup + 1, 2) * 3 + 2 - 1, "smooth")
+      scrollToIndex(scrollRef, Math.min(activeGroup + 1, 2) * 3 + 2 - 1, "smooth")
+      setActiveGroup(Math.min(activeGroup + 1, 2));
+    }
+  };
+
+  const partitionArray = (arr, groupSize) => {
+    return arr.reduce((result, value, index) => {
+      if (index % groupSize === 0) {
+        result.push([]);
+      }
+      result[result.length - 1].push(value);
+      return result;
+    }, []);
+  }
+
+  const mobileWorkGroup = partitionArray(steps.map((item, index) => (
+    <SimpleWorkFlowCard
+      key={index}
+      index={index}
+      {...item}
+    ></SimpleWorkFlowCard>
+  )), 3)
+
+
+  const scrollLeftMobile = () => {
+    if (scrollRefMobile.current) {
+      scrollToIndex(scrollRefMobile, Math.max(0, activeGroup - 1), "smooth")
+      setActiveGroup(Math.max(0, activeGroup - 1));
+    }
+  };
+
+  const scrollRightMobile = () => {
+    if (scrollRefMobile.current) {
+      scrollToIndex(scrollRefMobile, Math.min(activeGroup + 1, 2), "smooth")
       setActiveGroup(Math.min(activeGroup + 1, 2));
     }
   };
 
   return (
     <div className={styles.container} id="Workflow">
+      <div className={styles.backgroundImage}></div>
       <div className={styles.workFlowTitle}>Our Working Process</div>
       <div className={styles.projectTimeline}>
+        <div className={styles.timelineNavPrev} onClick={scrollLeftMobile}>
+          <img className={styles.img} src={Polygon}></img>
+        </div>
         <div className={`${styles.timelineItem} ${activeGroup == 0 ? styles.active : ""}`}>
           <span>1st Phase: Preparation (1 Week-1 Month)</span>
         </div>
@@ -158,6 +197,9 @@ const WorkFlow = () => {
         </div>
         <div className={`${styles.timelineItem} ${activeGroup >= 2 ? styles.active : ""}`}>
           <span>3rd Phase: Closing(1 Month-3 Months)</span>
+        </div>
+        <div className={styles.timelineNavNext} onClick={scrollRightMobile}>
+          <img className={styles.img} src={Polygon}></img>
         </div>
       </div>
       <div className={styles.cardContainer} ref={scrollRef}>
@@ -172,9 +214,17 @@ const WorkFlow = () => {
         <button className={styles.navButtonPrev} onClick={scrollLeft}>❮</button>
         <button className={styles.navButtonAfter} onClick={scrollRight}>❯</button>
       </div>
+      
+      <div className={styles.cardContainerMobile} ref={scrollRefMobile}>
+        {mobileWorkGroup.map((group, index) => (
+          <div className={styles.group} key={group.toString() + index}>
+            {group}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
-;
+  ;
 
 export default WorkFlow;

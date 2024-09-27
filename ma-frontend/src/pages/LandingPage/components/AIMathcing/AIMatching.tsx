@@ -9,6 +9,7 @@ import Preparation from "@/assets/pngs/Preparation.png"
 import Matching from "@/assets/pngs/Matching.png"
 import Closing from "@/assets/pngs/Closing.png"
 import GreyTick from "@/assets/svgs/tick_grey.svg"
+import RedTick from "@/assets/svgs/bullet_point_red.svg"
 
 const AIMatching = () => {
 
@@ -46,7 +47,8 @@ const AIMatching = () => {
                             <img className={styles.image} src={item.image}></img>
                         </div>
                         <div className={styles.desc}>
-                            <img className={styles.tick} src={GreyTick}></img>
+                            <img className={styles.tickDesktop} src={GreyTick}></img>
+                            <img className={styles.tickMobile} src={RedTick}></img>
                             {item.desc}
                         </div>
                     </div>

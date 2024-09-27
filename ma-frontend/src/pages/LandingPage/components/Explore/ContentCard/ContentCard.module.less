@@ -1,32 +1,42 @@
-.container {
+.desktopContainer {
     width: 100%;
-    height: 100%; 
+    height: 100%;
     display: flex;
     gap: 20px;
 
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    position: relative; 
+    position: relative;
 
     &.double {
         padding: 50px 60px 50px 150px;
         // color: white;
-        color:black;
+        color: black;
     }
-    
+
 
     &.plain {
         padding: 50px 150px 50px 80px;
         // color: var(--theme-color);
-        color:black;
+        color: black;
     }
 
     .headingContainer {
         font-size: 35px;
         font-weight: 800;
         line-height: 40px;
+        text-wrap: nowrap;
         position: relative;
+
+
+        .headingText {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            text-wrap:wrap;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
 
         .bulletPoint {
             position: absolute;
@@ -37,7 +47,8 @@
             font-size: 50px;
             font-style: normal;
             font-weight: 700;
-            line-height: 30px; /* 60% */
+            line-height: 30px;
+            /* 60% */
             letter-spacing: 0.5px;
             top: 0px;
             left: -50px;
@@ -52,7 +63,7 @@
     }
 
 
-    .bulletGroupContainer{
+    .bulletGroupContainer {
         flex: 1;
 
         .bulletContainer {
@@ -70,7 +81,7 @@
 
             &.plain {
                 // color: var(--theme-color)!important;
-                color:black !important;
+                color: black !important;
             }
 
 
@@ -81,8 +92,8 @@
 
 
             .bulletText {
-                text-align:justify;
-                color:black !important;
+                text-align: justify;
+                color: black !important;
             }
         }
 
@@ -97,9 +108,10 @@
         justify-content: center;
         align-self: stretch;
         display: flex;
-        
+
         z-index: 50;
-        flex-shrink: 0;  /** Prevent from being affected by other flex components  */
+        flex-shrink: 0;
+        /** Prevent from being affected by other flex components  */
 
         transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
@@ -125,13 +137,239 @@
             background-color: #17b5aa;
             color: white;
         }
-       
+
+    }
+}
+
+.mobileContainer {
+    display: none;
+    
+}
+
+
+@media (max-width: 1024px) {
+    .desktopContainer {
+
+        &.double {
+            padding: 50px 60px 50px 90px;
+            // color: white;
+            color: black;
+        }
+    
+    
+        &.plain {
+            padding: 50px 100px 50px 70px;
+            // color: var(--theme-color);
+            color: black;
+        }
+
+
+        .headingContainer {
+            font-size: 25px;
+            font-weight: 800;
+            line-height: 40px;
+            
+            position: relative;
+    
+            .headingText {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                text-wrap:wrap;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+            }
+
+            .bulletPoint {
+                position: absolute;
+                color: #878787;
+                text-align: center;
+                font-feature-settings: 'liga' off, 'clig' off;
+                font-family: "Nunito Sans";
+                font-size: 40px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 30px;
+                /* 60% */
+                letter-spacing: 0.5px;
+                top: 10px;
+                left: -50px;
+            }
+        }
+    
+        .subheadingContainer {
+            font-size: 15px;
+            font-weight: 330;
+            text-align: justify;
+            line-height: 20px;
+        }
+
+        .bulletGroupContainer {
+            flex: 1;
+    
+            .bulletContainer {
+                display: flex;
+                align-items: center;
+                font-size: 12px;
+                font-weight: 350;
+                line-height: 20px;
+                flex-direction: row;
+                gap: 5px;
+    
+                &.double {
+                    color: white !important;
+                }
+    
+                &.plain {
+                    // color: var(--theme-color)!important;
+                    color: black !important;
+                }
+    
+    
+                .bulletImage {
+                    width: 20px;
+                    height: 20px;
+                }
+    
+    
+                .bulletText {
+                    text-align: justify;
+                    color: black !important;
+                }
+            }
+    
+    
+        }
     }
 }
 
 
+@media (max-width: 768px) {
+
+    .mobileContainer {
+        display: none;
+    }
+
+
+    .desktopContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+
+
+        &.double {
+            padding: 50px 70px 20px 70px;
+            // color: white;
+            color: black;
+        }
+    
+    
+        &.plain {
+            padding: 50px 70px 20px 70px;
+            // color: var(--theme-color);
+            color: black;
+        }
+
+        .headingContainer {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+
+            .headingText {
+                font-family: Nunito;
+                width: 300px;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                letter-spacing: 1px;
+            }
+
+            .bulletPoint {
+                position: unset;
+                width: 62px;
+                height: 37px;
+                flex-shrink: 0;
+                border-radius: 18px;
+                background: gray;
+                font-size: 20px;
+                color: white;
+                line-height: 37px;
+                text-align: center;
+            }
+        }
+
+        .subheadingContainer {
+            width: 100%;
+            color: #000;
+            font-family: Nunito;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 25px;
+            /* 166.667% */
+            letter-spacing: 1px;
+        }
+
+
+        .bulletGroupContainer {
+            flex: 1;
+            width: 100%;
+
+            .bulletContainer {
+                display: flex;
+                align-items: center;
+                font-size: 15px;
+                text-wrap: nowrap;
+                font-weight: 350;
+                line-height: 30px;
+                flex-direction: row;
+                gap: 5px;
+
+                
+
+                .bulletImage {
+                    width: 20px;
+                    height: 20px;
+                }
+
+
+                .bulletText {
+                    color: #545454;
+                    font-family: Nunito;
+                    font-size: 11px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 26px;
+                    /* 236.364% */
+                    letter-spacing: 1px;
+                    text-transform: capitalize;
+                }
+            }
+
+
+        }
+
+    }
+
+
+}
+
+
 @media (max-width: 430px) {
-    .container {
+
+    .desktopContainer {
+        display: none;
+    }
+
+
+    .mobileContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
         .headingContainer {
             display: flex;
             flex-direction: row-reverse;
@@ -170,14 +408,15 @@
             font-size: 12px;
             font-style: normal;
             font-weight: 400;
-            line-height: 20px; /* 166.667% */
+            line-height: 20px;
+            /* 166.667% */
             letter-spacing: 1px;
         }
 
 
-        .bulletGroupContainer{
+        .bulletGroupContainer {
             flex: 1;
-    
+
             .bulletContainer {
                 display: flex;
                 align-items: center;
@@ -191,23 +430,25 @@
                     width: 20px;
                     height: 20px;
                 }
-    
-    
+
+
                 .bulletText {
                     color: #545454;
                     font-family: Nunito;
                     font-size: 11px;
                     font-style: normal;
                     font-weight: 400;
-                    line-height: 26px; /* 236.364% */
+                    line-height: 26px;
+                    /* 236.364% */
                     letter-spacing: 1px;
                     text-transform: capitalize;
                 }
             }
-    
-    
+
+
         }
+
     }
 
-   
+
 }

@@ -33,6 +33,19 @@ const Card: React.FC<CardProps> = ({ id, date, image, title, revenue, region, pr
   };
 
 
+  const mobileTextStyles = {
+    color: 'white',
+    textAlign: 'center',
+    fontFeatureSettings: "'liga' off, 'clig' off",
+    fontFamily: '"Nunito Sans"',
+    fontSize: '16px',
+    fontStyle: 'normal',
+    fontWeight: 400,
+    lineHeight: '30px',
+    letterSpacing: '0.5px'
+  };
+
+
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
@@ -92,6 +105,24 @@ const Card: React.FC<CardProps> = ({ id, date, image, title, revenue, region, pr
           
         ></ArrowButton>
       </div>
+      <div className={styles.mobileButton}>
+        <ArrowButton 
+          buttonText={'Show More'} 
+          buttonImage={ForwardArrow} 
+          style={{
+            backgroundColor: "#9C0404",
+            border: "1px solid grey",
+            boxShadow: "none",
+            width: "100%",
+            color: "white",
+            height: "100%",
+          }}
+          textStyle={mobileTextStyles}
+          
+        ></ArrowButton>
+      </div>
+
+      
       <div className={styles.idDate}>
         <span className={styles.id}>Project ID:{id}</span>
         <span className={styles.date}>Open Date:{date}</span>

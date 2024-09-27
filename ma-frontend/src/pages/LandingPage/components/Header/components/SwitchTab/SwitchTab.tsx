@@ -1,29 +1,34 @@
 import { useEffect, useState } from "react";
 import styles from "./SwitchTab.module.less"
 import { useLocation, useNavigate } from "react-router-dom";
+import { IconButton, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+
 
 export interface NavItem {
-    title: string
-    value: string
-    subItems?: string[]
-  }
+  title: string
+  value: string
+  subItems?: string[]
+}
 
-  interface SwitchTabProps {
-    navItems: NavItem[],
-    bgColor?: string,
-  }
-  
+interface SwitchTabProps {
+  navItems: NavItem[],
+  bgColor?: string,
+  isMenuOpen?: boolean
+}
 
-function SwitchTab (props: SwitchTabProps)  {
 
-  const {navItems, bgColor} = props
+function SwitchTab(props: SwitchTabProps) {
+
+  const { navItems, bgColor, isMenuOpen} = props
   const [_, setValue] = useState<string>("AboutUs")
+  
 
   const navigate = useNavigate()
   const location = useLocation()
 
   useEffect(() => {
     const { pathname, hash } = location
+
     if (pathname === '/') {
       switch (hash) {
         case '#AboutUs':
@@ -57,6 +62,7 @@ function SwitchTab (props: SwitchTabProps)  {
 
 
   
+
   const handleScroll = (sectionId: string) => {
     document.querySelector(sectionId)?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -71,41 +77,58 @@ function SwitchTab (props: SwitchTabProps)  {
 
 
   return (
-        <div className={styles.container}
-          style={{
-            "backgroundColor": bgColor
-          }}
-        >
-          <div className={styles.navItemContainer}>
-            {navItems?.map((elem, index, arr) => {
-              return (
-                  index == arr.length - 1 ? 
-                  <div 
-                      key={styles.navItem + index}
-                      className={styles.navItemWrapper}
-                      onClick={()=>{handleChange(elem.value)}}
-                      >
-                    <div className={styles.navItem}>
-                        {elem.title}
-                    </div>
-                  </div>
-                  : 
-                  <div 
-                    key={styles.navItem + index} 
-                    className={styles.navItemWrapper}
-                    onClick={()=>{handleChange(elem.value)}}
-                    >
-                    <div className={styles.navItem}>
-                      {elem.title}
-                    </div>
-                  </div>
-              )
-            })}
-          </div>
-        <div className={styles.detailPanelContainer}></div>
-          
-        </div>
-    )
+    <div className={styles.container}
+      style={{
+        "backgroundColor": bgColor
+      }}
+    >
+      
+      <div className={styles.navItemContainer}>
+        {navItems?.map((elem, index, arr) => {
+          return (
+            index == arr.length - 1 ?
+              <div
+                key={styles.navItem + index}
+                className={styles.navItemWrapper}
+                onClick={() => { handleChange(elem.value) }}
+              >
+                <div className={styles.navItem}>
+                  {elem.title}
+                </div>
+              </div>
+              :
+              <div
+                key={styles.navItem + index}
+                className={styles.navItemWrapper}
+                onClick={() => { handleChange(elem.value) }}
+              >
+                <div className={styles.navItem}>
+                  {elem.title}
+                </div>
+              </div>
+          )
+        })}
+      </div>
+      { isMenuOpen && <div className={styles.dropdownMobile}>
+        <List>
+          {navItems?.map((elem, index, arr) => {
+            return (
+              <ListItem
+                disablePadding
+                key={styles.navItem + index}
+                className={styles.navItemWrapper}
+                onClick={() => { handleChange(elem.value) }}
+              >
+                <ListItemButton>
+                  <ListItemText primary={elem.title} />
+                </ListItemButton>
+              </ListItem>
+            )
+          })}
+        </List>
+      </div>}
+    </div>
+  )
 }
 
 

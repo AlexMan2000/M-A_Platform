@@ -12,6 +12,12 @@
         display: flex;
         flex-direction: column;
         gap: 50px;
+        width: 50%;
+
+
+        .backgroundImage {
+            display: none
+        }
 
         .topText {
             display: flex;
@@ -35,7 +41,6 @@
             .titleHeading {
                 color: var(--black, #000);
                 font-feature-settings: 'liga' off, 'clig' off;
-
                 /* Nunito / Bold / 48 */
                 font-family: "Nunito Sans";
                 font-size: 48px;
@@ -48,7 +53,7 @@
 
 
             .titleText {
-                width: 505px;
+
                 color: var(--grey-900, #4F4F4F);
                 font-feature-settings: 'liga' off, 'clig' off;
                 font-family: "Nunito Sans";
@@ -60,6 +65,9 @@
                 letter-spacing: 0.5px;
             }
 
+            .titleTextMobile {
+                display: none;
+            }
 
 
         }
@@ -74,11 +82,9 @@
     }
 
     .rightContainer {
-        overflow: hidden;
+        // overflow: hidden;
         width: 742px;
         height: 606px;
-        // margin-left: 10px;
-        // flex-shrink: 0;
         position: relative;
 
 
@@ -86,6 +92,8 @@
             width: 108%;
             height: 108%;
             object-fit: contain;
+            z-index: -1;
+            position: absolute;
         }
 
         .imgFill {
@@ -102,7 +110,7 @@
 
     .bottomButton {
         position: absolute;
-        top: 112%;
+        bottom: -90px;
         right: 0px;
         width: 594.105px;
         height: 55px;
@@ -161,6 +169,141 @@
 }
 
 
+
+@media (max-width: 1024px) {
+    .container {
+        width: 100%;
+
+        .leftContainer {
+
+
+            .topText {
+
+
+                .titleDesc {
+                    color: var(--grey-900, #4F4F4F);
+                    font-feature-settings: 'liga' off, 'clig' off;
+
+                    /* Nunito / Semi / 20 */
+                    font-family: "Nunito Sans";
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 30px;
+                    /* 150% */
+                    letter-spacing: 0.5px;
+                }
+
+                .titleHeading {
+                    width: 100%;
+                    color: black;
+                    text-align: center;
+                    font-feature-settings: 'liga' off, 'clig' off;
+                    font-family: "Nunito Sans";
+                    font-size: 30px;
+                    font-style: normal;
+                    font-weight: 900;
+                    text-align: start;
+                    line-height: normal;
+                    letter-spacing: 1.5px;
+                }
+
+
+                .titleText {
+                    color: var(--grey-900, #4F4F4F);
+                    font-feature-settings: 'liga' off, 'clig' off;
+                    font-family: "Nunito Sans";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 30px;
+                    /* 187.5% */
+                    letter-spacing: 0.5px;
+                }
+
+                .titleTextMobile {
+                    display: none;
+                }
+
+            }
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+
+        .leftContainer {
+
+
+            .topText {
+
+
+                .titleDesc {
+                    color: var(--grey-900, #4F4F4F);
+                    font-feature-settings: 'liga' off, 'clig' off;
+
+                    /* Nunito / Semi / 20 */
+                    font-family: "Nunito Sans";
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 30px;
+                    /* 150% */
+                    letter-spacing: 0.5px;
+                }
+
+                .titleHeading {
+                    width: 100%;
+                    color: black;
+                    text-align: center;
+                    font-feature-settings: 'liga' off, 'clig' off;
+                    font-family: "Nunito Sans";
+                    font-size: 30px;
+                    font-style: normal;
+                    font-weight: 900;
+                    text-align: start;
+                    line-height: normal;
+                    letter-spacing: 1.5px;
+                }
+
+
+                .titleText {
+                    color: var(--grey-900, #4F4F4F);
+                    font-feature-settings: 'liga' off, 'clig' off;
+                    font-family: "Nunito Sans";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 30px;
+                    /* 187.5% */
+                    letter-spacing: 0.5px;
+                }
+
+                .titleTextMobile {
+                    display: none;
+                }
+
+            }
+        }
+
+        .rightContainer {
+            .bottomButton {
+                bottom: 40px;
+                right: -40px;
+                width: 70px;
+                .button {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
+
 @media (max-width: 430px) {
     .container {
         width: 100%;
@@ -210,7 +353,8 @@
                 }
 
 
-                .titleText {
+                .titleTextMobile {
+                    display: block;
                     width: 100%;
                     color: #F1F1F1;
                     text-align: center;
@@ -224,6 +368,11 @@
                     letter-spacing: 0.5px;
                 }
 
+                .titleText {
+                    display: none;
+                    letter-spacing: 0.5px;
+                }
+
 
 
             }
@@ -234,17 +383,24 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 20px;
-                
+
+
+                .arrowButton {
+                    border-radius: 8px;
+                    background: linear-gradient(90deg, #720000 7.57%, #C33535 98.66%);
+                }
+
             }
 
             .backgroundImage {
-                position:absolute;
-                z-index:-1;
-                top:0px;
-                left:-15%;
+                position: absolute;
+                z-index: -1;
+                top: 0px;
+                left: -15%;
                 width: 125%;
+                display: block;
 
-                .img{
+                .img {
                     width: 100%;
                     height: 100%;
                     object-fit: contain;
@@ -252,6 +408,10 @@
             }
 
 
+        }
+
+        .rightContainer {
+            display: none;
         }
     }
 }
