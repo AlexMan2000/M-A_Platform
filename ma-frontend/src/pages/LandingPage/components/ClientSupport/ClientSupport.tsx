@@ -5,33 +5,9 @@ import Expansion from "@/assets/svgs/expansion_1.svg"
 import InternationalRed from "@/assets/svgs/international_red.svg"
 import TransitionRed from "@/assets/svgs/transition_red.svg"
 import ExpansionRed from "@/assets/svgs/expansion_red.svg"
-import { useSelector } from "react-redux";
-import { selectGlobalState } from "@/store/slice/globalSlice/globalSlice";
-import { useEffect, useState } from "react"
-
-
 
 
 const ClientSupport = () => {
-
-  const { isMobile } = useSelector(selectGlobalState);
-
-    const [windowWidth, setWindowWidth] = useState<number>(0);
-
-    useEffect(() => {
-
-        const resizeHandler = ()=>{
-            setWindowWidth(window.innerWidth);
-        }
-        window.addEventListener("resize", resizeHandler)
-
-        return () => {
-          window.removeEventListener("resize", resizeHandler)
-        }
-    })
-    
-    const mobileDisplay = windowWidth <= 430;
-
 
   const sections = [
     {

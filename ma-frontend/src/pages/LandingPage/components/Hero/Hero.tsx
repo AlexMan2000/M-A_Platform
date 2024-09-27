@@ -6,13 +6,10 @@ import ArrowButton from "@/commons/components/buttons/ThemeButton/ArrowButton";
 import HeadPhone from "@/assets/svgs/headphone.svg"
 import BackgroundImage from "@/assets/svgs/mobile_hero_background.svg"
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectGlobalState } from "@/store/slice/globalSlice/globalSlice";
 
 function Hero() {
 
     const navigate = useNavigate();
-    const { isMobile } = useSelector(selectGlobalState);
     return (
 
         <div className={styles.container} id="AboutUs">

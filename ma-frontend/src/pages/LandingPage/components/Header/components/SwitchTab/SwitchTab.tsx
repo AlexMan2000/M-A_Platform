@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./SwitchTab.module.less"
 import { useLocation, useNavigate } from "react-router-dom";
-import { IconButton, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 
 
 export interface NavItem {
@@ -111,7 +111,7 @@ function SwitchTab(props: SwitchTabProps) {
       </div>
       { isMenuOpen && <div className={styles.dropdownMobile}>
         <List>
-          {navItems?.map((elem, index, arr) => {
+          {navItems?.map((elem, index, _) => {
             return (
               <ListItem
                 disablePadding

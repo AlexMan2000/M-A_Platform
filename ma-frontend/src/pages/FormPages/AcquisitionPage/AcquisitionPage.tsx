@@ -1,7 +1,7 @@
 import styles from "./AcquisitionPage.module.less"
 import { useState } from "react";
 
-import { Checkbox, FormControl, FormControlLabel, Grid, InputLabel, ListItemText, MenuItem, Radio, RadioGroup, Select, TextField } from "@mui/material";
+import { Checkbox, FormControl, FormControlLabel, Grid, ListItemText, MenuItem, Radio, RadioGroup, Select, TextField } from "@mui/material";
 
 
 // M&A Strategy

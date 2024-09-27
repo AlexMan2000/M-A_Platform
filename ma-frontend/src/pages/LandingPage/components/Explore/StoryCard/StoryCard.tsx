@@ -1,8 +1,5 @@
-import { useSelector } from "react-redux";
 import ContentCard from "../ContentCard/ContentCard";
 import styles from "./StoryCard.module.less"
-import { selectGlobalState } from "@/store/slice/globalSlice/globalSlice";
-import { useEffect, useState } from "react";
 
 
 export interface IBulletBox {
@@ -29,7 +26,6 @@ const StoryCard = ({ data }: StoryCardProps) => {
 
     const { align_type, floating_image, index } = data;
 
-    const { isMobile } = useSelector(selectGlobalState);
 
 
     return (<>

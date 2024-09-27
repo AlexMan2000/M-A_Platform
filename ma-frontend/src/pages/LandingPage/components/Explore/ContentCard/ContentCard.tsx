@@ -4,8 +4,6 @@ import BulletImageGrey from "@/assets/svgs/bullet_point_grey.svg"
 import BulletImageRed from "@/assets/svgs/bullet_point_red.svg"
 
 import { IBulletBox } from "../StoryCard/StoryCard"
-import { useSelector } from "react-redux";
-import { selectGlobalState } from "@/store/slice/globalSlice/globalSlice";
 
 export interface ContentCardProps {
 
@@ -21,7 +19,6 @@ export interface ContentCardProps {
 const ContentCard = (data: ContentCardProps) => {
 
     const { title, intro, align_type, bullet_points, index } = data;
-    const { isMobile } = useSelector(selectGlobalState);
 
 
     return (

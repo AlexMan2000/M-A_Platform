@@ -17,8 +17,6 @@ import PhilippinesRetail from "@/assets/jpgs/philippines-manila.jpg"
 import CarouselBox from "@/commons/components/displayLayouts/Carousel/CarouselBox";
 import { encodeToBase64 } from "@/commons/utils/encoderHandler";
 import Card from "./components/Card/Card";
-import { useSelector } from "react-redux";
-import { selectGlobalState } from "@/store/slice/globalSlice/globalSlice";
 
 const cards = [
   {
@@ -187,7 +185,6 @@ const cards = [
 
 const Projects = () => {
 
-  const { isMobile } = useSelector(selectGlobalState);
 
   const formattedCards = cards.map((elem, _) => {
 

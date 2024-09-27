@@ -4,7 +4,7 @@ import Logo1 from "@/assets/pngs/LOGO-1.png"
 import LanguageSwitcher from "./components/LanguageSwitcher/LanguageSwitcher";
 import SwitchTab, { NavItem } from "../SwitchTab/SwitchTab";
 import { IconButton } from "@mui/material";
-import { Close, Menu as MenuIcon } from "@mui/icons-material";
+import { Menu as MenuIcon } from "@mui/icons-material";
 import { useState } from "react";
 
 
