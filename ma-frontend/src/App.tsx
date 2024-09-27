@@ -7,6 +7,9 @@ import HomePage from './pages/HomePage/HomePage'
 import TransferPage from './pages/FormPages/TransferPage/TransferPage'
 import AcquisitionPage from './pages/FormPages/AcquisitionPage/AcquisitionPage'
 import ConsultationPage from './pages/FormPages/ConsultationPage/ConsultationPage'
+import { setOSInfo } from './store/slice/globalSlice/globalSlice'
+import { useDispatch } from 'react-redux'
+
 
 const messages = {
   en: {
@@ -18,9 +21,13 @@ const messages = {
 
 
 function App() {
-  useEffect(() => {
 
-  })
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("haha")
+    dispatch(setOSInfo());
+  }, [setOSInfo])
 
   const locale = "zh"
   return (

@@ -1,7 +1,6 @@
 import ClientSupport from "./components/ClientSupport/ClientSupport";
 import Explore from "./components/Explore/Explore";
 // import NavigateBar from "./components/Header/components/NavigateBar/NavigateBar";
-import UpperHeader from "./components/Header/components/UpperHeader/UpperHeader";
 import Hero from "./components/Hero/Hero";
 import Projects from "./components/Projects/Projects";
 import WorkFlow from "./components/WorkFlow/WorkFlow";
@@ -13,23 +12,40 @@ import ServeIndustry from "./components/ServeIndustry/ServeIndustry";
 import ManagementTeam from "./components/ManagementTeam/ManagementTeam";
 import { selectGlobalState } from "@/store/slice/globalSlice/globalSlice";
 import { useSelector } from "react-redux";
+import LazyLoad from "@/commons/components/optimization/LazyLoad";
 
 function LandingPage() {
 
 
-    const {pageStatus} = useSelector(selectGlobalState);
+    const { pageStatus } = useSelector(selectGlobalState);
     console.log(pageStatus)
 
     return (
-        <div className={styles.container}>
-            <Hero></Hero>
-            <Explore></Explore>
-            <ClientSupport></ClientSupport>
-            <Projects></Projects>
-            <ServeIndustry></ServeIndustry>
-            <ManagementTeam></ManagementTeam>
-            <WorkFlow></WorkFlow>
-            <AIMatching></AIMatching>
+        <div className={styles.container} id="content-box">
+            <LazyLoad>
+                <Hero></Hero>
+            </LazyLoad>
+            <LazyLoad>
+                <Explore></Explore>
+            </LazyLoad>
+            <LazyLoad>
+                <ClientSupport></ClientSupport>
+            </LazyLoad>
+            <LazyLoad>
+                <Projects></Projects>
+            </LazyLoad>
+            <LazyLoad>
+                <ServeIndustry></ServeIndustry>
+            </LazyLoad>
+            <LazyLoad>
+                <ManagementTeam></ManagementTeam>
+            </LazyLoad>
+            <LazyLoad>
+                <WorkFlow></WorkFlow>
+            </LazyLoad>
+            <LazyLoad>
+                <AIMatching></AIMatching>
+            </LazyLoad>
         </div>
     )
 }

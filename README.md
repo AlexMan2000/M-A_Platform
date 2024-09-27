@@ -16,6 +16,14 @@ The web application has been deployed to amazon AWS, visit http://18.188.164.17:
 
 # Update Log
 
+## **2024/09/26**
+
+- Add lazy-loading support for landing page.
+- Add mobile layout for landing page(finished section 1~4)
+- Fix layout issue between mobile version and desktop version.
+
+
+
 ## **2024/09/21**
 
 - Modify the hero text

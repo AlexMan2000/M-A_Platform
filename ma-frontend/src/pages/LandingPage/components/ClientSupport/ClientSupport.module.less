@@ -3,10 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    // padding: 40px;
-    // background-color: #f0f0f0;
     padding: 50px 0px;
-    // color: var(--theme-color);
     color: black;
     width: 100%;
 
@@ -17,7 +14,7 @@
         margin-bottom: 20px;
         text-align: center;
 
-        color: var(--Text-Title, #0C144A);
+        color: var(--Text-Title, black);
         text-align: center;
         font-feature-settings: 'liga' off, 'clig' off;
 
@@ -142,6 +139,151 @@
                     height: 6px;
                     border-radius: 50%;
                     background-color: var(--theme-color);
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 430px) {
+    .container {
+        position: relative;
+        gap: 40px;
+        .backgroundImage {
+            position: absolute;
+            z-index: -1;
+            top:0px;
+            left: -10%;
+            width: 120%;
+            height: 100%;
+            background: #414143;
+        }
+
+
+        .sectionHeader {
+            color: #FFF;
+            text-align: center;
+            font-feature-settings: 'liga' off, 'clig' off;
+            font-family: "Nunito Sans";
+            font-size: 35px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: 1.5px;
+            position: relative;
+        
+
+            &::after {
+                content:"";
+                position: absolute;
+                top: -50%;;
+                left:50%;
+                display: block;
+                width: 4px;
+                height: 302px;
+                transform: rotate(90deg);
+                flex-shrink: 0;
+                border-radius: 1px;
+                background: #9C0404;
+            }
+        }
+
+        .section-description {
+            color: #FFF;
+            text-align: center;
+            font-feature-settings: 'liga' off, 'clig' off;
+            font-family: "Nunito Sans";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 200;
+            line-height: 23px; /* 143.75% */
+            letter-spacing: 1.5px;
+        }
+
+
+        .grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+
+            .card {
+                &:hover {
+                    transform: translateY(-10px);
+                }
+    
+                &:hover .iconWrapper {
+                    box-shadow:0 0 15px #746f6f;
+                    transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+                }
+    
+    
+                .iconWrapper {
+                    width: 80px;
+                    height:80px;
+                    // margin-bottom: 10px;
+                    border-radius: 50%;
+                    box-shadow: 0 0 15px #f0f0f0;
+                    box-sizing: content-box;
+                    display:flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+    
+    
+                    .icon {
+                        width: 45px;
+                        height:45px;
+                        object-fit: cover;
+                    }
+                }
+                
+                .title {
+                    color: #FFF;
+                    text-align: center;
+                    font-feature-settings: 'liga' off, 'clig' off;
+                    font-family: "Nunito Sans";
+                    font-size: 22px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                    letter-spacing: 1.5px;
+                }
+
+
+                .bullet-points {
+                    color: #FFF;
+                    text-align: center;
+                    font-family: Nunito;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 28px; /* 175% */
+                    letter-spacing: 1px;
+                                        
+    
+                    li {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: flex-start;
+                        justify-content: flex-start;
+                        gap: 10px;
+                        text-align: start;
+                        margin-bottom: 5px;
+                        
+                    }
+    
+                    li::before {
+                        content: "";
+                        display: inline-block;
+                        flex-shrink: 0;
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        margin-top: 10px;
+                        background-color: white;
+                    }
                 }
             }
         }

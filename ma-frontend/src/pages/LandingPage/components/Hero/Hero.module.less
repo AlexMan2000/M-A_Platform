@@ -14,7 +14,7 @@
         gap: 50px;
 
         .topText {
-            display:flex;
+            display: flex;
             flex-direction: column;
             gap: 10px;
 
@@ -27,7 +27,8 @@
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 600;
-                line-height: 30px; /* 150% */
+                line-height: 30px;
+                /* 150% */
                 letter-spacing: 0.5px;
             }
 
@@ -54,12 +55,13 @@
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 400;
-                line-height: 30px; /* 187.5% */
+                line-height: 30px;
+                /* 187.5% */
                 letter-spacing: 0.5px;
             }
 
 
-            
+
         }
 
         .buttonGroup {
@@ -72,20 +74,21 @@
     }
 
     .rightContainer {
+        overflow: hidden;
         width: 742px;
         height: 606px;
         // margin-left: 10px;
-        flex-shrink: 0;
+        // flex-shrink: 0;
         position: relative;
 
 
-        .img{
+        .img {
             width: 108%;
             height: 108%;
             object-fit: contain;
         }
 
-        .imgFill{
+        .imgFill {
             position: absolute;
             left: 119px;
             top: 70px;
@@ -94,7 +97,7 @@
             object-fit: contain;
         }
 
-        
+
     }
 
     .bottomButton {
@@ -139,18 +142,116 @@
             font-size: 16px;
             font-style: normal;
             font-weight: 600;
-            line-height: 39px; /* 187.5% */
+            line-height: 39px;
+            /* 187.5% */
             letter-spacing: 0.5px;
-            
-            
+
+
         }
 
 
         transition: filter 0.2s ease-in-out;
         cursor: pointer;
+
         &:hover {
             filter: brightness(105%);
         }
     }
-   
+
+}
+
+
+@media (max-width: 430px) {
+    .container {
+        width: 100%;
+
+        .leftContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+            gap: 50px;
+            width: 100%;
+            position: relative;
+
+            .topText {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+
+                .titleDesc {
+                    width: 100%;
+                    align-self: center;
+                    text-align: center;
+                    color: #FFF;
+                    font-feature-settings: 'liga' off, 'clig' off;
+                    font-family: "Nunito Sans";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 30px;
+                    /* 187.5% */
+                    letter-spacing: 0.5px;
+                }
+
+                .titleHeading {
+                    width: 100%;
+                    color: #EDEDED;
+                    text-align: center;
+                    font-feature-settings: 'liga' off, 'clig' off;
+                    font-family: "Nunito Sans";
+                    font-size: 34px;
+                    font-style: normal;
+                    font-weight: 900;
+                    line-height: normal;
+                    letter-spacing: 1.5px;
+                }
+
+
+                .titleText {
+                    width: 100%;
+                    color: #F1F1F1;
+                    text-align: center;
+                    font-feature-settings: 'liga' off, 'clig' off;
+                    font-family: "Nunito Sans";
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 18px;
+                    /* 138.462% */
+                    letter-spacing: 0.5px;
+                }
+
+
+
+            }
+
+            .buttonGroup {
+                display: flex;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                
+            }
+
+            .backgroundImage {
+                position:absolute;
+                z-index:-1;
+                top:0px;
+                left:-15%;
+                width: 125%;
+
+                .img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+
+
+        }
+    }
 }

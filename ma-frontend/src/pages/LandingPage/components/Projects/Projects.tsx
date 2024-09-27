@@ -17,6 +17,8 @@ import PhilippinesRetail from "@/assets/jpgs/philippines-manila.jpg"
 import CarouselBox from "@/commons/components/displayLayouts/Carousel/CarouselBox";
 import { encodeToBase64 } from "@/commons/utils/encoderHandler";
 import Card from "./components/Card/Card";
+import { useSelector } from "react-redux";
+import { selectGlobalState } from "@/store/slice/globalSlice/globalSlice";
 
 const cards = [
   {
@@ -185,24 +187,25 @@ const cards = [
 
 const Projects = () => {
 
-
-  // const [region, setRegion] = useState<string>("");
-
+  const { isMobile } = useSelector(selectGlobalState);
 
   const formattedCards = cards.map((elem, _) => {
 
-    const priceUnit = priceUnitParser(elem.price), 
-    [priceLow, priceHigh] = priceParser(elem.price).map((elem) => priceFormatter(elem, 2)),
-    revenueUnit = priceUnitParser(elem.revenue),
-    [revenueLow, revenueHigh] = priceParser(elem.revenue).map((elem) => priceFormatter(elem, 2)),
-    profitUnit = priceUnitParser(elem.profit),
-    [profitLow, profitHigh] = priceParser(elem.profit).map((elem) => priceFormatter(elem, 2));
+    const priceUnit = priceUnitParser(elem.price),
+      [priceLow, priceHigh] = priceParser(elem.price).map((elem) => priceFormatter(elem, 2)),
+      revenueUnit = priceUnitParser(elem.revenue),
+      [revenueLow, revenueHigh] = priceParser(elem.revenue).map((elem) => priceFormatter(elem, 2)),
+      profitUnit = priceUnitParser(elem.profit),
+      [profitLow, profitHigh] = priceParser(elem.profit).map((elem) => priceFormatter(elem, 2));
+
+
+
 
     return {
-      ...elem, 
-      price: `${priceLow}${priceHigh? `~${priceHigh}`:" (Negotiable)"} ${priceUnit}`,
-      revenue: `${revenueLow}${revenueHigh? `~${revenueHigh}`:" (Negotiable)"} ${revenueUnit}`,
-      profit: `${profitLow}${profitHigh? `~${profitHigh}`:" (Negotiable)"} ${profitUnit}`
+      ...elem,
+      price: `${priceLow}${priceHigh ? `~${priceHigh}` : " (Negotiable)"} ${priceUnit}`,
+      revenue: `${revenueLow}${revenueHigh ? `~${revenueHigh}` : " (Negotiable)"} ${revenueUnit}`,
+      profit: `${profitLow}${profitHigh ? `~${profitHigh}` : " (Negotiable)"} ${profitUnit}`
     }
   })
 
@@ -215,19 +218,18 @@ const Projects = () => {
   return (
     <div className={styles.container} id="Projects">
       <h1 className={styles.title}>Featured Projects</h1>
-      {/* <Carousel cards={formattedCards} scrollSpeed={"fast"}/> */}
-      <CarouselBox loop = {false} 
-                    centerIndex={3}
-                    scaleMode={"gaussian"}
+      <CarouselBox loop={false}
+        centerIndex={3}
+        scaleMode={"gaussian"}
       >
-          {
-              formattedCards.map((card, index) => 
-                <CarouselBox.Item key={encodeToBase64(card) + index} 
-                  width={300} 
-                  height={480}>
-                  <Card key={card.id} {...card} />
-                </CarouselBox.Item>)
-          }
+        {
+          formattedCards.map((card, index) =>
+            <CarouselBox.Item key={encodeToBase64(card) + index}
+              width={300}
+              height={480}>
+              <Card key={card.id} {...card} />
+            </CarouselBox.Item>)
+        }
       </CarouselBox>
 
     </div>

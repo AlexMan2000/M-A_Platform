@@ -1,21 +1,20 @@
 import styles from "./ContentCard.module.less"
 // import BulletImage from "@/assets/pngs/bullet_point.png"
-import BulletImage from "@/assets/svgs/bullet_point_grey.svg"
+import BulletImageGrey from "@/assets/svgs/bullet_point_grey.svg"
+import BulletImageRed from "@/assets/svgs/bullet_point_red.svg"
+
 import { IStoryCard } from "../StoryCard/StoryCard"
+import { useSelector } from "react-redux";
+import { selectGlobalState } from "@/store/slice/globalSlice/globalSlice";
 
 
 const ContentCard = (data: IStoryCard) => {
 
     const {title, intro, align_type, bullet_points, index} = data;
-
-
-
-    // const handleClick = () => {
-    //     console.log(button_link)
-    // }
+    const { isMobile } = useSelector(selectGlobalState);
 
     return (
-        <div className={`${styles.container} ${styles[align_type]}`}>
+        <div className={`${styles.container} ${isMobile ? "":styles[align_type]}`}>
             <div className={styles.headingContainer}>
                 <div className={styles.headingText}>{title}</div>
                 <div className={styles.bulletPoint}>{index}</div>
@@ -31,7 +30,7 @@ const ContentCard = (data: IStoryCard) => {
                     {
                         bullet_points.map((elem, index) => (
                             <div className={`${styles["bulletContainer"]} ${styles[align_type]}`} key={elem.toString() + index}>
-                                <img src={BulletImage} className={styles.bulletImage}>
+                                <img src={isMobile? BulletImageRed: BulletImageGrey} className={styles.bulletImage}>
                                 </img>
                                 <div className={styles.bulletText}>
                                     {elem.text}
@@ -41,10 +40,6 @@ const ContentCard = (data: IStoryCard) => {
                     }
                 </div>
             }
-            {/* <div className={`${styles.button} ${styles[align_type]}`}
-            onClick={handleClick}>
-                Details
-            </div> */}
         </div>
        
     )

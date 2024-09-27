@@ -1,6 +1,4 @@
 .container {
-
-  // background-color: #f0f0f0;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -16,7 +14,7 @@
     align-self: flex-start;
     
 
-    color: var(--Text-Title, #0C144A);
+    color: var(--Text-Title, black);
     text-align: center;
     font-feature-settings: 'liga' off, 'clig' off;
 
@@ -43,7 +41,7 @@
       background-color: var(--timeline-color-1);
       color: var(--text-color);
       text-align: center;
-      padding: 15px 0px;
+      padding: 8px 0px;
       box-sizing: border-box;
       width: 33%;
       background-color: #F6F6F6;
@@ -53,9 +51,14 @@
       font-size: 16px;
       font-style: normal;
       font-weight: 500;
-      line-height: 28px; /* 175% */
+      line-height: 30px; /* 175% */
       letter-spacing: 1px;
       text-transform: capitalize;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
 
       &.active {
         background-color: #D9D9D9;

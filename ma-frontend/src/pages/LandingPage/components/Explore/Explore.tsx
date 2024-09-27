@@ -4,6 +4,8 @@ import STORY1 from "@/assets/jpgs/ma_story_1.jpg"
 import STORY2 from "@/assets/jpgs/ma_story_2.jpg"
 import STORY3 from "@/assets/pngs/ma_story_3.png"
 import STORY4 from "@/assets/pngs/ma_story_4.png"
+import { selectGlobalState } from "@/store/slice/globalSlice/globalSlice";
+import { useSelector } from "react-redux";
 
 const stories= [
     {
@@ -62,25 +64,11 @@ const stories= [
 
 function Explore () {
 
+    const { isMobile } = useSelector(selectGlobalState);
+
     return (
         <div className={styles.container} id="Services">
-            {/* <div className={styles.headingContainer}>
-                <div className={styles.headingTitle}>
-                Leading Business Succession and M&A Solutions for SMEs across Greater China and Southeast Asia
-                </div>
-           
-                <div className={styles.headingIntro}>
-                Connecting businesses for successful transitions and growth                </div>
-            </div> */}
-            {/* <Divider orientation="horizontal" 
-                sx={{ width : "50%", 
-                bgcolor: "#12837b", 
-                height: "1px", 
-                transform: "translateX(50%)",
-                opacity: "0.4"
-                
-                }}></Divider> */}
-            <div className={styles.subheadingContainer}>
+            <div className={styles.headingContainer}>
                 Why Choose Us
             </div>
             <div className={styles.storyContainer}>
