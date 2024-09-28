@@ -15,12 +15,7 @@
     background-color: white;
 
 
-    .logoGroup {
-        display: flex;
-        flex-direction: row;
-        gap: 25px;
-        cursor: pointer;
-    }
+    
     
     .menuIcon {
         display: none;
@@ -36,22 +31,29 @@
         align-self: stretch;
 
 
-        .logoText {
+        .logoGroup {
             display: flex;
-            flex-shrink: 0;
-            flex-direction: column;
-            justify-content: center;
-            gap: 5px;
-            font-size: 11px;
-            align-items: flex-start;
-            color: gray;
-        }        
-        
-        .companyLogo {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            object-fit: cover;
+            flex-direction: row;
+            gap: 25px;
+            cursor: pointer;
+    
+            .logoText {
+                display: flex;
+                flex-shrink: 0;
+                flex-direction: column;
+                justify-content: center;
+                gap: 5px;
+                font-size: 11px;
+                align-items: flex-start;
+                color: gray;
+            }        
+            
+            .companyLogo {
+                flex-shrink: 0;
+                width: 40px;
+                height: 40px;
+                object-fit: cover;
+            }
         }
     }
 
@@ -66,7 +68,7 @@
 
 
         .languageButton {
-            padding-right:75px;
+            padding-right:50px;
         }
     }
 }
@@ -104,6 +106,9 @@
         z-index: 1000;
         background-color: white;
         
+
+        
+
     
         .leftContainer {
             display: flex;
@@ -112,17 +117,19 @@
             align-items: center;
             align-self: stretch;
     
-    
-            .logoText {
-                display: none;
-            }        
-            
-            .companyLogo {
-                flex-shrink: 0;
-                width: 40px;
-                height: 40px;
-                object-fit: cover;
+            .logoGroup {
+                .logoText {
+                    // display: none;
+                }        
+                
+                .companyLogo {
+                    flex-shrink: 0;
+                    width: 40px;
+                    height: 40px;
+                    object-fit: cover;
+                }
             }
+           
         }
     
         .rightContainer {
@@ -145,15 +152,28 @@
 
 @media(max-width: 768px) {
     .container {
+        padding: 0px 30px 0px 20px;
         .menuIcon {
             display: block;
         }
 
+
+       
         .leftContainer {
             gap: 15px;
-            .logoText {
-                display: inline-block;
-            }   
+            .logoGroup {
+                .logoText {
+                    display: inline-block;
+                }        
+                
+                .companyLogo {
+                    flex-shrink: 0;
+                    width: 40px;
+                    height: 40px;
+                    object-fit: cover;
+                }
+            }
+    
         }
 
         .rightContainer {
@@ -167,7 +187,60 @@
     
     
             .languageButton {
-                padding-right:20px;
+                padding-right:0px;
+            }
+        }
+    }
+}
+
+
+@media(max-width: 430px) {
+    .container {
+        justify-content: space-between;
+        gap: 0px;
+
+
+       
+        .menuIcon {
+            display: block;
+        }
+
+        .leftContainer {
+            gap: 10px;  
+
+            .logoGroup {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                cursor: pointer;
+    
+                .logoText {
+                    width: 80px;
+                    text-wrap: wrap;
+                }        
+                
+                .companyLogo {
+                    flex-shrink: 0;
+                    width: 40px;
+                    height: 40px;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .rightContainer {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+
+            gap: 10px;
+            padding-right: 10px;
+            width: 50%;
+            align-items: center;
+    
+    
+            .languageButton {
+                padding-right:0px;
             }
         }
     }

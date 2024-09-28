@@ -41,7 +41,7 @@
             -webkit-box-orient: vertical;
             text-wrap:wrap;
             -webkit-line-clamp: 2;
-            // overflow: hidden;
+            overflow: hidden;
         }
 
         .bulletPoint {
@@ -183,19 +183,16 @@
             }
 
             .bulletPoint {
-                position: absolute;
-                color: #878787;
+                position: unset;
+                width: 80px;
+                height: 37px;
+                flex-shrink: 0;
+                border-radius: 18px;
+                background: #9C0404;
+                font-size: 30px;
+                color: white;
+                line-height: 37px;
                 text-align: center;
-                font-feature-settings: 'liga' off, 'clig' off;
-                font-family: "Nunito Sans";
-                font-size: 40px;
-                font-style: normal;
-                font-weight: 700;
-                line-height: 30px;
-                /* 60% */
-                letter-spacing: 0.5px;
-                top: 10px;
-                left: -50px;
             }
         }
     
@@ -292,12 +289,12 @@
 
             .bulletPoint {
                 position: unset;
-                width: 62px;
+                width: 80px;
                 height: 37px;
                 flex-shrink: 0;
                 border-radius: 18px;
-                background: gray;
-                font-size: 20px;
+                background: #9C0404;
+                font-size: 30px;
                 color: white;
                 line-height: 37px;
                 text-align: center;

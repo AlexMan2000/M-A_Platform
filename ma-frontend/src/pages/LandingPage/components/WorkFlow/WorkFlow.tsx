@@ -117,7 +117,6 @@ const WorkFlow = () => {
 
   const [activeGroup, setActiveGroup] = useState<number>(0);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const scrollRefMobile = useRef<HTMLDivElement>(null);
 
   const scrollToIndex = (scrollRef, index: number, behavior: ScrollBehavior = "smooth") => {
 
@@ -136,14 +135,14 @@ const WorkFlow = () => {
 
   const scrollLeft = () => {
     if (scrollRef.current) {
-      scrollToIndex(scrollRef, Math.max(0, activeGroup - 1) * 3 + 2 - 1, "smooth")
+      scrollToIndex(scrollRef, Math.max(0, activeGroup - 1), "smooth")
       setActiveGroup(Math.max(0, activeGroup - 1));
     }
   };
 
   const scrollRight = () => {
     if (scrollRef.current) {
-      scrollToIndex(scrollRef, Math.min(activeGroup + 1, 2) * 3 + 2 - 1, "smooth")
+      scrollToIndex(scrollRef, Math.min(activeGroup + 1, 2), "smooth")
       setActiveGroup(Math.min(activeGroup + 1, 2));
     }
   };
@@ -158,7 +157,7 @@ const WorkFlow = () => {
     }, []);
   }
 
-  const mobileWorkGroup = partitionArray(steps.map((item, index) => (
+  const workGroup = partitionArray(steps.map((item, index) => (
     <SimpleWorkFlowCard
       key={index}
       index={index}
@@ -166,60 +165,35 @@ const WorkFlow = () => {
     ></SimpleWorkFlowCard>
   )), 3)
 
-
-  const scrollLeftMobile = () => {
-    if (scrollRefMobile.current) {
-      scrollToIndex(scrollRefMobile, Math.max(0, activeGroup - 1), "smooth")
-      setActiveGroup(Math.max(0, activeGroup - 1));
-    }
-  };
-
-  const scrollRightMobile = () => {
-    if (scrollRefMobile.current) {
-      scrollToIndex(scrollRefMobile, Math.min(activeGroup + 1, 2), "smooth")
-      setActiveGroup(Math.min(activeGroup + 1, 2));
-    }
-  };
-
   return (
     <div className={styles.container} id="Workflow">
       <div className={styles.workFlowTitle}>Our Working Process</div>
       <div className={styles.projectTimeline}>
-        <div className={styles.timelineNavPrev} onClick={scrollLeftMobile}>
+        <div className={styles.timelineNavPrev} onClick={scrollLeft}>
           <img className={styles.img} src={Polygon}></img>
         </div>
-        <div className={`${styles.timelineItem} ${activeGroup == 0 ? styles.active : ""}`}>
+        <div className={`${styles.timelineItem} ${activeGroup == 0 ? styles.active : ""}`} onClick={()=>{setActiveGroup(0);scrollToIndex(scrollRef, 0, "smooth")}}>
           <span>1st Phase: Preparation (1 Week-1 Month)</span>
         </div>
-        <div className={`${styles.timelineItem} ${activeGroup == 1 ? styles.active : ""}`}>
-          <span>2nd Phase: Matching(1 Week-1 Month)</span>
+        <div className={`${styles.timelineItem} ${activeGroup == 1 ? styles.active : ""}`} onClick={()=>{setActiveGroup(1);scrollToIndex(scrollRef, 1, "smooth")}}>
+          <span>2nd Phase: Matching (1 Week-1 Month)</span>
         </div>
-        <div className={`${styles.timelineItem} ${activeGroup >= 2 ? styles.active : ""}`}>
-          <span>3rd Phase: Closing(1 Month-3 Months)</span>
+        <div className={`${styles.timelineItem} ${activeGroup >= 2 ? styles.active : ""}`} onClick={()=>{setActiveGroup(2);scrollToIndex(scrollRef, 2, "smooth")}}>
+          <span>3rd Phase: Closing (1 Month-3 Months)</span>
         </div>
-        <div className={styles.timelineNavNext} onClick={scrollRightMobile}>
+        <div className={styles.timelineNavNext} onClick={scrollRight}>
           <img className={styles.img} src={Polygon}></img>
         </div>
       </div>
       <div className={styles.cardContainer} ref={scrollRef}>
-        {steps.map((item, index) => (
-          <SimpleWorkFlowCard
-            key={index}
-            index={index}
-            {...item}
-          ></SimpleWorkFlowCard>
-        ))}
-
-        <button className={styles.navButtonPrev} onClick={scrollLeft}>❮</button>
-        <button className={styles.navButtonAfter} onClick={scrollRight}>❯</button>
-      </div>
-      
-      <div className={styles.cardContainerMobile} ref={scrollRefMobile}>
-        {mobileWorkGroup.map((group, index) => (
+        {workGroup.map((group, index) => (
           <div className={styles.group} key={group.toString() + index}>
             {group}
           </div>
         ))}
+
+        <button className={styles.navButtonPrev} onClick={scrollLeft}>❮</button>
+        <button className={styles.navButtonAfter} onClick={scrollRight}>❯</button>
       </div>
     </div>
   )

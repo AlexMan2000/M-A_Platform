@@ -20,6 +20,7 @@ The web application has been deployed to amazon AWS, visit http://18.188.164.17:
 
 - Fix several mobile design issues.
 - Add red color scheme to desktop version.
+- Add some logics to workflow section.
 
 
 

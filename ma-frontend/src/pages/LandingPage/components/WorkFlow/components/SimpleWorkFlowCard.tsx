@@ -1,6 +1,6 @@
 import styles from "./SimpleWorkFlowCard.module.less"
 // import FreeOfCharge from "@/assets/svgs/free-of-charge.svg"
-import FreeOfCharge from "@/assets/pngs/free-of-charge.png"
+import FreeOfCharge from "@/assets/pngs/free-of-charge-red.png"
 import SuccessFee from "@/assets/pngs/success-fee.png"
 
 
