@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    padding: 5px 0px;
+    padding: 50px 0px;
     position: relative;
     gap: 45px;
 
@@ -13,6 +13,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        gap: 30px;
 
         .heading {
             text-align: start;
@@ -21,6 +22,19 @@
             font-weight: 800;
             margin-bottom: 20px;
             color: black;
+            position: relative;
+
+            &::after {
+                position: absolute;
+                bottom: -30px;
+                content: "";
+                display: block;
+                width: 100%;
+                height: 4px;
+                flex-shrink: 0;
+                border-radius: 1px;
+                background: #9C0404;
+            }
         }
 
         .desc {
@@ -89,7 +103,7 @@
 @media (max-width: 430px) {
     .container {
         width: 100%;
-        padding: 5px 0px;
+        padding: 50px 0px;
         position: relative;
         gap: 45px;
 
@@ -121,13 +135,11 @@
 
                 &::after {
                     position: absolute;
-                    top: -50%;
-                    left: 50%;
+                    bottom: -10px;
                     content: "";
                     display: block;
-                    width: 4px;
-                    height: 302px;
-                    transform: rotate(90deg);
+                    width: 100%;
+                    height: 4px;
                     flex-shrink: 0;
                     border-radius: 1px;
                     background: #9C0404;

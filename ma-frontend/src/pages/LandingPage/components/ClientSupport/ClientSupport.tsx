@@ -62,8 +62,8 @@ const ClientSupport = () => {
         {sections.map((section, index) => (
           <div className={styles.card} key={index}>
             <div className={styles.iconWrapper}>
-              <img src={section.icon.mobile} alt={section.header} className={styles.mobileIcon} />
-              <img src={section.icon.desktop} alt={section.header} className={styles.desktopIcon} />
+              <img src={section.icon.mobile} alt={section.header} className={styles.icon} />
+              {/* <img src={section.icon.desktop} alt={section.header} className={styles.desktopIcon} /> */}
             </div>
             <div className={styles.title}>{section.header}</div>
             <ul className={styles.bulletPoints}>
@@ -76,7 +76,6 @@ const ClientSupport = () => {
           </div>
         ))}
       </div>
-      <div className={styles.backgroundImage}></div>
     </div>
   )
 };

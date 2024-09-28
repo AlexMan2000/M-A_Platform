@@ -16,6 +16,13 @@ The web application has been deployed to amazon AWS, visit http://18.188.164.17:
 
 # Update Log
 
+## **2024/09/28**
+
+- Fix several mobile design issues.
+- Add red color scheme to desktop version.
+
+
+
 ## **2024/09/27**
 
 - Fix mobile layout issues.

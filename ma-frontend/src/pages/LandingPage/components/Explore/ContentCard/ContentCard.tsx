@@ -26,7 +26,7 @@ const ContentCard = (data: ContentCardProps) => {
             <div className={`${styles.desktopContainer} ${styles[align_type]}`}>
                 <div className={styles.headingContainer}>
                     <div className={styles.headingText}>{title}</div>
-                    <div className={styles.bulletPoint}>{index}</div>
+                    <div className={styles.bulletPoint}>{"0" + index}</div>
                 </div>
                 <div className={styles.subheadingContainer}>
                     <div className={styles.subheadingText}>{intro}</div>

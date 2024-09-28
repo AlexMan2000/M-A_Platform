@@ -46,7 +46,6 @@ const ServeIndustry = () => {
                     <ImageBox key={elem.toString() + index} image={elem.image} text={elem.text}></ImageBox>
                 ))}
             </div>
-            <div className={styles.backgroundImage}></div>
         </div>
     )
 }

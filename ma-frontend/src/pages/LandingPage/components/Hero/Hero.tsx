@@ -4,7 +4,6 @@ import HeroImageSingle from "@/assets/pngs/heroImageFullSingle.png"
 import styles from "./Hero.module.less"
 import ArrowButton from "@/commons/components/buttons/ThemeButton/ArrowButton";
 import HeadPhone from "@/assets/svgs/headphone.svg"
-import BackgroundImage from "@/assets/svgs/mobile_hero_background.svg"
 import { useNavigate } from "react-router-dom";
 
 function Hero() {
@@ -45,10 +44,7 @@ function Hero() {
                     >
                     </ArrowButton>
                 </div>
-                <div className={styles.backgroundImage}>
-                    <img className={styles.img} src={BackgroundImage}>
-                    </img>
-                </div>
+                
             </div>
 
             <div className={styles.rightContainer}>

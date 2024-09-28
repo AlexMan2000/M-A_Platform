@@ -211,10 +211,28 @@ const Projects = () => {
 
   return (
     <div className={styles.container} id="Projects">
-      <h1 className={styles.title}>Featured Projects</h1>
-      <CarouselBox loop={false}
+      <div className={styles.title}>Featured Projects</div>
+      
+      <CarouselBox 
+        className={styles.desktopContainer}
+        loop={false}
         centerIndex={3}
         scaleMode={"gaussian"}
+      >
+        {
+          formattedCards.map((card, index) =>
+            <CarouselBox.Item key={encodeToBase64(card) + index}
+              width={300}
+              height={480}>
+              <Card key={card.id} {...card} />
+            </CarouselBox.Item>)
+        }
+      </CarouselBox>
+      <CarouselBox 
+        className={styles.mobileContainer}
+        loop={false}
+        centerIndex={3}
+        scaleMode={"none"}
       >
         {
           formattedCards.map((card, index) =>

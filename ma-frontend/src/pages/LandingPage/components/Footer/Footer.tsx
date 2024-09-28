@@ -1,9 +1,7 @@
 import styles from "./Footer.module.less"
-import Location from "@/assets/svgs/location.svg"
-import Contact from "@/assets/svgs/contact.svg"
 import RightArrow from "@/assets/svgs/right_arrow_icon.svg"
-import LocationMobile from "@/assets/svgs/location_red.svg"
-import ContactMobile from "@/assets/svgs/contact_red.svg"
+import LocationRed from "@/assets/svgs/location_red.svg"
+import ContactRed from "@/assets/svgs/contact_red.svg"
 
 const Footer = () => {
 
@@ -33,16 +31,14 @@ const Footer = () => {
         </div>
         <div className={styles.contactNumbers}>
           <div className={styles.locationGroup}>
-            <img className={styles.locationImage} src={Location}></img>
-            <img className={styles.locationImageMobile} src={LocationMobile}></img>
+            <img className={styles.locationImage} src={LocationRed}></img>
             <div className={styles.lineGroup}>
               <div className={styles.topLine}>xxx.xxxx</div>
               <div className={styles.bottomLine}>Hongkong</div>
             </div>
           </div>
           <div className={styles.phoneNumber}>
-            <img className={styles.phoneImage} src={Contact}></img>
-            <img className={styles.phoneImageMobile} src={ContactMobile}></img>
+            <img className={styles.phoneImage} src={ContactRed}></img>
             <div className={styles.lineGroup}>
               <div className={styles.topLine}>(+852) xxxxxxxxxxx</div>
               <div className={styles.bottomLine}>Company@gmail.com</div>

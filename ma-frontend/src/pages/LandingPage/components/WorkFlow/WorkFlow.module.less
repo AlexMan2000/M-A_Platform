@@ -17,7 +17,7 @@
     align-self: flex-start;
 
 
-    color: var(--Text-Title, black);
+    color: #FFF;
     text-align: center;
     font-feature-settings: 'liga' off, 'clig' off;
 
@@ -28,6 +28,19 @@
     font-weight: 700;
     line-height: normal;
     letter-spacing: 1.5px;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      bottom: 10px;
+      content: "";
+      display: block;
+      width: 100%;
+      height: 4px;
+      flex-shrink: 0;
+      border-radius: 1px;
+      background-color: #9C0404;
+    }
   }
 
 
@@ -37,6 +50,7 @@
     align-items: center;
     width: 100%;
     margin-bottom: 20px;
+    border-radius: 200px;
 
     .timelineNavPrev {
       display: none;
@@ -50,20 +64,19 @@
     .timelineItem {
       align-self: center;
       position: relative;
-      background-color: var(--timeline-color-1);
-      color: var(--text-color);
+      background-color: #9b0202;
+      color: #FFF;
       text-align: center;
       padding: 8px 0px;
       box-sizing: border-box;
       width: 33%;
-      background-color: #F6F6F6;
-      border-right: 2px solid #ccc;
-      color: #000;
+      border-right: 2px solid #720000;
       font-family: Nunito;
       font-size: 16px;
       font-style: normal;
       font-weight: 500;
       line-height: 30px;
+      
       /* 175% */
       letter-spacing: 1px;
       text-transform: capitalize;
@@ -72,18 +85,18 @@
       overflow: hidden;
       -webkit-box-orient: vertical;
       text-overflow: ellipsis;
+      
 
       &.active {
-        background-color: #D9D9D9;
+        background-color: #720000;
       }
 
-      &:nth-child(1) {
+      &:nth-child(2) {
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
-
       }
 
-      &:last-child {
+      &:nth-last-child(2) {
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
       }
@@ -100,10 +113,13 @@
     flex-direction: row;
     justify-content: flex-start;
     padding-left: 20px;
+    padding-right: 200px;
+    
     width: 100%;
+    flex-shrink: 0;
     height: 480px;
     gap: 50px;
-    overflow-x: scroll;
+    overflow-x: auto;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 
@@ -211,13 +227,11 @@
 
       &::after {
         position: absolute;
-        top: -50%;
-        left: 50%;
+        bottom: -10px;
         content: "";
         display: block;
-        width: 4px;
-        height: 302px;
-        transform: rotate(90deg);
+        width: 100%;
+        height: 4px;
         flex-shrink: 0;
         border-radius: 1px;
         background-color: #9C0404;
@@ -225,16 +239,7 @@
     }
 
 
-    .backgroundImage {
-      display: block;
-      position: absolute;
-      z-index: -1;
-      top: 0px;
-      left: -10%;
-      width: 120%;
-      height: 100%;
-      background: #414143;
-    }
+   
 
 
     .cardContainer {
@@ -245,13 +250,21 @@
     .cardContainerMobile {
       display: flex;
       flex-direction: row;
-      gap: 45px;
+      gap: 40px;
       width: 100%;
+      padding-left: 40px;
       padding-right: 80px;
       position: relative;
       overflow-x: auto;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
+
+
+      .group {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+      }
 
       &::-webkit-scrollbar {
         display: none;

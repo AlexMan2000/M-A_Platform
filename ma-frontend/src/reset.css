@@ -52,5 +52,7 @@ button {
 /* Root color */
 :root {
   /* --theme-color: #12837b; */
-  --theme-color: #2C5C4F;
+  --theme-color: #7C0000;
+  --title-text-color-white: #FFF;
+  --subtext-text-color-white: #F1F1F1;
 }

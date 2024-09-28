@@ -30,28 +30,31 @@
         position: relative;
 
 
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        gap: 25px;
+
+
         .headingText {
             display: -webkit-box;
             -webkit-box-orient: vertical;
             text-wrap:wrap;
             -webkit-line-clamp: 2;
-            overflow: hidden;
+            // overflow: hidden;
         }
 
         .bulletPoint {
-            position: absolute;
-            color: #878787;
+            position: unset;
+            width: 80px;
+            height: 37px;
+            flex-shrink: 0;
+            border-radius: 18px;
+            background: #9C0404;
+            font-size: 30px;
+            color: white;
+            line-height: 37px;
             text-align: center;
-            font-feature-settings: 'liga' off, 'clig' off;
-            font-family: "Nunito Sans";
-            font-size: 50px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 30px;
-            /* 60% */
-            letter-spacing: 0.5px;
-            top: 0px;
-            left: -50px;
         }
     }
 
@@ -378,7 +381,7 @@
             gap: 10px;
 
             .headingText {
-                font-family: Nunito;
+                font-family: "Nunito Sans";
                 width: 250px;
                 font-size: 16px;
                 font-style: normal;
@@ -405,6 +408,7 @@
             width: 292px;
             color: #000;
             font-family: Nunito;
+            align-self: center;
             font-size: 12px;
             font-style: normal;
             font-weight: 400;

@@ -1,11 +1,12 @@
 // import { useIntl } from "react-intl";
 import styles from "./UpperHeader.module.less"
-import Logo1 from "@/assets/pngs/LOGO-1.png"
+import Logo3 from "@/assets/pngs/LOGO-3.png"
 import LanguageSwitcher from "./components/LanguageSwitcher/LanguageSwitcher";
 import SwitchTab, { NavItem } from "../SwitchTab/SwitchTab";
 import { IconButton } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const navItems: NavItem[] = [
@@ -22,24 +23,32 @@ const navItems: NavItem[] = [
 function UpperHeader() {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const toggleMenu = (event) => {
         event.stopPropagation();
-        console.log("haha")
         setIsMenuOpen((prev) => !prev);
     };
+
+
+    const handleClickLogo = () => {
+        navigate("/")
+        setTimeout(()=>{document.querySelector("#AboutUs")!.scrollIntoView({ behavior: 'smooth' })}, 500)
+    }
 
 
     return (
         <div className={styles.container}>
             <div className={styles.leftContainer}>
-                <img src={Logo1} className={styles.companyLogo}></img>
-                <div className={styles.logoText}>
-                    <div className={styles.topLine}>
-                        Propsperity Bridge M&A
-                    </div>
-                    <div className={styles.bottomLine}>
-                        昌盛桥并购
+                <div className={styles.logoGroup} onClick={handleClickLogo}>
+                    <img src={Logo3} className={styles.companyLogo}></img>
+                    <div className={styles.logoText}>
+                        <div className={styles.topLine}>
+                            Propsperity Bridge M&A
+                        </div>
+                        <div className={styles.bottomLine}>
+                            昌盛桥并购
+                        </div>
                     </div>
                 </div>
             </div>

@@ -93,3 +93,18 @@
 .carousel-container::-webkit-scrollbar {
     display: none;
 }
+
+
+@media (max-width: 430px) {
+    .carousel-control.prev {
+        top: 50%;
+        left: -38px;
+        transform: translateY(-50%);
+    }
+
+    .carousel-control.after {
+        top: 50%;
+        right: -38px;
+        transform: translateY(-50%);
+    }
+}

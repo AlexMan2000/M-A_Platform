@@ -183,7 +183,6 @@ const WorkFlow = () => {
 
   return (
     <div className={styles.container} id="Workflow">
-      <div className={styles.backgroundImage}></div>
       <div className={styles.workFlowTitle}>Our Working Process</div>
       <div className={styles.projectTimeline}>
         <div className={styles.timelineNavPrev} onClick={scrollLeftMobile}>

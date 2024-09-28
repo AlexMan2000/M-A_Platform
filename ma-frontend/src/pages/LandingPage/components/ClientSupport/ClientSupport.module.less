@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 0px;
+    padding: 70px 0px;
     color: black;
     width: 100%;
 
@@ -14,7 +14,7 @@
         margin-bottom: 20px;
         text-align: center;
 
-        color: var(--Text-Title, black);
+        color: #FFF;
         text-align: center;
         font-feature-settings: 'liga' off, 'clig' off;
 
@@ -25,13 +25,28 @@
         font-weight: 700;
         line-height: normal;
         letter-spacing: 1.5px;
+        padding-bottom: 30px;
+        position: relative;
+
+
+        &::after {
+            content:"";
+            position: absolute;
+            bottom: 0px;
+            display: block;
+            width: 100%;
+            height: 4px;
+            flex-shrink: 0;
+            border-radius: 1px;
+            background: #9C0404;
+        }
     }
 
     .section-description {
         align-self: flex-start;
         margin-bottom: 40px;
         // max-width: 800px;
-        color: #545454;
+        color: #FFF;
         font-feature-settings: 'liga' off, 'clig' off;
         font-family: "Nunito Sans";
         font-size: 22px;
@@ -55,8 +70,9 @@
             cursor: pointer;
             // background: #f0f0f0;
             // color:  var(--theme-color);
-            color: black;
-            padding: 20px;
+            color: #FFF;
+            gap: 10px;
+            padding: 10px;
             text-align: center;
             transition: transform 0.3s;
 
@@ -83,16 +99,11 @@
                 
 
 
-                .desktopIcon {
+                .icon {
                     display: block;
                     width: 45px;
                     height:45px;
                     object-fit: cover;
-                }
-
-
-                .mobileIcon {
-                    display: none;
                 }
             }
             
@@ -105,7 +116,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: var(--black, #000);
+                color: #FFF;
                 font-feature-settings: 'liga' off, 'clig' off;
                 font-family: "Nunito Sans";
                 font-size: 22px;
@@ -120,7 +131,7 @@
                 text-align: left;
                 display: flex;
                 flex-direction: column;
-                color: #545454;
+                color: #FFF;
                 font-family: Nunito;
                 font-size: 16px;
                 font-style: normal;
@@ -144,7 +155,7 @@
                     width: 6px;
                     height: 6px;
                     border-radius: 50%;
-                    background-color: var(--theme-color);
+                    background-color: white;
                 }
             }
         }
@@ -156,15 +167,7 @@
     .container {
         position: relative;
         gap: 40px;
-        .backgroundImage {
-            position: absolute;
-            z-index: -1;
-            top:0px;
-            left: -10%;
-            width: 120%;
-            height: 100%;
-            background: #414143;
-        }
+        
 
 
         .section-header {
@@ -179,20 +182,18 @@
             letter-spacing: 1.5px;
             position: relative;
         
-
             &::after {
                 content:"";
                 position: absolute;
-                top: -50%;;
-                left:50%;
+                bottom: -10px;
                 display: block;
-                width: 4px;
-                height: 302px;
-                transform: rotate(90deg);
+                width: 100%;
+                height: 4px;
                 flex-shrink: 0;
                 border-radius: 1px;
                 background: #9C0404;
             }
+           
         }
 
         .section-description {
@@ -236,16 +237,6 @@
                     justify-content: center;
                     align-items: center;
                     
-                    .desktopIcon {
-                        display: none;
-                    }
-    
-                    .mobileIcon {
-                        display: block;
-                        width: 45px;
-                        height:45px;
-                        object-fit: cover;
-                    }
                 }
                 
                 .title {
