@@ -35,13 +35,9 @@
                 font-size: 16px;
                 /* Adjust as needed */
                 color: black;
-                // padding: 0px 10px 0px 10px;
                 opacity: 1;
-                font-size: 10px;
-                // max-width: 80px;
+                font-family: "Nunito Sans";
                 flex-wrap: nowrap;
-                // text-wrap: nowrap;
-
 
                 &:hover {
                     color: grey;
@@ -78,13 +74,49 @@
     }
 
     .dropdownMobile {
-        display: none;    
-    }   
+        display: none;
+    }
 }
 
 
 
+@media(max-width: 1024px) {
+    .container {
+        .navItemContainer {
+            .navItemWrapper {
+                .navItem {
+                    font-size: 13px;
+                }
+            }
 
+
+        }
+
+        .dropdownMobile {
+            display: none;
+        }
+    }
+
+
+}
+
+
+@media(max-width: 950px) {
+    .container {
+        .navItemContainer {
+            .navItemWrapper {
+                .navItem {
+                    font-size: 10px;
+                }
+            }
+        }
+        .dropdownMobile {
+            display: none;
+        }
+    }
+
+
+}
 
 @media(max-width: 768px) {
     .container {
@@ -108,7 +140,7 @@
             top: 90%;
             right: 20px;
             background-color: #f9f9f9;
-            color:black;
+            color: black;
             // display: flex;
             padding: 8px var(--none, 0px);
             flex-direction: column;

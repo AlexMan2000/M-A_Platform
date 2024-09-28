@@ -34,7 +34,8 @@
       "@/services/*": ["services/*"],
       "@/commons/*": ["commons/*"],
       "@/pages/*": ["pages/*"],
-      "@/lib/*": ["lib/*"]
+      "@/lib/*": ["lib/*"],
+      "@/fonts/*": ["fonts/*"]
     }
   },
   "types": ["node"],

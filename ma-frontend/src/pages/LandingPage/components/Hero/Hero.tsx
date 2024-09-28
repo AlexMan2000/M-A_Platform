@@ -38,7 +38,7 @@ function Hero() {
                     </ArrowButton>
                     <ArrowButton
                         className={styles.arrowButton}
-                        buttonText={"Acquisition Needs (Domestic/Cross-border)"}
+                        buttonText={"Acquisition Needs \n(Domestic/Cross-border)"}
                         buttonImage={ForwardArrow}
                         onClick={() => { navigate("/acquisition") }}
                     >
@@ -52,7 +52,7 @@ function Hero() {
                 </img>
                 <img className={styles.imgFill} src={HeroImage}>
                 </img>
-                <div className={styles.bottomButton} onClick={() => { navigate("/consultation") }}>
+                <div className={styles.bottomButton} onClick={() => { console.log("ss");navigate("/consultation") }}>
                     <img className={styles.headPhone} src={HeadPhone}></img>
                     <div className={styles.button} >Get started with free consultation</div>
                 </div>
