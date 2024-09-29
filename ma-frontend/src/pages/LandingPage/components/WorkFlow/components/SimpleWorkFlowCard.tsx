@@ -3,8 +3,18 @@ import styles from "./SimpleWorkFlowCard.module.less"
 import FreeOfCharge from "@/assets/pngs/free-of-charge-red.png"
 import SuccessFee from "@/assets/pngs/success-fee.png"
 
+interface SimpleWorkFlowCardProps {
+    index: number 
+    step: string 
+    icon?: string
+    title: string
+    price: string,
+    description: string[]
+}
 
-const SimpleWorkFlowCard = (props) => {
+
+
+const SimpleWorkFlowCard = (props: SimpleWorkFlowCardProps) => {
 
     const {index, step, icon, title, price, description} = props;
 
@@ -14,7 +24,7 @@ const SimpleWorkFlowCard = (props) => {
             <div className={styles.imageContainer}>
                 <img className={styles.image} src={icon}></img>
                 {price == "free" ? <img className={styles.free} src={FreeOfCharge}></img>:
-                <img className={styles.success} src={SuccessFee}></img>}
+                price == "success-fee" ? <img className={styles.success} src={SuccessFee}></img>: null}
             </div>
             <div className={styles.titleContainer}>
                 <div className={styles.step}>

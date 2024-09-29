@@ -108,6 +108,20 @@ const steps = [
     price: "success-fee",
     progress: 100,
   },
+  {
+    step: "9",
+    title: "New Beginnings",
+    description: [
+      "Immediate cash from sale",
+      "Unlock years of profit",
+      "Embrace retirement freedom",
+      "Explore new personal interests",
+      "Drive growth with new partner"
+    ],
+    icon: CustomerService,
+    price: "none",
+    progress: 100,
+  },
 ];
 
 
