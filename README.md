@@ -8,13 +8,22 @@
 
 ## Run frontend/admin
 
-The web application has been deployed to amazon AWS, visit http://18.188.164.17:5173/ to see the current development progress.
+The admin application is to be deployed.
+
+The frontend application has been deployed to amazon AWS, visit http://18.188.164.17:5173/ to see the current development progress.
 
 
 
 
 
 # Update Log
+
+## 2024/10/03
+
+- Add the skeleton codes for admin system.
+- Add the sidebar functionalities.
+
+
 
 ## **2024/09/28**
 
