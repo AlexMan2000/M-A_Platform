@@ -5,7 +5,10 @@ import CustomerService from "@/assets/pngs/customer-service.png"
 import Approval from "@/assets/pngs/approval.png"
 import Advisory from "@/assets/pngs/financial-advisor.png"
 import Polygon from "@/assets/svgs/polygon_white.svg"
-
+import PrepMaterial from "@/assets/svgs/prep-material.svg"
+import PotentialBuyer from "@/assets/pngs/potential-buyer.png"
+import Negotiation from "@/assets/pngs/negotiation.png"
+import Concluding from "@/assets/svgs/concluding-agreement.svg"
 
 const steps = [
   {
@@ -56,7 +59,7 @@ const steps = [
       "Manage initial inquiries and information requests",
       "Facilitate NDAs with interested parties"
     ],
-    icon: CustomerService,
+    icon: PrepMaterial,
     price: "free",
     progress: 56,
   },
@@ -68,7 +71,7 @@ const steps = [
       "Assist in evaluating and comparing offers",
       "Support negotiations on price and terms"
     ],
-    icon: CustomerService,
+    icon: PotentialBuyer,
     price: "free",
     progress: 70,
   },
@@ -80,7 +83,7 @@ const steps = [
       "Assist in evaluating and comparing offers",
       "Support negotiations on price and terms"
     ],
-    icon: CustomerService,
+    icon: Negotiation,
     price: "free",
     progress: 100,
   },
@@ -92,7 +95,7 @@ const steps = [
       "Coordinate with legal teams for final documentation",
       "Ensure all parties agree on terms"
     ],
-    icon: CustomerService,
+    icon: Concluding,
     price: "free",
     progress: 84,
   },

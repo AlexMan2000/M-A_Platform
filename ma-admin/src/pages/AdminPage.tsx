@@ -1,8 +1,7 @@
-import React from 'react';
 import styles from "./AdminPage.module.less"
 import { Outlet } from 'react-router-dom';
-import SideBar from '../commons/SideBar/SideBar';
-import Header from '@/commons/Header/Header';
+import SideBar from '@/commons/components/SideBar/SideBar';
+import Header from '@/commons/components/Header/Header';
 
 
 const AdminPage = () => {

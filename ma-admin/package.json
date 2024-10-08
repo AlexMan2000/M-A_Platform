@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:pattern": "vitest run -t",
+    "test:file": "vitest run"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -50,18 +53,21 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "axios-mock-adapter": "^2.0.0",
     "eslint": "^9.9.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
+    "globals": "^15.9.0",
     "less": "^4.2.0",
     "lint-staged": "^15.2.2",
-    "globals": "^15.9.0",
-    "typescript": "^5.5.3",
-    "typescript-eslint": "^8.0.1",
     "postcss": "^8.4.38",
     "prettier": "3.2.5",
+    "supertest": "^7.0.0",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.0.1",
     "typings-for-css-modules-loader": "^1.7.0",
-    "vite": "^5.4.1"
+    "vite": "^5.4.1",
+    "vitest": "^2.1.2"
   }
 }

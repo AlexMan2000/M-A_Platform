@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-// import { useDispatch } from 'react-redux'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { IntlProvider } from 'react-intl'
 import { setOSInfo } from './store/slice/globalSlice/globalSlice'

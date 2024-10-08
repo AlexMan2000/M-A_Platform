@@ -44,10 +44,10 @@ function UpperHeader() {
                     <img src={Logo3} className={styles.companyLogo}></img>
                     <div className={styles.logoText}>
                         <div className={styles.topLine}>
-                            Propsperity Bridge M&A
+                            AnBridge M&A
                         </div>
                         <div className={styles.bottomLine}>
-                            昌盛桥并购
+                            桥安并购
                         </div>
                     </div>
                 </div>
