@@ -1,22 +1,32 @@
 # M&A Trader Platform
 
-## Run backend server
+## Run admin
+
+The frontend application has been deployed to amazon AWS, visit http://18.188.164.17:5174/ to see the current development progress.
 
 
 
-
-
-## Run frontend/admin
-
-The admin application is to be deployed.
+## Run frontend
 
 The frontend application has been deployed to amazon AWS, visit http://18.188.164.17:5173/ to see the current development progress.
 
 
 
-
-
 # Update Log
+
+## 2024/10/19
+
+- Finish designing the seller, buyer, company, inquiry database.
+- Test backend api's.
+- Implement the broker portal components.
+
+
+
+## 2024/10/10,11,18
+
+- Meet with dev team to discuss the details of the broker portal.
+
+
 
 ## 2024/10/03
 
