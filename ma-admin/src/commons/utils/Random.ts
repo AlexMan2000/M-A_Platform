@@ -5,5 +5,5 @@
  * @returns A random integer between [min, max)
  */
 export function generateInt(min: number, max:number) {
-    return Math.floor(Math.random() * (max - min))
+    return Math.floor(Math.random() * (max - min)) + min;
 }

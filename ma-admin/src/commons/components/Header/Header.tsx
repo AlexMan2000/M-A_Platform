@@ -1,5 +1,4 @@
 import styles from "./Header.module.less"
-import { useNavigate } from 'react-router-dom';
 import { selectGlobalState } from '@/store/slice/globalSlice/globalSlice';
 import { useSelector } from 'react-redux';
 import { location2title } from '@/commons/utils/LocationMap';
@@ -8,8 +7,6 @@ import Notification from "@/assets/notification.svg"
 import Avatar from '../Avatar/Avatar';
 
 const ToolBar = () => {
-
-  const navigate = useNavigate();
 
   const {pageStatus}  = useSelector(selectGlobalState)
 

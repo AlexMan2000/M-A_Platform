@@ -1,0 +1,108 @@
+.ant-table-tbody .ant-table-cell .moreOptions {
+    display: inline-block;
+    text-align: center;
+    transform: rotate(90deg) scale(160%);
+    user-select: none;
+    cursor: pointer;
+
+}
+
+
+.ant-table-thead > tr > th {
+    background-color: #f0f0f0; /* Light grey background */
+    color: #333;               /* Optional: Change text color */
+  }
+
+
+.ant-tooltip-inner {
+    border-radius: 3px;
+    padding: 2px !important;
+}
+
+/* Customize the background color for the selected items */
+.ant-table-filter-dropdown .ant-checkbox-wrapper,
+.ant-table-filter-dropdown .ant-checkbox-wrapper-checked .ant-checkbox-inner {
+    background-color: #f0f0f0;
+    /* Light grey */
+}
+
+/* Customize the background color of the active checkbox */
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #d9d9d9;
+    /* Darker grey */
+    border-color: #d9d9d9;
+    /* Change the border to grey as well */
+}
+
+/* Customize the checkbox hover effect */
+.ant-checkbox-wrapper:hover .ant-checkbox-inner {
+    border-color: #bfbfbf;
+    /* Slightly darker grey for hover */
+}
+
+/* Customize the color of the OK and Reset buttons */
+.ant-table-filter-dropdown-btns .ant-btn-primary {
+    background-color: #d9d9d9;
+    /* Light grey for OK button */
+    border-color: #d9d9d9;
+    color: #333;
+    /* Dark grey text */
+}
+
+.ant-table-filter-dropdown-btns .ant-btn-link {
+    color: #333;
+    /* Dark grey text for Reset button */
+}
+
+/* Customize the background and border of the dropdown */
+.ant-table-filter-dropdown {
+    background-color: #ffffff;
+    /* White background */
+    border-color: #d9d9d9;
+    /* Grey border */
+}
+
+/* Customize the search bar inside the filter dropdown */
+.ant-input {
+    background-color: #f9f9f9;
+    /* Light grey background for search input */
+    border-color: #d9d9d9;
+    /* Grey border for search input */
+    color: #333;
+    /* Dark grey text */
+}
+
+/* Customize the text color */
+.ant-checkbox-wrapper span {
+    color: #666;
+    /* Medium grey for text */
+}
+
+/* Customize the highlight color for the selected checkboxes */
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #d9d9d9 !important;
+    border-color: #d9d9d9 !important;
+}
+
+.ant-checkbox-inner {
+    border-color: #d9d9d9 !important;
+}
+
+.ant-tree-checkbox-checked .ant-tree-checkbox-inner {
+    background-color: #d9d9d9 !important;
+    border-color: #d9d9d9 !important;
+}
+
+.ant-checkbox-indeterminate .ant-checkbox-inner:after {
+    background-color: #d9d9d9 !important;
+}
+
+/* 子菜单力的tick悬浮背景颜色*/
+.ant-tree-checkbox-inner:hover {
+    border-color: #d9d9d9 !important;
+}
+
+.ant-tree-treenode-checkbox-checked .ant-tree-node-content-wrapper {
+    background-color: #d9d9d9 !important;
+    border-color: #d9d9d9 !important;
+}

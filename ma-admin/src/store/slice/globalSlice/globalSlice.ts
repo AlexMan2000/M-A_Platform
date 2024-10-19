@@ -23,7 +23,7 @@ const getInitialLocale = () => {
 const initialState: GlobalState = {
     sessionId: '',
     locale: getInitialLocale(),
-    pageStatus: "/management",
+    pageStatus: "/dashboard",
     isMobile: false,
     isWindows: false,
     isMac: false

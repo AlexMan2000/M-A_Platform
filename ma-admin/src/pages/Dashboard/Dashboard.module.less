@@ -1,0 +1,42 @@
+.container {
+    height: 100%;
+    width: 100%;
+
+    .topCards {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 32px;
+
+        .content {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 10px;
+
+            .title {
+                color: var(--Text-2, #4E5D78);
+                font-feature-settings: 'liga' off, 'clig' off;
+                font-family: Inter;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 29px; /* 161.111% */
+            }
+    
+            .stats {
+                color: var(--Text-2, #4E5D78);
+                font-feature-settings: 'liga' off, 'clig' off;
+                font-family: Inter;
+                font-size: 40px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 29px; /* 72.5% */
+            }
+        }
+       
+    }
+}

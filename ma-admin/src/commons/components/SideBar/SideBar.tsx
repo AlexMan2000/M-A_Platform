@@ -13,6 +13,10 @@ interface MenuItem {
 
 const MENU: MenuItem[] = [
   {
+    menuTitle: "Home",
+    menuLocation: "/dashboard"
+  },
+  {
     menuTitle: "Project Management",
     menuLocation: "/management"
   },
@@ -25,8 +29,12 @@ const MENU: MenuItem[] = [
     menuLocation: "/pipeline"
   },
   {
-    menuTitle: "Timeline & Milestone",
+    menuTitle: "Timeline",
     menuLocation: "/milestone"
+  },
+  {
+    menuTitle: "New Inquires",
+    menuLocation: "/inquires"
   },
   {
     menuTitle: "Data Room",
@@ -67,7 +75,7 @@ const SideBar = () => {
               setSelectIndex(index);
             }}
             style={{
-              backgroundColor: selectIndex === index ? "#FFF":"#FAFBFC"
+              backgroundColor: selectIndex === index ? "#FFF":"#EEF0F3"
             }}
             >
               <div className={styles.ellipse}>
