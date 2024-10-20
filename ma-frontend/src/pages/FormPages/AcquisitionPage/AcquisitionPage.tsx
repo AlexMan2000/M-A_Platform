@@ -2,6 +2,7 @@ import styles from "./AcquisitionPage.module.less"
 import { useState } from "react";
 import SelectWithInput from "@/commons/components/forms/SelectWithInput";
 import { Checkbox, Button, Form, Input } from "antd";
+import { submitBuyerInquiry } from "@/services/inquiryServices/inquiryApi";
 
 
 interface AcquisitionNeedsForm {
@@ -37,7 +38,8 @@ const AcquisitionPage = () => {
   const handleSubmit = (values: any) => {
     console.log(values)
 
-
+    const {agreed, ...submitted} = values;
+    submitBuyerInquiry(submitted);
   };
 
   const handleFailValidation = (values: any) => {

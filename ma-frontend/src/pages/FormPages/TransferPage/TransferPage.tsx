@@ -114,7 +114,7 @@ const TransferPage = () => {
                 "Real Estate",
                 "Food & Beverage",
                 "Education",
-                "Others"
+  
               ]}
               style={{ width: "500px", height: "50px" }}
               placeholder="Please select the main industry and business field"
@@ -130,7 +130,7 @@ const TransferPage = () => {
             Your Company's Turnover Level <span style={{ color: 'red' }}>*</span>
           </label>
           <Form.Item
-            name={["companyInfo", "turnover"]}
+            name={["companyInfo", "turnoverLevel"]}
             rules={[{ required: true, message: "Please select your turnover level" }]}
           >
             <SelectWithInput
@@ -141,8 +141,8 @@ const TransferPage = () => {
               ]}
               style={{ width: "500px", height: "50px" }}
               placeholder="Please select all the regions"
-              mode="multiple" onChange={function (selectedValues: string[]): void {
-                form.setFieldValue(["companyInfo", "turnover"], selectedValues)
+              onChange={function (selectedValues: string[]): void {
+                form.setFieldValue(["companyInfo", "turnoverLevel"], selectedValues)
               }} />
           </Form.Item>
         </div>
@@ -210,7 +210,7 @@ const TransferPage = () => {
             rules={[{ required: true, message: "Please choose your preferred contact method" }]}
           >
             <SelectWithInput
-              inputOptions={["Phone Call", "Email", "WeChat", "Others"]}
+              inputOptions={["Phone Call", "Email", "WeChat"]}
               style={{ width: "500px", height: "50px" }}
               placeholder="Please select your preferred contact method"
               mode="multiple" onChange={function (selectedValues: string[]): void {

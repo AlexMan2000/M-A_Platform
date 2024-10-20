@@ -19,7 +19,7 @@ public class InquiryController {
 
     @PostMapping("/submitBuyer")
     public void addBuyerInquiry(@RequestBody BuyerInquiryDTO buyerInquiryDTO) {
-        System.out.println(buyerInquiryDTO);
+        inquiryService.addBuyerInquiry(buyerInquiryDTO);
     }
 
     @PostMapping("/submitSeller")

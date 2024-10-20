@@ -12,10 +12,11 @@ public class CompanyDTO {
     private String id; // MongoDB ID, automatically generated if not provided
 
     // Company Info
-    private String companyType;
+    private String companyName;
+    private List<String> companyType;
     private List<String> industryAndField;
     private List<String> currency;
-    private String turnoverLevel;
+    private List<String> turnoverLevel;
     private String companyLocation;
     private List<String> mAndAStrategy;
 
