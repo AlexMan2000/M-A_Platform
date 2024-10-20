@@ -1,0 +1,52 @@
+.select-with-input {
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+}
+
+
+.select-with-inputs .ant-select-selection-overflow {
+    height: 80%;
+}
+
+.select-with-inputs .ant-select-selection-overflow-item {
+    height: 100%;
+    /* line-height: 100%; */
+
+}
+
+.select-with-inputs .ant-select-selection-overflow-item .ant-select-selection-item {
+    height: 100%;
+    
+}
+
+.select-with-inputs .ant-select-selection-overflow-item .ant-select-selection-item .ant-select-selection-item-content{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.select-with-inputs .ant-select-selection-placeholder {
+    height: 100%;
+    color: var(--Light-Text-Disabled, rgba(76, 78, 100, 0.38));
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dev-only-checkbox-label {
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.15px;
+}

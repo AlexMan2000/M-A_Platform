@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class InquiryController {
 
 
-//    public ResponseEntity<List<BuyerEntity>> getAll
 
 
 }

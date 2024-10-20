@@ -1,242 +1,279 @@
 import { useState } from "react";
-import styles from "./TransferPage.module.less"
-import { Checkbox, FormControl, FormControlLabel, Grid, MenuItem, Radio, RadioGroup, Select, TextField } from "@mui/material";
-
+import { Form, Input, Checkbox, Button } from "antd";
+import styles from "./TransferPage.module.less";
+import SelectWithInput from "@/commons/components/forms/SelectWithInput";
 
 const TransferPage = () => {
-  const [industry, setIndustry] = useState('');
-  const [turnover, setTurnover] = useState('');
-  const [currency, setCurrency] = useState('');
-  const [contactMethod, setContactMethod] = useState('');
+  const [form] = Form.useForm();
   const [agreed, setAgreed] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission
+  const handleSubmit = (values: any) => {
+    console.log("Form Values:", values);
+  };
+
+  const handleFailValidation = (values: any) => {
+    console.log("Submit Failed:", values);
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}>Transfer, Sale and Business Succession </div>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        {/*Your Company's Name*/}
-        <Grid className={styles.fieldContainer} container spacing={2} alignItems="center" style={{ marginBottom: '16px' }}>
-          <Grid className={styles.fieldLabel} item xs={4}>
-            <label className={styles.label}>Your Company's Name {""}
-            <span style={{ color: 'red', marginLeft: '2px' }}>*</span></label>
-          </Grid>
-          <Grid item 
-            xs={8}>
-            <TextField
-              style={{width: "500px", color:"rgba(76, 78, 100, 0.38)"}} 
-              required
-              type="email"
-              placeholder="johnDoe@gmail.com"
-              variant="outlined" 
-            />
-          </Grid>
-        </Grid>
-        {/*Industry And Business Field*/}
-        <Grid className={styles.fieldContainer} container spacing={2} alignItems="center" style={{ marginBottom: '16px' }}>
-          <Grid className={styles.fieldLabel} item xs={4}>
-            <label className={styles.label}>Industry And Business Field {""}
-            <span style={{ color: 'red', marginLeft: '2px' }}>*</span></label>
-          </Grid>
-          <Grid item xs={8}>
-            <FormControl margin="normal" required>
-              <Select 
-                style={{width: "500px"}} 
-                value={industry} 
-                displayEmpty
-                onChange={(e) => setIndustry(e.target.value)}
-                renderValue={(selected) => {
-                  if (selected === "") {
-                    return <span style={{ color: 'rgba(76, 78, 100, 0.38)' }}>Select an industry</span>;
-                  }
-                  return <span style={{ color: 'black' }}>{selected}</span>;
-                }} 
-                >
-                <MenuItem value="IT Communication">IT Communication</MenuItem>
-                <MenuItem value="Professional Services">Professional Services</MenuItem>
-                <MenuItem value="Retail">Retail</MenuItem>
-                <MenuItem value="Real Estate">Real Estate</MenuItem>
-                <MenuItem value="Food & Beverage">Food & Beverage</MenuItem>
-                <MenuItem value="Education">Education</MenuItem>
-                <MenuItem value="Others">Others</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-        </Grid>
-        {/*Your Company's Turnover Level*/}
-        <Grid className={styles.fieldContainer} container spacing={2} alignItems="center" style={{ marginBottom: '16px' }}>
-          <Grid className={styles.fieldLabel} item xs={4}>
-            <label className={styles.label}>Your Company's Turnover Level {""}
-            <span style={{ color: 'red', marginLeft: '2px' }}>*</span>
-            </label>
-          </Grid>
-          <Grid item xs={8}>
-            <FormControl component="fieldset" margin="normal" required>
-              <RadioGroup 
-                value={turnover} 
-                onChange={(e) => setTurnover(e.target.value)} 
-                row
-                style={{width: "800px"}} 
-                >
-                <FormControlLabel value="Less than 50 million" control={<Radio />} label="Less than 50 million" />
-                <FormControlLabel value="50 million to 500 million" control={<Radio />} label="50 million to 500 million" />
-                <FormControlLabel value="More than 500 million" control={<Radio />} label="More than 500 million" />
-              </RadioGroup>
-            </FormControl>
-          </Grid>
-        </Grid>
+      <div className={styles.title}>Transfer, Sale and Business Succession</div>
 
-        {/*Currency*/}
-        <Grid className={styles.fieldContainer} container spacing={2} alignItems="center" style={{ marginBottom: '16px' }}>
-          <Grid className={styles.fieldLabel} item xs={4}>
-            <label className={styles.label}>Currency {""}
-            <span style={{ color: 'red', marginLeft: '2px' }}>*</span></label>
-          </Grid>
-          <Grid item xs={8}>
-            <FormControl fullWidth margin="normal" required>
-              <Select 
-                value={currency} 
-                displayEmpty
-                onChange={(e) => setCurrency(e.target.value)}
-                style={{width: "500px"}} 
-                renderValue={(selected) => {
-                  if (selected === "") {
-                    return <span style={{ color: 'rgba(76, 78, 100, 0.38)' }}>Please select your currency</span>;
-                  }
-                  return <span style={{ color: 'black' }}>{selected}</span>;
-                }}               >
-                <MenuItem value="USD">USD</MenuItem>
-                <MenuItem value="RMB">RMB</MenuItem>
-                <MenuItem value="HKD">HKD</MenuItem>
-                <MenuItem value="TWD">TWD</MenuItem>
-                <MenuItem value="SGD">SGD</MenuItem>
-                <MenuItem value="JPY">JPY</MenuItem>
-                <MenuItem value="Other">Other (please specify)</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-        </Grid>
-        {/*Your Company's Location*/}
-        <Grid className={styles.fieldContainer} container spacing={2} alignItems="center" style={{ marginBottom: '16px' }}>
-          <Grid className={styles.fieldLabel} item xs={4}>
-            <label className={styles.label}>Your Company's Location {""}
-            <span style={{ color: 'red', marginLeft: '2px' }}>*</span></label>
-          </Grid>
-          <Grid item xs={8}>
-            <TextField
-              style={{width: "500px", color:"rgba(76, 78, 100, 0.38)"}} 
-              required
+      <Form
+        form={form}
+        onFinish={handleSubmit}
+        onFinishFailed={handleFailValidation}
+        layout="vertical"
+        className={styles.form}
+      >
+
+        {/* Motivations For Selling */}
+        <div className={styles.fieldContainer}>
+          <label className={styles.fieldLabel}>
+            Motivations for Selling <span style={{ color: 'red' }}>*</span>
+          </label>
+          <Form.Item
+            name="motivations"
+            rules={[{ required: true, message: "Please aelect at least one motivation" }]}
+          >
+            <SelectWithInput
+                inputOptions={[
+                  {
+                    value: "Business Succession",
+                    label: "Business Succession",
+                    desc: "transitioning ownership to ensure continuity and stability."
+                  },
+                  {
+                    value: "Retirement",
+                    label: "Retirement",
+                    desc: "planning for personal retirement and exiting the business."
+                  },
+                  {
+                    value: "Change Of Priorities",
+                    label: "Change Of Priorities",
+                    desc: "shifting focus to new opportunities or personal goals outside the business."
+                  },
+                  {
+                    value: "Financial Gain",
+                    label: "Financial Gain",
+                    desc: "maximizing the financial return on investment."
+                  },
+                  {
+                    value: "Market Conditions",
+                    label: "Market Conditions",
+                    desc: "taking advantage of favorable market conditions for selling."
+                  },
+                  {
+                    value: "Strategic Partnerships",
+                    label: "Strategic Partnerships",
+                    desc: "seeking synergies through a merger or acquisition."
+                  }]}
+                style={{ width: "500px", height: "50px" }}
+                placeholder="Please select your motivations for selling"
+                mode="multiple" onChange={function (selectedValues: string[]): void {
+                  form.setFieldValue(['motivations'], selectedValues)
+                }} />
+          </Form.Item>
+        </div>
+
+        {/* Your Company's Name */}
+        <div className={styles.fieldContainer}>
+          <label className={styles.fieldLabel}>
+            Your Company's Name <span style={{ color: 'red' }}>*</span>
+          </label>
+          <Form.Item
+            name="companyName"
+            rules={[{ required: true, message: "Please enter your company's name" }]}
+          >
+            <Input placeholder="Please enter your company’s name"
+              style={{ width: '500px', height: "50px", fontFamily: "Nunito Sans", fontSize: "16px" }} />
+          </Form.Item>
+        </div>
+
+        {/* Industry and Business Field */}
+        <div className={styles.fieldContainer}>
+          <label className={styles.fieldLabel}>
+            Industry and Business Field <span style={{ color: 'red' }}>*</span>
+          </label>
+          <Form.Item
+            name="industry"
+            rules={[{ required: true, message: "Please select your industry" }]}
+          >
+            <SelectWithInput
+              inputOptions={[
+                "IT Communication",
+                "Professional Services",
+                "Retail",
+                "Real Estate",
+                "Food & Beverage",
+                "Education",
+                "Others"
+              ]}
+              style={{ width: "500px", height: "50px" }}
+              placeholder="Please select the main industry and business field"
+              mode="multiple" onChange={function (selectedValues: string[]): void {
+                form.setFieldValue("industry", selectedValues)
+              }} />
+          </Form.Item>
+        </div>
+
+        {/* Turnover Level */}
+        <div className={styles.fieldContainer}>
+          <label className={styles.fieldLabel}>
+            Your Company's Turnover Level <span style={{ color: 'red' }}>*</span>
+          </label>
+          <Form.Item
+            name="turnover"
+            rules={[{ required: true, message: "Please select your turnover level" }]}
+          >
+            <SelectWithInput
+              inputOptions={[
+                { value: "<50M", label: "Less than 50 million" },
+                { value: "50M-500M", label: "50 million to 500 million" },
+                { value: ">500M", label: "More than 500 million" },
+              ]}
+              style={{ width: "500px", height: "50px" }}
+              placeholder="Please select all the regions"
+              mode="multiple" onChange={function (selectedValues: string[]): void {
+                form.setFieldValue("turnover", selectedValues)
+              }} />
+          </Form.Item>
+        </div>
+
+        {/* Currency */}
+        <div className={styles.fieldContainer}>
+          <label className={styles.fieldLabel}>
+            Currency <span style={{ color: 'red' }}>*</span>
+          </label>
+          <Form.Item
+            name="currency"
+            rules={[{ required: true, message: "Please select your currency" }]}
+          >
+            <SelectWithInput
+              inputOptions={["USD", "RMB", "HKD", "TWD", "SGD", "JPY"]}
+              style={{ width: "500px", height: "50px" }}
+              placeholder="Please select the currency"
+              mode="multiple" onChange={function (selectedValues: string[]): void {
+                form.setFieldValue(['acquisitionNeeds', 'currency'], selectedValues)
+              }} />
+          </Form.Item>
+        </div>
+
+        {/* Company's Location */}
+        <div className={styles.fieldContainer}>
+          <label className={styles.fieldLabel}>
+            Your Company's Location <span style={{ color: 'red' }}>*</span>
+          </label>
+          <Form.Item
+            name="companyLocation"
+            rules={[{ required: true, message: "Please enter your company's location" }]}
+          >
+            <Input
               placeholder="Please enter your company’s location"
-              variant="outlined" 
+              style={{ width: '500px', height: "50px", fontFamily: "Nunito Sans", fontSize: "16px" }}
             />
-          </Grid>
-        </Grid>
-        {/*Key Contact Person*/}
-        <Grid className={styles.fieldContainer} container spacing={2} alignItems="center" style={{ marginBottom: '16px' }}>
-          <Grid className={styles.fieldLabel} item xs={4}>
-            <label className={styles.label}>Key Contact Person {""}
-            <span style={{ color: 'red', marginLeft: '2px' }}>*</span></label>
-          </Grid>
-          <Grid item xs={8}>
-            <TextField
-              style={{width: "500px", color:"rgba(76, 78, 100, 0.38)"}} 
-              required
+          </Form.Item>
+        </div>
+
+        {/* Key Contact Person */}
+        <div className={styles.fieldContainer}>
+          <label className={styles.fieldLabel}>
+            Key Contact Person <span style={{ color: 'red' }}>*</span>
+          </label>
+          <Form.Item
+            name="keyContactPerson"
+            rules={[{ required: true, message: "Please enter the key contact person" }]}
+          >
+            <Input
               placeholder="Please enter the name or title here"
-              variant="outlined" 
+              style={{ width: '500px', height: "50px", fontFamily: "Nunito Sans", fontSize: "16px" }}
             />
-          </Grid>
-        </Grid>
-        {/*Preferred Contact Information*/}
-        <Grid className={styles.fieldContainer} container spacing={2} alignItems="center" style={{ marginBottom: '16px' }}>
-          <Grid className={styles.fieldLabel} item xs={4}>
-            <label className={styles.label}>Preferred Contact Method {""}
-            <span style={{ color: 'red', marginLeft: '2px' }}>*</span></label>
-          </Grid>
-          <Grid item xs={8}>
-            <FormControl fullWidth margin="normal" required>              
-              <Select 
-                value={contactMethod} 
-                displayEmpty
-                style={{width: "500px"}}
-                onChange={(e) => setContactMethod(e.target.value)}
-                renderValue={(selected) => {
-                  if (selected === "") {
-                    return <span style={{ color: 'rgba(76, 78, 100, 0.38)' }}>Please choose your preferred contact methods</span>;
-                  }
-                  return <span style={{ color: 'black' }}>{selected}</span>;
-                }} 
-                >
-                <MenuItem value="Phone Call">Phone Call</MenuItem>
-                <MenuItem value="Email">Email</MenuItem>
-                <MenuItem value="WeChat">WeChat</MenuItem>
-                <MenuItem value="Others">Others</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-        </Grid>
-        {/*Contact Information*/}
-        <Grid className={styles.fieldContainer} container spacing={2} alignItems="center" style={{ marginBottom: '16px' }}>
-          <Grid className={styles.fieldLabel} item xs={4}>
-            <label className={styles.label}>Contact Information {""}
-            <span style={{ color: 'red', marginLeft: '2px' }}>*</span></label>
-          </Grid>
-          <Grid item xs={8}>
-            <TextField
-              style={{width: "500px", color:"rgba(76, 78, 100, 0.38)"}} 
-              required
-              placeholder="Please enter the contact Info"
-              variant="outlined" 
+          </Form.Item>
+        </div>
+
+        {/* Preferred Contact Method */}
+        <div className={styles.fieldContainer}>
+          <label className={styles.fieldLabel}>
+            Preferred Contact Method <span style={{ color: 'red' }}>*</span>
+          </label>
+          <Form.Item
+            name="contactMethod"
+            rules={[{ required: true, message: "Please choose your preferred contact method" }]}
+          >
+            <SelectWithInput
+              inputOptions={["Phone Call", "Email", "WeChat", "Others"]}
+              style={{ width: "500px", height: "50px" }}
+              placeholder="Please select your preferred contact method"
+              mode="multiple" onChange={function (selectedValues: string[]): void {
+                form.setFieldValue("contactMethod", selectedValues)
+              }} />
+          </Form.Item>
+        </div>
+
+        {/* Contact Information */}
+        <div className={styles.fieldContainer}>
+          <label className={styles.fieldLabel}>
+            Contact Information <span style={{ color: 'red' }}>*</span>
+          </label>
+          <Form.Item
+            name="contactInformation"
+            rules={[{ required: true, message: "Please enter the contact information" }]}
+          >
+            <Input
+              placeholder="Please enter the contact info"
+              style={{ width: '500px', height: "50px", fontFamily: "Nunito Sans", fontSize: "16px" }}
             />
-          </Grid>
-        </Grid>
-        {/*Content of Inquiry*/}
-        <Grid className={styles.fieldContainer} container spacing={2} alignItems="center" style={{ marginBottom: '16px' }}>
-          <Grid className={styles.fieldLabel} item xs={4}>
-            <label className={styles.label}>Content of Inquiry</label>
-          </Grid>
-          <Grid item xs={8}>
-            <TextField
-              style={{width: "500px", color:"rgba(76, 78, 100, 0.38)"}} 
-              fullWidth
-              required
-              margin="normal"
+          </Form.Item>
+        </div>
+
+        {/* Content of Inquiry */}
+        <div className={styles.fieldContainer}>
+          <label className={styles.fieldLabel}>Content of Inquiry</label>
+          <Form.Item name="inquiryContent">
+            <Input.TextArea
               placeholder="Please enter the contents of the consultation."
-              multiline
+              style={{ width: '500px', fontFamily: "Nunito Sans", fontSize: "16px" }}
               rows={4}
             />
-          </Grid>
-        </Grid>
+          </Form.Item>
+        </div>
+
+        {/* Terms Agreement */}
         <div className={styles.terms}>
-          <span className={styles.heading}>Regarding the handling of personal information</span>
+          <span className={styles.heading}>
+            Regarding the handling of personal information
+          </span>
           <span className={styles.desc}>
-            The personal information you enter will be properly managed in accordance with our personal information protection policy. For more information, please read "About the protection of personal information” and apply after agreeing.
+            The personal information you enter will be properly managed in accordance with our personal information protection policy. For more information, please read "About the protection of personal information” and apply after agreeing.
           </span>
           <div className={styles.checkbox}>
-            <Checkbox 
-              checked={agreed} 
-              style={{paddingLeft: "0px"}}
-              onChange={(event) => {
-                setAgreed(event.target.checked);
-              }}/>   
-            <div className={styles.text}>Agree to the protection of personal information <span style={{ color: 'red', marginLeft: '2px' }}>*</span></div>
+          <Form.Item
+              name={['agreed']}
+              rules={[{ required: true, message:"Must click" }]}
+              valuePropName="checked"
+            >
+              <Checkbox
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+
+              /></Form.Item>
+            <div className={styles.text}>
+              Agree to the protection of personal information
+              <span style={{ color: "red", marginLeft: "2px" }}>*</span>
+            </div>
           </div>
         </div>
-        <button 
-          className={styles.submit}
-          type="submit" 
 
-          >
-          Submit
-        </button>
+        {/* Submit Button */}
         <div className={styles.footer}>
-        We will automatically send an application acceptance confirmation email to the email address you entered.
+          <Form.Item>
+            <Button htmlType="submit" className={styles.submit}>
+              Submit
+            </Button>
+          </Form.Item>
         </div>
-      </form>
-  </div>
+      </Form>
+    </div>
   );
 };
 

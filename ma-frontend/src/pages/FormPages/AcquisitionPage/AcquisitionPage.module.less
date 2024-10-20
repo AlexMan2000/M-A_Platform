@@ -7,7 +7,7 @@
 
     .title {
         color: #000;
-        font-family: Nunito;
+        font-family: "Nunito Sans";
         font-size: 22px;
         font-style: normal;
         font-weight: 700;
@@ -17,27 +17,16 @@
     .form {
         display: flex;
         flex-direction: column;
+        // align-items: flex-start;
+        // flex-wrap: nowrap;
         gap: 30px;
 
-
-        .subform1 {
-            .heading {
-                padding-bottom: 30px;;
-                color: #000;
-                font-family: Nunito;
-                font-size: 18px;
-                font-style: normal;
-                font-weight: 700;
-                line-height: normal;
-            }
-           
-        }
 
         .heading {
             padding-top: 45px;
             padding-bottom: 0px;
             color: #000;
-            font-family: Nunito;
+            font-family: "Nunito Sans";
             font-size: 18px;
             font-style: normal;
             font-weight: 700;
@@ -45,15 +34,29 @@
         }
 
         .fieldContainer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 90px;
+
 
             .fieldLabel {
+                width: 400px;
+                padding-bottom: 20px;
                 color: #000;
-                font-family: Nunito;
+                font-family: "Nunito Sans";
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 600;
                 line-height: normal;
                 text-transform: capitalize;
+            }
+
+            .fieldContent {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
             }
         }
 
@@ -65,7 +68,7 @@
 
             .heading {
                 color: #000;
-                font-family: Nunito;
+                font-family: "Nunito Sans";
                 font-size: 18px;
                 font-style: normal;
                 font-weight: 700;
@@ -76,7 +79,7 @@
             .desc {
                 
                 color: #000;
-                font-family: Nunito;
+                font-family: "Nunito Sans";
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 400;
@@ -86,8 +89,13 @@
             .checkbox {
                 display: flex;
                 flex-direction: row;
+                gap: 10px;
                 align-items: center;
-
+                position: relative;
+                
+                .text {
+                    padding-bottom: 25px;
+                }
             }
 
 
@@ -119,10 +127,20 @@
             line-height: 26px; /* 173.333% */
             letter-spacing: 0.46px;
             text-transform: uppercase;
+
+            &:hover {
+                background: #878787;
+                color: white;
+                filter: brightness(130%);
+                border: none;
+            }
         }
 
         .footer {
-            padding-top: 30px;
+            display: flex;
+            flex-direction: row;
+            gap: 70px;
+            padding-top: 25px;
             align-self: center;
         }
     }
