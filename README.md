@@ -2,13 +2,13 @@
 
 ## Run admin
 
-The frontend application has been deployed to amazon AWS, visit http://18.188.164.17:5174/ to see the current development progress.
+The broker application has been deployed to amazon AWS, visit http://18.188.164.17:5174/ to see the current development progress.
 
 
 
 ## Run frontend
 
-The frontend application has been deployed to amazon AWS, visit http://18.188.164.17:5173/ to see the current development progress.
+The landing page has been deployed to amazon AWS, visit http://18.188.164.17:5173/ to see the current development progress.
 
 
 
