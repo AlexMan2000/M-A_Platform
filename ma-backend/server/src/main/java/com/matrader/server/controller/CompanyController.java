@@ -1,5 +1,8 @@
 package com.matrader.server.controller;
 
+import com.matrader.server.commons.enums.https.StatusCode;
+import com.matrader.server.commons.status.Message;
+import com.matrader.server.dto.trader.CompanyDTO;
 import com.matrader.server.entity.trader.Company;
 import com.matrader.server.service.trader.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,20 +13,20 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/companies")
+@RequestMapping("/companies")
 public class CompanyController {
 
     @Autowired
     private CompanyService companyService;
 
-    @GetMapping
-    public List<Company> getAllCompanies() {
+    @GetMapping("/all")
+    public List<CompanyDTO> getAllCompanies() {
         return companyService.getAllCompanies();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Company> getCompanyById(@PathVariable String id) {
-        Optional<Company> companyObj = companyService.getCompanyById(id);
+    public ResponseEntity<CompanyDTO> getCompanyById(@PathVariable String id) {
+        Optional<CompanyDTO> companyObj = companyService.getCompanyById(id);
         if (companyObj.isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {
@@ -32,15 +35,16 @@ public class CompanyController {
     }
 
     @PostMapping
-    public Company addCompany(@RequestBody Company company) {
-        return companyService.createCompany(company);
+    public ResponseEntity<String> addCompany(@RequestBody CompanyDTO companyDTO) {
+        Message message = companyService.createCompany(companyDTO);
+        return message.getStatusCode() == StatusCode.OK ? ResponseEntity.ok("Added new company") : ResponseEntity.internalServerError().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Company> updateCompany(@PathVariable String id, @RequestBody Company company) {
-        Company updatedCompany = companyService.updateCompany(id, company);
-        if (updatedCompany != null) {
-            return ResponseEntity.ok(updatedCompany);
+    public ResponseEntity<Company> updateCompany(@PathVariable String id, @RequestBody CompanyDTO companyDTO) {
+        String updatedCompanyId = companyService.updateCompany(id, companyDTO);
+        if (updatedCompanyId != null) {
+            return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
         }

@@ -14,6 +14,16 @@ The landing page has been deployed to amazon AWS, visit http://18.188.164.17:517
 
 # Update Log
 
+## 2024/10/20
+
+- Modify the inquiry forms from landing page
+- Testing submission of inquiry forms from clients.
+- 
+
+
+
+
+
 ## 2024/10/19
 
 - Finish designing the seller, buyer, company, inquiry database.

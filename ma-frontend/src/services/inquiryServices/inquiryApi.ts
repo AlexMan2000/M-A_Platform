@@ -1,10 +1,10 @@
 import { postRequest } from "../axiosInstance";
 
-export const postInitChatBot = async (body: any) => {
+export const submitBuyerInquiry = async (body: any) => {
   try {
     // url will be changed
     const res = await postRequest(
-        "http://localhost:3000/",
+        "/inquiry/submitBuyer",
         body
     );
     return res.data;
@@ -13,3 +13,20 @@ export const postInitChatBot = async (body: any) => {
     throw error;
   }
 };
+
+
+export const submitSellerInquiry = async (body: any) => {
+    try {
+        console.log(body);
+      // url will be changed
+      const res = await postRequest(
+          "/inquiry/submitSeller",
+          body
+      );
+      return res.data;
+    } catch (error) {
+      console.error("Error initializing model:", error);
+      throw error;
+    }
+  };
+  

@@ -113,8 +113,6 @@ const SelectWithInput: React.FC<SelectWithInputProps> = (props: SelectWithInputP
             })}
             optionLabelProp="label"
             optionRender={(option) => { 
-
-                console.log(option.data)
                 return (
                 mode === "multiple" ? <Checkbox checked={selectedItems.includes(option.data.value)}>
                     <div className={"dev-only-checkbox-label"}>

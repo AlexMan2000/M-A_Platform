@@ -2,7 +2,6 @@
 
 import axios from "axios";
 import FASTAPI_ENDPOINT from "./config";
-import { initUserInfo } from "@/store/slice/userSlice/userSlice";
 
 // 创建一个 axios 实例
 const axiosInstance = axios.create({
@@ -20,14 +19,14 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     // 检查是否是未授权的错误
-    if (error.response && error.response.status === 401) {
-      // 跳转到登录页面
-      if (window.location.pathname !== "/") {
-        // 跳转到登录页面
-        initUserInfo();
-        window.location.href = "/login";
-      }
-    }
+    // if (error.response && error.response.status === 401) {
+    //   // 跳转到登录页面
+    //   if (window.location.pathname !== "/") {
+    //     // 跳转到登录页面
+    //     initUserInfo();
+    //     window.location.href = "/login";
+    //   }
+    // }
     // 返回错误以供后续处理
     return Promise.reject(error);
   }

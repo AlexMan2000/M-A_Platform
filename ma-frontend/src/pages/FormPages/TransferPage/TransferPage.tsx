@@ -2,13 +2,16 @@ import { useState } from "react";
 import { Form, Input, Checkbox, Button } from "antd";
 import styles from "./TransferPage.module.less";
 import SelectWithInput from "@/commons/components/forms/SelectWithInput";
+import { submitSellerInquiry } from "@/services/inquiryServices/inquiryApi";
 
 const TransferPage = () => {
   const [form] = Form.useForm();
   const [agreed, setAgreed] = useState(false);
 
   const handleSubmit = (values: any) => {
-    console.log("Form Values:", values);
+    // console.log("Form Values:", values);
+    const {agreed, ...submitted} = values;
+    submitSellerInquiry(submitted);
   };
 
   const handleFailValidation = (values: any) => {
@@ -28,12 +31,14 @@ const TransferPage = () => {
       >
 
         {/* Motivations For Selling */}
+        <div className={styles.heading}>1. Motivations</div>
+
         <div className={styles.fieldContainer}>
           <label className={styles.fieldLabel}>
             Motivations for Selling <span style={{ color: 'red' }}>*</span>
           </label>
           <Form.Item
-            name="motivations"
+            name={["sellingMotivations", "motivations"]}
             rules={[{ required: true, message: "Please aelect at least one motivation" }]}
           >
             <SelectWithInput
@@ -71,19 +76,21 @@ const TransferPage = () => {
                 style={{ width: "500px", height: "50px" }}
                 placeholder="Please select your motivations for selling"
                 mode="multiple" onChange={function (selectedValues: string[]): void {
-                  form.setFieldValue(['motivations'], selectedValues)
+                  form.setFieldValue(["sellingMotivations",'motivations'], selectedValues)
                 }} />
           </Form.Item>
         </div>
 
         {/* Your Company's Name */}
+        <div className={styles.heading}>2. Company Info</div>
+
         <div className={styles.fieldContainer}>
           <label className={styles.fieldLabel}>
-            Your Company's Name <span style={{ color: 'red' }}>*</span>
+            Your Company's Name
           </label>
           <Form.Item
-            name="companyName"
-            rules={[{ required: true, message: "Please enter your company's name" }]}
+            name={["companyInfo","companyName"]}
+            rules={[{ required: false, message: "Please enter your company's name" }]}
           >
             <Input placeholder="Please enter your company’s name"
               style={{ width: '500px', height: "50px", fontFamily: "Nunito Sans", fontSize: "16px" }} />
@@ -96,7 +103,7 @@ const TransferPage = () => {
             Industry and Business Field <span style={{ color: 'red' }}>*</span>
           </label>
           <Form.Item
-            name="industry"
+            name={["companyInfo", "industry"]}
             rules={[{ required: true, message: "Please select your industry" }]}
           >
             <SelectWithInput
@@ -112,7 +119,7 @@ const TransferPage = () => {
               style={{ width: "500px", height: "50px" }}
               placeholder="Please select the main industry and business field"
               mode="multiple" onChange={function (selectedValues: string[]): void {
-                form.setFieldValue("industry", selectedValues)
+                form.setFieldValue(["companyInfo", "industry"], selectedValues)
               }} />
           </Form.Item>
         </div>
@@ -123,7 +130,7 @@ const TransferPage = () => {
             Your Company's Turnover Level <span style={{ color: 'red' }}>*</span>
           </label>
           <Form.Item
-            name="turnover"
+            name={["companyInfo", "turnover"]}
             rules={[{ required: true, message: "Please select your turnover level" }]}
           >
             <SelectWithInput
@@ -135,7 +142,7 @@ const TransferPage = () => {
               style={{ width: "500px", height: "50px" }}
               placeholder="Please select all the regions"
               mode="multiple" onChange={function (selectedValues: string[]): void {
-                form.setFieldValue("turnover", selectedValues)
+                form.setFieldValue(["companyInfo", "turnover"], selectedValues)
               }} />
           </Form.Item>
         </div>
@@ -146,7 +153,7 @@ const TransferPage = () => {
             Currency <span style={{ color: 'red' }}>*</span>
           </label>
           <Form.Item
-            name="currency"
+            name={["companyInfo", "currency"]}
             rules={[{ required: true, message: "Please select your currency" }]}
           >
             <SelectWithInput
@@ -154,7 +161,7 @@ const TransferPage = () => {
               style={{ width: "500px", height: "50px" }}
               placeholder="Please select the currency"
               mode="multiple" onChange={function (selectedValues: string[]): void {
-                form.setFieldValue(['acquisitionNeeds', 'currency'], selectedValues)
+                form.setFieldValue(["companyInfo", "currency"], selectedValues)
               }} />
           </Form.Item>
         </div>
@@ -165,7 +172,7 @@ const TransferPage = () => {
             Your Company's Location <span style={{ color: 'red' }}>*</span>
           </label>
           <Form.Item
-            name="companyLocation"
+            name={["companyInfo", "companyLocation"]}
             rules={[{ required: true, message: "Please enter your company's location" }]}
           >
             <Input
@@ -176,12 +183,14 @@ const TransferPage = () => {
         </div>
 
         {/* Key Contact Person */}
+        <div className={styles.heading}>3. Contact Info</div>
+
         <div className={styles.fieldContainer}>
           <label className={styles.fieldLabel}>
             Key Contact Person <span style={{ color: 'red' }}>*</span>
           </label>
           <Form.Item
-            name="keyContactPerson"
+            name={["contactInfo","keyContactPerson"]}
             rules={[{ required: true, message: "Please enter the key contact person" }]}
           >
             <Input
@@ -197,7 +206,7 @@ const TransferPage = () => {
             Preferred Contact Method <span style={{ color: 'red' }}>*</span>
           </label>
           <Form.Item
-            name="contactMethod"
+            name={["contactInfo","contactMethod"]}
             rules={[{ required: true, message: "Please choose your preferred contact method" }]}
           >
             <SelectWithInput
@@ -205,7 +214,7 @@ const TransferPage = () => {
               style={{ width: "500px", height: "50px" }}
               placeholder="Please select your preferred contact method"
               mode="multiple" onChange={function (selectedValues: string[]): void {
-                form.setFieldValue("contactMethod", selectedValues)
+                form.setFieldValue(["contactInfo","contactMethod"], selectedValues)
               }} />
           </Form.Item>
         </div>
@@ -216,7 +225,7 @@ const TransferPage = () => {
             Contact Information <span style={{ color: 'red' }}>*</span>
           </label>
           <Form.Item
-            name="contactInformation"
+            name={["contactInfo", "contactInformation"]}
             rules={[{ required: true, message: "Please enter the contact information" }]}
           >
             <Input
@@ -229,7 +238,8 @@ const TransferPage = () => {
         {/* Content of Inquiry */}
         <div className={styles.fieldContainer}>
           <label className={styles.fieldLabel}>Content of Inquiry</label>
-          <Form.Item name="inquiryContent">
+          <Form.Item 
+            name={["contactInfo","inquiryContent"]}>
             <Input.TextArea
               placeholder="Please enter the contents of the consultation."
               style={{ width: '500px', fontFamily: "Nunito Sans", fontSize: "16px" }}

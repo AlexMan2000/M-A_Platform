@@ -1,7 +1,10 @@
 package com.matrader.server.entity.trader;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,6 +12,7 @@ import java.util.List;
 
 @Data
 @Document(collection = "company")
+@Builder
 public class Company {
 
     @Id
@@ -28,5 +32,7 @@ public class Company {
     private String keyContactPerson;
     private List<String> preferredContactMethod;
     private String contactInformation;
+    private String inquiryContent;
+
 
 }
