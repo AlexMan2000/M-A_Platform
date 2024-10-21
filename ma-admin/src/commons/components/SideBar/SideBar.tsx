@@ -5,47 +5,7 @@ import CompanyLogo from "@/assets/LOGO-3.png"
 import { useDispatch, useSelector } from 'react-redux';
 import { selectGlobalState } from '@/store/slice/globalSlice/globalSlice';
 import handleChangeMenu from '@/commons/utils/changePageHandler';
-
-interface MenuItem {
-  menuTitle: string
-  menuLocation: string
-}
-
-const MENU: MenuItem[] = [
-  {
-    menuTitle: "Home",
-    menuLocation: "/dashboard"
-  },
-  {
-    menuTitle: "Project Management",
-    menuLocation: "/management"
-  },
-  {
-    menuTitle: "Project List",
-    menuLocation: "/list"
-  },
-  {
-    menuTitle: "Buyer Pipeline",
-    menuLocation: "/pipeline"
-  },
-  {
-    menuTitle: "Timeline",
-    menuLocation: "/milestone"
-  },
-  {
-    menuTitle: "New Inquires",
-    menuLocation: "/inquires"
-  },
-  {
-    menuTitle: "Data Room",
-    menuLocation: "/dataroom"
-  },
-  {
-    menuTitle: "Settings",
-    menuLocation: "/settings"
-  }
-]
-
+import { location2title } from "@/commons/utils/LocationMap";
 
 
 const SideBar = () => {
@@ -63,13 +23,13 @@ const SideBar = () => {
         <div className={styles.logoText}>Property Bridge M&A</div>
       </div>
       <div className={styles.menuContainer}>
-        {MENU.map((elem, index) => {
+        {Object.entries(location2title).map((elem, index) => {
           return (
           <div 
             key={elem.toString() + index} 
             className={styles.menuItem}
             onClick={()=>{
-              handleChangeMenu(navigate, dispatch, elem.menuLocation);
+              handleChangeMenu(navigate, dispatch, elem[0]);
             }}
             style={{
               backgroundColor: pageIndex === index ? "#FFF":"#EEF0F3"
@@ -80,7 +40,7 @@ const SideBar = () => {
                   src={Ellipse} 
                   className={styles.ellipseImg}></img>
               </div>
-              <div className={styles.title}>{elem.menuTitle}</div>
+              <div className={styles.title}>{elem[1]}</div>
           </div>)
         })}
       </div>

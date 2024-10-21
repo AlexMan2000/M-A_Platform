@@ -1,10 +1,10 @@
 const location2title = {
     "/dashboard":"Dashboard",
+    "/list": "Listed Project",
+    "/pipeline": "Buyer Database",
     "/management": "Project Management",
-    "/list": "Project List",
-    "/pipeline": "Buyer Pipeline",
     "/milestone": "Timeline & Milestone",
-    "/inquires": "New Inquires",
+    "/inquires": "New Inquiries",
     "/dataroom": "Data Room",
     "/settings": "Settings",
 }

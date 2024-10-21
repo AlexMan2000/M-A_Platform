@@ -49,4 +49,7 @@ export default defineConfig({
   build: {
     outDir: 'admin', // Change 'build' to your preferred directory
   },
+  server: {
+    port: 5174,
+  },
 })

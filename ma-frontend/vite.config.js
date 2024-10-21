@@ -49,4 +49,7 @@ export default defineConfig({
     build: {
         outDir: 'frontend', // Change 'build' to your preferred directory
     },
+    server: {
+        port: 5173,
+    },
 });
