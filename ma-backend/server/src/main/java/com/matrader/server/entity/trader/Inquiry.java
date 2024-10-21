@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -33,4 +34,9 @@ public class Inquiry {
 
     // Company Info
     private String companyId;
+
+    // Time info
+    private Date creationTime;
+    private Date onlineTime;
+    private Date offlineTime;
 }

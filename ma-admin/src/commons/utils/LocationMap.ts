@@ -1,5 +1,5 @@
 const location2title = {
-    "/dashboard":"Dashboard",
+    "/dashboard":"Home",
     "/list": "Listed Project",
     "/pipeline": "Buyer Database",
     "/management": "Project Management",

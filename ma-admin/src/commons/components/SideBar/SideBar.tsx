@@ -1,7 +1,7 @@
 import styles from "./SideBar.module.less"
 import { useNavigate } from 'react-router-dom';
 import Ellipse from "@/assets/ellipse.svg"
-import CompanyLogo from "@/assets/LOGO-3.png"
+import CompanyLogo from "@/assets/LOGO-Text.png"
 import { useDispatch, useSelector } from 'react-redux';
 import { selectGlobalState } from '@/store/slice/globalSlice/globalSlice';
 import handleChangeMenu from '@/commons/utils/changePageHandler';
@@ -17,10 +17,9 @@ const SideBar = () => {
   return (
     <div className={styles.container}>
       <div className={styles.headerContainer}>
-        <div className={styles.logo}>
-          <img className={styles.logoImg} src={CompanyLogo}></img>
+        <div className={styles.logoText}>
+          <img className={styles.img} src={CompanyLogo}></img>
         </div>
-        <div className={styles.logoText}>Property Bridge M&A</div>
       </div>
       <div className={styles.menuContainer}>
         {Object.entries(location2title).map((elem, index) => {
