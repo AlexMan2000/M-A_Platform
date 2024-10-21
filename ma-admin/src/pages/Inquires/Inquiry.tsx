@@ -3,7 +3,6 @@ import styles from "./Inquiry.module.less"
 import Card from "@/commons/components/Card/Card";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setPageIndex, setPageStatus } from "@/store/slice/globalSlice/globalSlice";
 import handleChangeMenu from "@/commons/utils/changePageHandler";
 
 

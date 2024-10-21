@@ -47,6 +47,6 @@ export default defineConfig({
         exclude: ['chunk-QXBZU37W.js']
     },
     build: {
-        outDir: 'frontend', // Change 'build' to your preferred directory
+        outDir: 'admin', // Change 'build' to your preferred directory
     },
 });

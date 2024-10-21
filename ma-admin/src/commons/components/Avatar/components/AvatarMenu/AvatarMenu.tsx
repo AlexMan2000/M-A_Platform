@@ -1,5 +1,5 @@
 // import useStore from "@/store/store";
-// import styles from "./AvatarMenu.module.less";
+import styles from "./AvatarMenu.module.less";
 // import {
 //   Divider,
 //   List,
@@ -9,7 +9,7 @@
 //   ListItemText,
 // } from "@mui/material";
 // import DataLynnIcon from "@/assets/images/img-icon-blue.png";
-// import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 // import Avatar from "../AvatarIcon/AvatarIcon";
 // import { useNavigate } from "react-router-dom";
 // import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -20,8 +20,9 @@
 
 const AvatarMenu = () => {
   // const navigate = useNavigate();
-  // const [visible, setIsVisible] = useState<boolean>(false);
+  const [visible, setIsVisible] = useState<boolean>(false);
 
+  useEffect(()=>{setIsVisible(true)}, []);
   // const {
   //   userInfo,
   //   resetUserInfo,

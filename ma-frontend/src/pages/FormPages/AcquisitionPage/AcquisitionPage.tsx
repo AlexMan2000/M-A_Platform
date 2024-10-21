@@ -5,30 +5,30 @@ import { Checkbox, Button, Form, Input } from "antd";
 import { submitBuyerInquiry } from "@/services/inquiryServices/inquiryApi";
 
 
-interface AcquisitionNeedsForm {
-  acquisitionNeeds: {
-    desiredIndustry: string;
-    desiredRegion: string[];
-    currency: string[];
-    preferredDealSize: string[];
-  };
-  companyInfo: {
-    companyType: string;
-    industryAndField: string[];
-    currency: string[];
-    turnoverLevel: string;
-    companyLocation: string;
-    mAndAStrategy: string[];
-  };
-  contactInfo: {
-    department: string;
-    position: string;
-    keyContactPerson: string;
-    preferredContactMethod: string[];
-    contactInformation: string;
-  };
-  agreed: boolean
-}
+// interface AcquisitionNeedsForm {
+//   acquisitionNeeds: {
+//     desiredIndustry: string;
+//     desiredRegion: string[];
+//     currency: string[];
+//     preferredDealSize: string[];
+//   };
+//   companyInfo: {
+//     companyType: string;
+//     industryAndField: string[];
+//     currency: string[];
+//     turnoverLevel: string;
+//     companyLocation: string;
+//     mAndAStrategy: string[];
+//   };
+//   contactInfo: {
+//     department: string;
+//     position: string;
+//     keyContactPerson: string;
+//     preferredContactMethod: string[];
+//     contactInformation: string;
+//   };
+//   agreed: boolean
+// }
 
 const AcquisitionPage = () => {
   // State initialization for the form

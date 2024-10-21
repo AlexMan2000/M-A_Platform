@@ -1,7 +1,6 @@
 import React, { CSSProperties } from 'react';
 import "./FileUpload.css"
 import {classNamesArgs} from "@/commons/utils/classNameHandler"
-import {getStyles, pagePos} from "@/commons/utils/draggingHandler"
 
 interface FileUploadProps {
   // Define your props here

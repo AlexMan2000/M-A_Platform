@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
 import styles from "./SideBar.module.less"
 import { useNavigate } from 'react-router-dom';
 import Ellipse from "@/assets/ellipse.svg"
 import CompanyLogo from "@/assets/LOGO-3.png"
 import { useDispatch, useSelector } from 'react-redux';
-import { selectGlobalState, setPageIndex, setPageStatus } from '@/store/slice/globalSlice/globalSlice';
+import { selectGlobalState } from '@/store/slice/globalSlice/globalSlice';
 import handleChangeMenu from '@/commons/utils/changePageHandler';
 
 interface MenuItem {

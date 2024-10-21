@@ -1,7 +1,6 @@
 import React, { CSSProperties, ReactNode } from 'react';
 import "./Card.css"
 import {classNamesArgs} from "@/commons/utils/classNameHandler"
-import {getStyles, pagePos} from "@/commons/utils/draggingHandler"
 
 interface CardProps {
   // Define your props here

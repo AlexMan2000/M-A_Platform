@@ -60,7 +60,7 @@ export function concurRequest(urls: string[], maxNum: number) {
 
 // Delayed function, resolve after time milliseconds
 function timeout(time) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _) => {
         setTimeout(() => {
             resolve("");
         }, time)

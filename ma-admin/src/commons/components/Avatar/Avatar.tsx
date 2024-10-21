@@ -19,7 +19,7 @@ export default function Avatar(props: AvatarProps) {
   const avatarIconRef = useRef<any>();
 
   const handleClick = (event: React.MouseEvent) => {
-    // event.stopPropagation();
+    event.stopPropagation();
     // setDropDownOpen(!dropDownOpen);
   };
 

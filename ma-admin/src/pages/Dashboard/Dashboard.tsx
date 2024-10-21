@@ -1,22 +1,21 @@
 
 import styles from "./Dashboard.module.less"
 import Card from '@/commons/components/Card/Card';
-import { Tabs, Tooltip } from 'antd';
+import { Tabs } from 'antd';
 import TabPane from "antd/es/tabs/TabPane";
 import { useState } from "react";
 import "./Dashboard.css"
 import EditableTable from "@/commons/components/EditableTable/EditableTable";
-import { EllipsisOutlined } from '@ant-design/icons';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import handleChangeMenu from "@/commons/utils/changePageHandler";
 
 
 
-interface StatsProps {
-  title: string
-  statistics: number
-}
+// interface StatsProps {
+//   title: string
+//   statistics: number
+// }
 
 
 const Cards = [

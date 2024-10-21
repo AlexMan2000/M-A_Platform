@@ -93,3 +93,8 @@ dist/
 
 # mvn packages directory (as shown in your image)
 mvn-packages/
+
+
+**/admin
+**/frontend
+**/backend

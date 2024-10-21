@@ -89,7 +89,7 @@ describe('pauseTask', () => {
 
 
   it('should handle an empty task list', async () => {
-    const [start, pause] = processTasks();
+    const [start, _] = processTasks();
     const results = await start();
     expect(results).toEqual([]);
   });

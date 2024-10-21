@@ -10,7 +10,7 @@ interface CalendarProps {
 
 const Calendar: React.FC<CalendarProps> = ({style, className}: CalendarProps) => {
   return (
-    <div className={classNamesArgs()} style={{...style}}>
+    <div className={classNamesArgs(className)} style={{...style}}>
       Calendar Component
     </div>
   );

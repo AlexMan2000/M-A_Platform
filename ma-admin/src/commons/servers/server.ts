@@ -9,7 +9,7 @@ const PORT = 3000;
 app.use(express.json());
 
 // Test endpoint (GET request)
-app.get('/', (req, res) => {
+app.get('/', (_, res) => {
   res.send('Hello, this is your server!');
 });
 

@@ -45,5 +45,8 @@ export default defineConfig({
   },
   optimizeDeps: {
     exclude: ['chunk-QXBZU37W.js']
-  }
+  },
+  build: {
+    outDir: 'admin', // Change 'build' to your preferred directory
+  },
 })

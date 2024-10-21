@@ -1,7 +1,7 @@
 import styles from "./EditableTable.module.less"
 import "./EditableTable.css"
 import { Table } from "antd"
-import { Tooltip, Menu, Dropdown } from 'antd';
+import { Tooltip, Menu } from 'antd';
 import { MoreOutlined } from '@ant-design/icons'
 
 type GenericTableProps<T> = {
