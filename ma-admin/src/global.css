@@ -77,3 +77,8 @@ button {
   font-family: "DM Sans";
   src: url("@/fonts/DMSans/DMSans-VariableFont_opsz,wght.ttf");
 }
+
+@font-face {
+  font-family: "Inter";
+  src: url("@/fonts/inter/Inter-VariableFont_slnt,wght.ttf");
+}

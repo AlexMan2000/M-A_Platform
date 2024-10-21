@@ -8,8 +8,8 @@
 }
 
 
-.ant-table-thead > tr > th {
-    background-color: #f0f0f0; /* Light grey background */
+.ant-table-thead .ant-table-cell {
+    background-color: #f0f0f0 !important; /* Light grey background */
     color: #333;               /* Optional: Change text color */
   }
 

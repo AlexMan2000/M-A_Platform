@@ -3,8 +3,9 @@ import styles from "./SideBar.module.less"
 import { useNavigate } from 'react-router-dom';
 import Ellipse from "@/assets/ellipse.svg"
 import CompanyLogo from "@/assets/LOGO-3.png"
-import { useDispatch } from 'react-redux';
-import { setPageStatus } from '@/store/slice/globalSlice/globalSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectGlobalState, setPageIndex, setPageStatus } from '@/store/slice/globalSlice/globalSlice';
+import handleChangeMenu from '@/commons/utils/changePageHandler';
 
 interface MenuItem {
   menuTitle: string
@@ -52,8 +53,7 @@ const SideBar = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const [selectIndex, setSelectIndex] = useState<number>(0);
+  const {pageIndex} = useSelector(selectGlobalState);
 
   return (
     <div className={styles.container}>
@@ -70,12 +70,10 @@ const SideBar = () => {
             key={elem.toString() + index} 
             className={styles.menuItem}
             onClick={()=>{
-              navigate(elem.menuLocation);
-              dispatch(setPageStatus({pageStatus: elem.menuLocation}));
-              setSelectIndex(index);
+              handleChangeMenu(navigate, dispatch, elem.menuLocation);
             }}
             style={{
-              backgroundColor: selectIndex === index ? "#FFF":"#EEF0F3"
+              backgroundColor: pageIndex === index ? "#FFF":"#EEF0F3"
             }}
             >
               <div className={styles.ellipse}>

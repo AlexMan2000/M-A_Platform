@@ -7,6 +7,7 @@ interface GlobalState {
     sessionId: string
     locale: string
     pageStatus: string
+    pageIndex: number
     isMobile: boolean
     isWindows: boolean
     isMac: boolean
@@ -24,6 +25,7 @@ const initialState: GlobalState = {
     sessionId: '',
     locale: getInitialLocale(),
     pageStatus: "/dashboard",
+    pageIndex: 0,
     isMobile: false,
     isWindows: false,
     isMac: false
@@ -44,6 +46,9 @@ export const globalSlice = createSlice({
         setPageStatus: (state, action) => {
             state.pageStatus = action.payload.pageStatus;
         },
+        setPageIndex: (state, action) => {
+            state.pageIndex = action.payload.pageIndex;
+        },
         setOSInfo: (state) => {
             const md = new MobileDetect(window.navigator.userAgent);
             const userAgent = navigator.userAgent.toLowerCase();
@@ -60,6 +65,6 @@ export const globalSlice = createSlice({
   
 export const selectGlobalState = (state: RootState) => state.global
 
-export const { setSessionId, setLocale, setOSInfo, setPageStatus } = globalSlice.actions
+export const { setSessionId, setLocale, setOSInfo, setPageStatus, setPageIndex } = globalSlice.actions
 
 export default globalSlice.reducer

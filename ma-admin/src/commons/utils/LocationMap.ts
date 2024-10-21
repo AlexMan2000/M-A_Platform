@@ -12,4 +12,9 @@ const location2title = {
 const title2location = Object.fromEntries(
     Object.entries(location2title).map(elem => [elem[1], elem[0]]))
 
-export { location2title, title2location};
+const locationToIndex = Object.fromEntries(
+    Object.entries(location2title).map((elem,index) => [elem[0],index])
+)
+
+
+export { location2title, title2location, locationToIndex};

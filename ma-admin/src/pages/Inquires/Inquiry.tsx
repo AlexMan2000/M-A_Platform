@@ -1,6 +1,10 @@
 import EditableTable from "@/commons/components/EditableTable/EditableTable";
 import styles from "./Inquiry.module.less"
 import Card from "@/commons/components/Card/Card";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setPageIndex, setPageStatus } from "@/store/slice/globalSlice/globalSlice";
+import handleChangeMenu from "@/commons/utils/changePageHandler";
 
 
 type SellerInquiry = {
@@ -81,7 +85,7 @@ const sellerColumns = [
     { title: 'Turnover', dataIndex: 'turnover', key: 'turnover' },
     { title: 'Key Contact', dataIndex: 'keyContact', key: 'keyContact' },
     { title: 'Region', dataIndex: 'region', key: 'region' },
-    { title: 'Publication Date', dataIndex: 'publicationDate', key: 'publicationDate', sorter: true  },
+    { title: 'Publication Date', dataIndex: 'publicationDate', key: 'publicationDate', sorter: true },
 ];
 
 
@@ -149,59 +153,78 @@ const buyerColumns = [
 const Inquiry = () => {
 
 
-
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     return (
         <div className={styles.container}>
             <div className={styles.headerStats}>
                 <Card
-                    style={{flexDirection:"column",
-                        alignItems:"flex-start",
-                        width:"25%",
-                        gap:"10px"
+                    style={{
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        width: "25%",
+                        gap: "10px"
                     }}
-                    >
+                >
                     <div className={styles.statsTitle}>Total Inquiries</div>
                     <div className={styles.statsNum}>145</div>
                 </Card>
                 <Card
-                    style={{flexDirection:"column",
-                        alignItems:"flex-start",
-                        width:"25%",
-                        gap:"10px"
+                    style={{
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        width: "25%",
+                        gap: "10px"
                     }}
                 >
-                     <div className={styles.statsTitle}>Total Inquiries</div>
-                     <div className={styles.statsNum}>145</div>
+                    <div className={styles.statsTitle}>Buyer Inquiries</div>
+                    <div className={styles.statsNum}>120</div>
                 </Card>
                 <Card
-                    style={{flexDirection:"column",
-                        alignItems:"flex-start",
-                        width:"25%",
-                        gap:"10px"
+                    style={{
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        width: "25%",
+                        gap: "10px"
                     }}
                 >
-                     <div className={styles.statsTitle}>Total Inquiries</div>
-                     <div className={styles.statsNum}>145</div>
+                    <div className={styles.statsTitle}>Seller Inquiries</div>
+                    <div className={styles.statsNum}>25</div>
                 </Card>
                 <Card
-                    style={{flexDirection:"column",
-                        alignItems:"flex-start",
-                        width:"25%",
-                        gap:"10px"
+                    style={{
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        width: "25%",
+                        gap: "10px"
                     }}
                 >
-                     <div className={styles.statsTitle}>Total Inquiries</div>
-                     <div className={styles.statsNum}>145</div>
+                    <div className={styles.statsTitle}>Others</div>
+                    <div className={styles.statsNum}>21</div>
                 </Card>
             </div>
             <div className={styles.sellerGroup}>
-                <div className={styles.sellerTitle}>Seller Inquiries</div>
-                <EditableTable<SellerInquiry> data={sellerInquiries} inputColumns={sellerColumns}></EditableTable>
+                <div className={styles.titleRow}>
+                    <div className={styles.sellerTitle}>Seller Inquiries</div>
+                    <div 
+                        className={styles.viewAll} 
+                        onClick={()=>{
+                            handleChangeMenu(navigate, dispatch, "/list");
+                        }}>View All</div>
+                </div>
+                <EditableTable<SellerInquiry> data={sellerInquiries} inputColumns={sellerColumns} rowKey={"companyName"}></EditableTable>
             </div>
             <div className={styles.buyerGroup}>
-                <div className={styles.buyerTitle}>Buyer Inquiries</div>
-                <EditableTable<BuyerInquiry> data={buyerInquiries} inputColumns={buyerColumns}></EditableTable>
+                <div className={styles.titleRow}>
+                    <div className={styles.buyerTitle}>Buyer Inquiries</div>
+                    <div className={styles.viewAll}
+                     onClick={()=>{
+                        handleChangeMenu(navigate, dispatch, "/pipeline");
+                    }}
+                    >View All</div>
+                </div>
+                <EditableTable<BuyerInquiry> data={buyerInquiries} inputColumns={buyerColumns} rowKey={"companyName"}></EditableTable>
             </div>
         </div>
     );

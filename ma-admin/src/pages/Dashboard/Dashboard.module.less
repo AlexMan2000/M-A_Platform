@@ -1,6 +1,9 @@
 .container {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 
     .topCards {
         width: 100%;
@@ -24,9 +27,10 @@
                 font-size: 18px;
                 font-style: normal;
                 font-weight: 500;
-                line-height: 29px; /* 161.111% */
+                line-height: 29px;
+                /* 161.111% */
             }
-    
+
             .stats {
                 color: var(--Text-2, #4E5D78);
                 font-feature-settings: 'liga' off, 'clig' off;
@@ -34,9 +38,82 @@
                 font-size: 40px;
                 font-style: normal;
                 font-weight: 600;
-                line-height: 29px; /* 72.5% */
+                line-height: 29px;
+                /* 72.5% */
             }
         }
-       
+
+    }
+
+
+    .newInquiry {
+
+        .title {
+            color: rgba(0, 0, 0, 0.90);
+            font-feature-settings: 'liga' off, 'clig' off;
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 29px;
+            /* 145% */
+        }
+
+
+        .headerRow {
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+
+    .projects {
+        .headerRow {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .title {
+                color: rgba(0, 0, 0, 0.90);
+                font-feature-settings: 'liga' off, 'clig' off;
+                font-family: Inter;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 29px;
+                /* 145% */
+            }
+
+
+            .viewAll {
+                color: #000;
+                font-feature-settings: 'liga' off, 'clig' off;
+                font-family: Inter;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 29px;
+                /* 207.143% */
+                cursor: pointer;
+
+                height: 36px;
+                padding: 5px;
+                text-align: center;
+                line-height: 29px;
+                border-radius: 10px;
+                width: 80px;
+                background: transparent;
+                transition: 0.2s background ease-in-out;
+
+                &:hover {
+                    background: grey;
+                    color: white;
+                }
+
+            }
+        }
+
     }
 }

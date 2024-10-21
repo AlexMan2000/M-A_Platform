@@ -1,0 +1,73 @@
+.dashboard-tab .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #363636 !important; 
+    /* font-weight: 500; */
+ }
+
+ .dashboard-tab  .ant-tabs-tab .ant-tabs-tab-btn {
+    color: rgba(0, 0, 0, 0.35);
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 29px; /* 207.143% */
+ }
+
+ .dashboard-tab  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn:hover {
+    color: black !important; 
+    /* font-weight: 500; */
+ }
+
+ .dashboard-tab  .ant-tabs-tab .ant-tabs-tab-btn:hover {
+    color: black !important; 
+    /* font-weight: 500; */
+ }
+
+ .dashboard-tab  .ant-tabs-tab .ant-tabs-tab-btn {
+    color: #a29f9f !important; 
+    /* font-weight: 500; */
+ }
+
+ .dashboard-tab  .ant-tabs-ink-bar {
+    position: absolute;
+    background-color: #000000 !important;
+    bottom: 6px !important;
+    height: 2px;
+    pointer-events: none;
+ }
+
+ .dashboard-tab .ant-tabs-nav::before {
+    margin-bottom: 5px; 
+    background-color: #a8a8a8;
+    height:2px;
+    width: 90px;
+  }
+
+
+.extra-content-view-all {
+    color: #000;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 29px;
+    /* 207.143% */
+    cursor: pointer;
+
+    height: 36px;
+    padding: 5px;
+    text-align: center;
+    line-height: 29px;
+    border-radius: 10px;
+    width: 80px;
+    background: transparent;
+    transition: 0.2s background ease-in-out;
+
+    
+}
+
+.extra-content-view-all:hover {
+    background: grey;
+    color: white;
+}
