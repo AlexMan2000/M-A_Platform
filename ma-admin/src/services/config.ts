@@ -1,3 +1,3 @@
-const FASTAPI_ENDPOINT = "https://copilot-api.datalynn.com";
+const FASTAPI_ENDPOINT = "http://localhost:8083";
 
 export default FASTAPI_ENDPOINT;

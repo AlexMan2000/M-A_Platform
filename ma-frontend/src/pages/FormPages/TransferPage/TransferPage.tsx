@@ -86,11 +86,11 @@ const TransferPage = () => {
 
         <div className={styles.fieldContainer}>
           <label className={styles.fieldLabel}>
-            Your Company's Name
+            Your Company's Name <span style={{ color: "red" }}>*</span>
           </label>
           <Form.Item
             name={["companyInfo","companyName"]}
-            rules={[{ required: false, message: "Please enter your company's name" }]}
+            rules={[{ required: true, message: "Please enter your company's name" }]}
           >
             <Input placeholder="Please enter your company’s name"
               style={{ width: '500px', height: "50px", fontFamily: "Nunito Sans", fontSize: "16px" }} />
@@ -103,7 +103,7 @@ const TransferPage = () => {
             Industry and Business Field <span style={{ color: 'red' }}>*</span>
           </label>
           <Form.Item
-            name={["companyInfo", "industry"]}
+            name={["companyInfo", "industryAndField"]}
             rules={[{ required: true, message: "Please select your industry" }]}
           >
             <SelectWithInput
@@ -119,7 +119,7 @@ const TransferPage = () => {
               style={{ width: "500px", height: "50px" }}
               placeholder="Please select the main industry and business field"
               mode="multiple" onChange={function (selectedValues: string[]): void {
-                form.setFieldValue(["companyInfo", "industry"], selectedValues)
+                form.setFieldValue(["companyInfo", "industryAndField"], selectedValues)
               }} />
           </Form.Item>
         </div>
@@ -160,7 +160,7 @@ const TransferPage = () => {
               inputOptions={["USD", "RMB", "HKD", "TWD", "SGD", "JPY"]}
               style={{ width: "500px", height: "50px" }}
               placeholder="Please select the currency"
-              mode="multiple" onChange={function (selectedValues: string[]): void {
+              onChange={function (selectedValues: string[]): void {
                 form.setFieldValue(["companyInfo", "currency"], selectedValues)
               }} />
           </Form.Item>

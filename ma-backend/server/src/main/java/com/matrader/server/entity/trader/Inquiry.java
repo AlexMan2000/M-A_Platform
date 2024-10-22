@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class Inquiry {
     private String companyId;
 
     // Time info
-    private Date creationTime;
-    private Date onlineTime;
-    private Date offlineTime;
+    private Instant creationTime;
+    private Instant onlineTime;
+    private Instant offlineTime;
 }

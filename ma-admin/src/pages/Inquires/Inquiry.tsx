@@ -4,6 +4,8 @@ import Card from "@/commons/components/Card/Card";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import handleChangeMenu from "@/commons/utils/changePageHandler";
+import { useEffect, useState } from "react";
+import { getBuyerInquiry, getSellerInquiry } from "@/services/inquiryServices/inquiryApi";
 
 
 type SellerInquiry = {
@@ -33,46 +35,46 @@ const sellerInquiries: SellerInquiry[] = [
         companyName: 'Logistics Co.',
         industry: 'Logistics',
         motivation: 'Business Succession',
-        turnover: '$10M',
+        turnover: '10M USD',
         keyContact: 'Lucy Huang',
         region: 'South China',
-        publicationDate: 'Jul 20 2024',
+        publicationDate: 'Jul 20 2024 12:30',
     },
     {
         companyName: 'Beauty Corp.',
         industry: 'Beauty',
         motivation: 'Change of Priorities',
-        turnover: '$15M',
+        turnover: '15M RMB',
         keyContact: 'Jack Li',
         region: 'East China',
-        publicationDate: 'Jun 18 2024',
+        publicationDate: 'Jun 18 2024 12:30',
     },
     {
         companyName: 'Beverage Solutions',
         industry: 'Beverages',
         motivation: 'Financial Gain',
-        turnover: '$12M',
+        turnover: '12M RMB',
         keyContact: 'Will Zhang',
         region: 'North China',
-        publicationDate: 'Aug 10 2024',
+        publicationDate: 'Aug 10 2024 12:30',
     },
     {
         companyName: 'Consumer Goods Ltd.',
         industry: 'Consumer Goods',
         motivation: 'Market Conditions',
-        turnover: '$8M',
+        turnover: '8M USD',
         keyContact: 'Christina Wei',
         region: 'West China',
-        publicationDate: 'May 25 2024',
+        publicationDate: 'May 25 2024 12:30',
     },
     {
         companyName: 'Tech Innovators',
         industry: 'Technology',
         motivation: 'Growth Opportunity',
-        turnover: '$25M',
+        turnover: '25M USD',
         keyContact: 'Edward Liu',
         region: 'Central China',
-        publicationDate: 'Jul 30 2024',
+        publicationDate: 'Jul 30 2024 12:30',
     },
 ];
 
@@ -93,46 +95,46 @@ const buyerInquiries: BuyerInquiry[] = [
         companyName: 'Investment Group A',
         desiredIndustry: 'Logistics',
         desiredRegion: 'South China',
-        dealSize: '$10M - $50M',
+        dealSize: '10M - 50M USD',
         companyType: 'Private Equity',
         keyContact: 'Lucy Huang',
-        publicationDate: 'Jul 21 2024',
+        publicationDate: 'Jul 21 2024 12:30',
     },
     {
         companyName: 'Global Ventures Ltd.',
         desiredIndustry: 'Beauty & Cosmetics',
         desiredRegion: 'East China',
-        dealSize: '$5M - $20M',
+        dealSize: '5M - 20M RMB',
         companyType: 'Venture Capital',
         keyContact: 'Jack Li',
-        publicationDate: 'Jun 20 2024',
+        publicationDate: 'Jun 20 2024 12:30',
     },
     {
         companyName: 'Strategic Investors Inc.',
         desiredIndustry: 'Beverages',
         desiredRegion: 'North China',
-        dealSize: '$15M - $40M',
+        dealSize: '15M - 40M RMB',
         companyType: 'Strategic Buyer',
         keyContact: 'Will Zhang',
-        publicationDate: 'Aug 11 2024',
+        publicationDate: 'Aug 11 2024 12:30',
     },
     {
         companyName: 'Consumer Partners',
         desiredIndustry: 'Consumer Goods',
         desiredRegion: 'West China',
-        dealSize: '$5M - $30M',
+        dealSize: '5M - 30M RMB',
         companyType: 'Private Equity',
         keyContact: 'Christina Wei',
-        publicationDate: 'May 26 2024',
+        publicationDate: 'May 26 2024 12:30',
     },
     {
         companyName: 'Tech Ventures',
         desiredIndustry: 'Technology',
         desiredRegion: 'Central China',
-        dealSize: '$20M - $60M',
+        dealSize: '20M - 60M USD',
         companyType: 'Strategic Buyer',
         keyContact: 'Edward Liu',
-        publicationDate: 'Jul 31 2024',
+        publicationDate: 'Jul 31 2024 12:30',
     },
 ];
 
@@ -147,6 +149,8 @@ const buyerColumns = [
     { title: 'Publication Date', dataIndex: 'publicationDate', key: 'publicationDate' },
 ];
 
+const actionOptions = ["Details", "Share"]
+
 
 
 const Inquiry = () => {
@@ -154,6 +158,23 @@ const Inquiry = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+
+    const [buyerData, setBuyerData] = useState<BuyerInquiry[]>([]);
+    const [sellerData, setSellerData] = useState<SellerInquiry[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
+
+
+    useEffect(()=>{
+        (async function() {
+            setLoading(true);
+            const databaseBuyerData = await getBuyerInquiry();
+            const databaseSellerData = await getSellerInquiry();
+            setLoading(false);
+            setBuyerData([...buyerInquiries, ...databaseBuyerData]);
+            setSellerData([...sellerInquiries, ...databaseSellerData]);
+        })();
+    },[]);
 
     return (
         <div className={styles.container}>
@@ -212,7 +233,13 @@ const Inquiry = () => {
                             handleChangeMenu(navigate, dispatch, "/list");
                         }}>View All</div>
                 </div>
-                <EditableTable<SellerInquiry> data={sellerInquiries} inputColumns={sellerColumns} rowKey={"companyName"}></EditableTable>
+                <EditableTable<SellerInquiry> 
+                    data={sellerData} 
+                    inputColumns={sellerColumns} 
+                    rowKey={"companyName"} 
+                    actionOptions={actionOptions}
+                    loading={loading}
+                    ></EditableTable>
             </div>
             <div className={styles.buyerGroup}>
                 <div className={styles.titleRow}>
@@ -223,7 +250,13 @@ const Inquiry = () => {
                     }}
                     >View All</div>
                 </div>
-                <EditableTable<BuyerInquiry> data={buyerInquiries} inputColumns={buyerColumns} rowKey={"companyName"}></EditableTable>
+                <EditableTable<BuyerInquiry> 
+                    data={buyerData} 
+                    inputColumns={buyerColumns} 
+                    rowKey={"companyName"} 
+                    actionOptions={actionOptions}
+                    loading={loading}
+                    ></EditableTable>
             </div>
         </div>
     );

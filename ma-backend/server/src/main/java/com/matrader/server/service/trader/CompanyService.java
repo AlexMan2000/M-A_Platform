@@ -2,6 +2,7 @@ package com.matrader.server.service.trader;
 
 import com.matrader.server.commons.enums.https.StatusCode;
 import com.matrader.server.commons.status.Message;
+import com.matrader.server.dto.trader.Company.CompanyInfo;
 import com.matrader.server.dto.trader.CompanyDTO;
 import com.matrader.server.entity.trader.Company;
 import com.matrader.server.repository.trader.entityRepository.CompanyRepository;
@@ -62,5 +63,21 @@ public class CompanyService {
         companyRepository.deleteById(id);
     }
 
+
+    public CompanyInfo buildCompanyInfoFromDTO(CompanyDTO companyDTO) {
+        return CompanyInfo.builder()
+                .companyName(companyDTO.getCompanyName())
+                .companyLocation(companyDTO.getCompanyLocation())
+                .companyType(companyDTO.getCompanyType())
+                .currency(companyDTO.getCurrency())
+                .industryAndField(companyDTO.getIndustryAndField())
+                .mAndAStrategy(companyDTO.getMAndAStrategy())
+                .turnoverLevel(companyDTO.getTurnoverLevel())
+                .build();
+    }
+
+    public CompanyInfo buildCompanyInfoFromEntity(Company company) {
+        return null;
+    }
 
 }

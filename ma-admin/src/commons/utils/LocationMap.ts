@@ -4,7 +4,7 @@ const location2title = {
     "/pipeline": "Buyer Database",
     "/management": "Project Management",
     "/milestone": "Timeline & Milestone",
-    "/inquires": "New Inquiries",
+    "/inquiries": "New Inquiries",
     "/dataroom": "Data Room",
     "/settings": "Settings",
 }

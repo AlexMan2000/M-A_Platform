@@ -1,0 +1,7 @@
+.projectList-switch.ant-switch-checked  {
+    background: rgb(83, 83, 83) !important;
+}
+
+.projectList-switch.ant-switch-inner-unchecked {
+    background-color: grey;
+}

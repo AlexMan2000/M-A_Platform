@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
   baseURL: FASTAPI_ENDPOINT,
   withCredentials: true,
   headers: {
-    "Content-Type": "application/json",
+    "Content-Type": "application/json", // 使用复杂请求 for PUT, PATCH, DELETE, POST
   },
 });
 

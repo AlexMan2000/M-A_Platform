@@ -6,7 +6,7 @@
 
     .toolBar {
         .addButton {
-            // padding:10px;
+            font-family: "Inter";
             border-radius: 6px;
             width: 100px;
             line-height: 40px;
@@ -14,7 +14,13 @@
             text-align: center;
             background-color: #868686;
             color: #fff;
-
+            cursor: pointer;
+            filter: brightness(100%);
+            transition: 0.2s filter ease-in-out;
+            
+            &:hover {
+                filter: brightness(120%);
+            }
         }
     }
 }

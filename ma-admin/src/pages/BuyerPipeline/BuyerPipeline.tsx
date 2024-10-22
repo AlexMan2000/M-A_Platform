@@ -21,7 +21,7 @@ const buyerInquiries: BuyerInquiry[] = [
     buyerId: 'B1385',
     companyName: 'Company Capital xxx',
     preferredIndustry: 'Logistics',
-    mnaStrategy: 'High',
+    mnaStrategy: 'Business Succession',
     investmentSize: '$50M - $150M',
     preferredRegion: 'South China',
     latestUpdated: '2024-07-18',
@@ -30,7 +30,7 @@ const buyerInquiries: BuyerInquiry[] = [
     buyerId: 'B1385',
     companyName: 'Company Capital xxx',
     preferredIndustry: 'Beauty',
-    mnaStrategy: 'Medium',
+    mnaStrategy: 'Business Succession',
     investmentSize: '$50M - $150M',
     preferredRegion: 'South China',
     latestUpdated: '2024-07-14',
@@ -39,7 +39,7 @@ const buyerInquiries: BuyerInquiry[] = [
     buyerId: 'B1385',
     companyName: 'Company Capital xxx',
     preferredIndustry: 'Beverages',
-    mnaStrategy: 'Low',
+    mnaStrategy: 'Business Succession',
     investmentSize: '$50M - $150M',
     preferredRegion: 'South China',
     latestUpdated: '2024-07-13',
@@ -48,7 +48,7 @@ const buyerInquiries: BuyerInquiry[] = [
     buyerId: 'B1385',
     companyName: 'Company Capital xxx',
     preferredIndustry: 'Consumer',
-    mnaStrategy: 'High',
+    mnaStrategy: 'Change of Priorities',
     investmentSize: '$50M - $150M',
     preferredRegion: 'South China',
     latestUpdated: '2024-07-12',
@@ -57,7 +57,7 @@ const buyerInquiries: BuyerInquiry[] = [
     buyerId: 'B1385',
     companyName: 'Company Capital xxx',
     preferredIndustry: 'Electronics',
-    mnaStrategy: 'Medium',
+    mnaStrategy: 'Change of Priorities',
     investmentSize: '$50M - $150M',
     preferredRegion: 'South China',
     latestUpdated: '2024-07-11',
@@ -66,7 +66,7 @@ const buyerInquiries: BuyerInquiry[] = [
     buyerId: 'B1385',
     companyName: 'Company Capital xxx',
     preferredIndustry: 'E-commerce',
-    mnaStrategy: 'Low',
+    mnaStrategy: 'Market Conditions',
     investmentSize: '$50M - $150M',
     preferredRegion: 'South China',
     latestUpdated: '2024-07-10',
@@ -75,7 +75,7 @@ const buyerInquiries: BuyerInquiry[] = [
     buyerId: 'B1385',
     companyName: 'Company Capital xxx',
     preferredIndustry: 'E-commerce',
-    mnaStrategy: 'Low',
+    mnaStrategy: 'Market Conditions',
     investmentSize: '$50M - $150M',
     preferredRegion: 'South China',
     latestUpdated: '2024-07-10',
@@ -84,7 +84,7 @@ const buyerInquiries: BuyerInquiry[] = [
     buyerId: 'B1385',
     companyName: 'Company Capital xxx',
     preferredIndustry: 'E-commerce',
-    mnaStrategy: 'Low',
+    mnaStrategy: 'Market Conditions',
     investmentSize: '$50M - $150M',
     preferredRegion: 'South China',
     latestUpdated: '2024-07-10',
@@ -93,7 +93,7 @@ const buyerInquiries: BuyerInquiry[] = [
     buyerId: 'B1385',
     companyName: 'Company Capital xxx',
     preferredIndustry: 'E-commerce',
-    mnaStrategy: 'Low',
+    mnaStrategy: 'Market Conditions',
     investmentSize: '$50M - $150M',
     preferredRegion: 'South China',
     latestUpdated: '2024-07-10',
@@ -102,7 +102,7 @@ const buyerInquiries: BuyerInquiry[] = [
     buyerId: 'B1385',
     companyName: 'Company Capital xxx',
     preferredIndustry: 'E-commerce',
-    mnaStrategy: 'Low',
+    mnaStrategy: 'Market Conditions',
     investmentSize: '$50M - $150M',
     preferredRegion: 'South China',
     latestUpdated: '2024-07-10',
@@ -111,7 +111,7 @@ const buyerInquiries: BuyerInquiry[] = [
     buyerId: 'B1385',
     companyName: 'Company Capital xxx',
     preferredIndustry: 'E-commerce',
-    mnaStrategy: 'Low',
+    mnaStrategy: 'Growth Opportunity',
     investmentSize: '$50M - $150M',
     preferredRegion: 'South China',
     latestUpdated: '2024-07-10',
@@ -120,7 +120,7 @@ const buyerInquiries: BuyerInquiry[] = [
     buyerId: 'B1385',
     companyName: 'Company Capital xxx',
     preferredIndustry: 'E-commerce',
-    mnaStrategy: 'Low',
+    mnaStrategy: 'Growth Opportunity',
     investmentSize: '$50M - $150M',
     preferredRegion: 'South China',
     latestUpdated: '2024-07-10',
@@ -158,19 +158,29 @@ const buyerColumns = [
   },
 ];
 
+const actionOptions = ["Preview", "Details", "Edit", "Share", "Archive"]
 
 
 const BuyerPipeline = () => {
   return (
     <div className={styles.container}>
       <div className={styles.toolBar}>
-        <div className={styles.addButton}>
+        <div className={styles.addButton} 
+          onClick={()=>{
+          alert("Expect detail page design")
+        }}>
           Add
         </div>
 
       </div>
-      <EditableTable data={buyerInquiries} inputColumns={buyerColumns} rowKey={"buyerId"}>
-
+      <EditableTable 
+        data={buyerInquiries} 
+        inputColumns={buyerColumns} 
+        rowKey={"buyerId"}
+        loading={false}
+        actionOptions={actionOptions}
+        >
+        
       </EditableTable>
     </div>
   );

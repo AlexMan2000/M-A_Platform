@@ -1,13 +1,17 @@
 package com.matrader.server.dto.trader;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CompanyDTO {
     private String id; // MongoDB ID, automatically generated if not provided
 

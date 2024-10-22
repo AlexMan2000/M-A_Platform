@@ -42,7 +42,7 @@ function App() {
             <Route path="/management" element={<Management/>}></Route>
             <Route path="/pipeline" element={<BuyerPipeline/>}></Route>
             <Route path="/milestone" element={<MileStone/>}></Route>
-            <Route path="/inquires" element={<Inquiry/>}></Route>
+            <Route path="/inquiries" element={<Inquiry/>}></Route>
             <Route path="/dataroom" element={<DataRoom/>}></Route>
             <Route path="/settings" element={<Settings/>}></Route>
           </Route>

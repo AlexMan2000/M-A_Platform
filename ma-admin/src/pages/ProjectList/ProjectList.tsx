@@ -1,8 +1,8 @@
-import { Tooltip } from "antd";
+import { Switch, Tooltip } from "antd";
 import styles from "./ProjectList.module.less"
 import { FilterFilled } from '@ant-design/icons';
 import EditableTable from "@/commons/components/EditableTable/EditableTable";
-
+import "./ProjectList.css"
 
 // Define the SellerInquiry type
 type SellerInquiry = {
@@ -14,6 +14,7 @@ type SellerInquiry = {
   askingPrice: string;
   region: string;
   publicationDate: string;
+  visibility: boolean;
 };
 
 // Define an array of SellerInquiry data
@@ -27,6 +28,7 @@ const sellerInquiries: SellerInquiry[] = [
     askingPrice: '$100M',
     region: 'South China',
     publicationDate: '2024-07-20',
+    visibility: false
   },
   {
     sellerId: 'S0056',
@@ -37,6 +39,7 @@ const sellerInquiries: SellerInquiry[] = [
     askingPrice: '$100M',
     region: 'South China',
     publicationDate: '2024-07-20',
+    visibility: true
   },
   {
     sellerId: 'S0056',
@@ -47,6 +50,7 @@ const sellerInquiries: SellerInquiry[] = [
     askingPrice: '$100M',
     region: 'South China',
     publicationDate: '2024-07-20',
+    visibility: true
   },
   {
     sellerId: 'S0056',
@@ -57,6 +61,7 @@ const sellerInquiries: SellerInquiry[] = [
     askingPrice: '$100M',
     region: 'South China',
     publicationDate: '2024-07-20',
+    visibility: true
   },
   {
     sellerId: 'S0056',
@@ -67,6 +72,7 @@ const sellerInquiries: SellerInquiry[] = [
     askingPrice: '$100M',
     region: 'South China',
     publicationDate: '2024-07-20',
+    visibility: true
   },
   {
     sellerId: 'S0056',
@@ -77,7 +83,75 @@ const sellerInquiries: SellerInquiry[] = [
     askingPrice: '$100M',
     region: 'South China',
     publicationDate: '2024-07-20',
+    visibility: true
   },
+  {
+    sellerId: 'S0056',
+    companyName: 'Company F',
+    industry: 'E-commerce',
+    progressPhase: { phase: 'Pre-Consultation', percentage: 15 },
+    annualTurnover: '$10M',
+    askingPrice: '$100M',
+    region: 'South China',
+    publicationDate: '2024-07-20',
+    visibility: true
+  },
+  {
+    sellerId: 'S0056',
+    companyName: 'Company F',
+    industry: 'E-commerce',
+    progressPhase: { phase: 'Pre-Consultation', percentage: 15 },
+    annualTurnover: '$10M',
+    askingPrice: '$100M',
+    region: 'South China',
+    publicationDate: '2024-07-20',
+    visibility: false
+  },
+  {
+    sellerId: 'S0056',
+    companyName: 'Company F',
+    industry: 'E-commerce',
+    progressPhase: { phase: 'Pre-Consultation', percentage: 15 },
+    annualTurnover: '$10M',
+    askingPrice: '$100M',
+    region: 'South China',
+    publicationDate: '2024-07-20',
+    visibility: true
+  },
+  {
+    sellerId: 'S0056',
+    companyName: 'Company F',
+    industry: 'E-commerce',
+    progressPhase: { phase: 'Pre-Consultation', percentage: 15 },
+    annualTurnover: '$10M',
+    askingPrice: '$100M',
+    region: 'South China',
+    publicationDate: '2024-07-20',
+    visibility: true
+  },
+  {
+    sellerId: 'S0056',
+    companyName: 'Company F',
+    industry: 'E-commerce',
+    progressPhase: { phase: 'Pre-Consultation', percentage: 15 },
+    annualTurnover: '$10M',
+    askingPrice: '$100M',
+    region: 'South China',
+    publicationDate: '2024-07-20',
+    visibility: true
+  },
+  {
+    sellerId: 'S0056',
+    companyName: 'Company F',
+    industry: 'E-commerce',
+    progressPhase: { phase: 'Pre-Consultation', percentage: 15 },
+    annualTurnover: '$10M',
+    askingPrice: '$100M',
+    region: 'South China',
+    publicationDate: '2024-07-20',
+    visibility: true
+  },
+
 ];
 
 // Filter options for industry column
@@ -85,7 +159,7 @@ const filterIndustryOptions = sellerInquiries.map((elem, _) => ({ text: elem.ind
 
 // Define the column configuration for Ant Design's Table component
 const sellerColumns = [
-  { title: 'Seller ID', dataIndex: 'sellerId', key: 'sellerId' },
+  { title: 'Project ID', dataIndex: 'sellerId', key: 'sellerId' },
   { title: 'Co. Name', dataIndex: 'companyName', key: 'companyName' },
   {
     title: 'Industry',
@@ -127,12 +201,40 @@ const sellerColumns = [
     sorter: (a, b) => new Date(a.publicationDate).getTime() - new Date(b.publicationDate).getTime(),
     render: (date) => new Date(date).toLocaleDateString(),
   },
+  {
+    title: "Visibility",
+    dataIndex: "visibility",
+    key: "visibility",
+    render: (_) => {
+      return <Switch 
+        // checked={checked} 
+        className={"projectList-switch"}
+        onChange={()=>{
+          // 发请求
+        }}>
+        </Switch>
+    }
+  }
 ];
+
+const actionOptions = ["Preview", "Details", "Edit", "Share", "Archive"]
 
 const ProjectList = () => {
   return (
     <div className={styles.container}>
-      <EditableTable data={sellerInquiries} inputColumns={sellerColumns} rowKey={"sellerId"}>
+      <div className={styles.addButton} 
+          onClick={()=>{
+          alert("Expect detail page design")
+        }}>
+          Add
+        </div>
+      <EditableTable 
+        data={sellerInquiries} 
+        inputColumns={sellerColumns} 
+        loading={false}
+        rowKey={"sellerId"}
+        actionOptions={actionOptions}
+        >
       </EditableTable>
     </div>
   );

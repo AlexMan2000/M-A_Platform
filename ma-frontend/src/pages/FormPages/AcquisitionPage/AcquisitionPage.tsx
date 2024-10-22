@@ -108,7 +108,7 @@ const AcquisitionPage = () => {
                 inputOptions={["USD", "RMB", "HKD", "TWD", "SGD", "JPY"]}
                 style={{ width: "500px", height: "50px" }}
                 placeholder="Please select the currency"
-                mode="multiple" onChange={function (selectedValues: string[]): void {
+                onChange={function (selectedValues: string[]): void {
                   form.setFieldValue(['acquisitionNeeds', 'currency'], selectedValues)
                 }} />
             </Form.Item>
@@ -143,6 +143,23 @@ const AcquisitionPage = () => {
 
 
         <div className={styles.heading}>2. Company Info</div>
+
+
+        <div className={styles.fieldContainer}>
+          <label className={styles.fieldLabel}>Company's Name<span style={{ color: "red" }}>*</span></label>
+          <div className={styles.fieldContent}>
+            <Form.Item
+              name={['companyInfo', 'companyName']}
+              rules={[{ required: true, message: "Please enter your company's name" }]}
+            >
+              <Input
+                placeholder="Please enter your company's name"
+                style={{ width: "500px", height: "50px", fontFamily: "Nunito Sans", fontSize: "16px" }}
+              />
+            </Form.Item>
+          </div>
+        </div>
+
 
         <div className={styles.fieldContainer}>
           {/* Company Type */}
@@ -207,7 +224,7 @@ const AcquisitionPage = () => {
                 inputOptions={["USD", "RMB", "HKD", "TWD", "SGD", "JPY"]}
                 style={{ width: "500px", height: "50px" }}
                 placeholder="Please select the currency"
-                mode="multiple" onChange={function (selectedValues: string[]): void {
+                onChange={function (selectedValues: string[]): void {
                   form.setFieldValue(['companyInfo', 'currency'], selectedValues)
                 }} />
             </Form.Item>
@@ -244,7 +261,7 @@ const AcquisitionPage = () => {
           <label className={styles.fieldLabel}>Company's Location</label>
           <div className={styles.fieldContent}>
             <Form.Item
-              name={['contactInfo', 'companyLocation']}
+              name={['companyInfo', 'companyLocation']}
               rules={[{ required: false, message: "Please enter your company's location" }]}
             >
               <Input
