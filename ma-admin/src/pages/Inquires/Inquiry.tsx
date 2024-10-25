@@ -1,4 +1,4 @@
-import EditableTable from "@/commons/components/EditableTable/EditableTable";
+import EditableTable, { ActionOption } from "@/commons/components/EditableTable/EditableTable";
 import styles from "./Inquiry.module.less"
 import Card from "@/commons/components/Card/Card";
 import { useNavigate } from "react-router-dom";
@@ -149,7 +149,7 @@ const buyerColumns = [
     { title: 'Publication Date', dataIndex: 'publicationDate', key: 'publicationDate' },
 ];
 
-const actionOptions = ["Details", "Share"]
+const actionOptions: ActionOption[] = ["Details", "Share"]
 
 
 
@@ -235,6 +235,7 @@ const Inquiry = () => {
                 </div>
                 <EditableTable<SellerInquiry> 
                     data={sellerData} 
+                    name="seller"
                     inputColumns={sellerColumns} 
                     rowKey={"companyName"} 
                     actionOptions={actionOptions}
@@ -252,6 +253,7 @@ const Inquiry = () => {
                 </div>
                 <EditableTable<BuyerInquiry> 
                     data={buyerData} 
+                    name="buyer"
                     inputColumns={buyerColumns} 
                     rowKey={"companyName"} 
                     actionOptions={actionOptions}

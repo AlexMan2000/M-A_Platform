@@ -1,7 +1,7 @@
 import { Switch, Tooltip } from "antd";
 import styles from "./ProjectList.module.less"
 import { FilterFilled } from '@ant-design/icons';
-import EditableTable from "@/commons/components/EditableTable/EditableTable";
+import EditableTable, { ActionOption } from "@/commons/components/EditableTable/EditableTable";
 import "./ProjectList.css"
 
 // Define the SellerInquiry type
@@ -217,7 +217,7 @@ const sellerColumns = [
   }
 ];
 
-const actionOptions = ["Preview", "Details", "Edit", "Share", "Archive"]
+const actionOptions: ActionOption[] = ["Preview", "Details", "Edit", "Share", "Archive"]
 
 const ProjectList = () => {
   return (
@@ -228,7 +228,7 @@ const ProjectList = () => {
         }}>
           Add
         </div>
-      <EditableTable 
+      <EditableTable<SellerInquiry> 
         data={sellerInquiries} 
         inputColumns={sellerColumns} 
         loading={false}

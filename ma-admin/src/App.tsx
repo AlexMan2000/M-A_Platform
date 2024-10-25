@@ -12,6 +12,9 @@ import Inquiry from './pages/Inquires/Inquiry'
 import DataRoom from './pages/DataRoom/DataRoom'
 import Settings from './pages/Settings/Settings'
 import Management from './pages/Management/Management'
+import SellerDetail from './pages/Inquires/SellerSession/SellerDetail'
+import InquiryIndex from './pages/Inquires/InquiryIndex'
+import BuyerDetail from './pages/Inquires/BuyerSession/BuyerDetail'
 
 const messages = {
   en: {
@@ -34,17 +37,22 @@ function App() {
   return (
     <IntlProvider locale={locale} messages={messages[locale]}>
       <BrowserRouter>
-       <Routes>
-          <Route path="/" element={<AdminPage/>}>
+        <Routes>
+          <Route path="/" element={<AdminPage />}>
+            {/*index代表，当匹配到父级路径的时候，默认渲染的是子组件*/}
             <Route index element={<Navigate to="/dashboard" />}></Route>
-            <Route path="/dashboard" element={<Dashboard/>}></Route>
-            <Route path="/list" element={<ProjectList/>}></Route>
-            <Route path="/management" element={<Management/>}></Route>
-            <Route path="/pipeline" element={<BuyerPipeline/>}></Route>
-            <Route path="/milestone" element={<MileStone/>}></Route>
-            <Route path="/inquiries" element={<Inquiry/>}></Route>
-            <Route path="/dataroom" element={<DataRoom/>}></Route>
-            <Route path="/settings" element={<Settings/>}></Route>
+            <Route path="/dashboard" element={<Dashboard />}></Route>
+            <Route path="/list" element={<ProjectList />}></Route>
+            <Route path="/management" element={<Management />}></Route>
+            <Route path="/pipeline" element={<BuyerPipeline />}></Route>
+            <Route path="/milestone" element={<MileStone />}></Route>
+            <Route path="/inquiries" element={<InquiryIndex />}>
+              <Route index element={<Inquiry />}></Route>
+              <Route path="seller/:id" element={<SellerDetail />}></Route>
+              <Route path="buyer/:id" element={<BuyerDetail />}></Route>
+            </Route>
+            <Route path="/dataroom" element={<DataRoom />}></Route>
+            <Route path="/settings" element={<Settings />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

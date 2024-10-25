@@ -11,6 +11,7 @@ const AdminPage = () => {
       <div className={styles.content}>
         <Header></Header>
         <div className={styles.body}>
+        {/*渲染子组件*/}
         <Outlet></Outlet>
         </div>
         

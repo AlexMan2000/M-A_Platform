@@ -1,0 +1,178 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 50px 0px;
+
+
+    .backContainer {
+        position: fixed;
+        background-color: #F7F8F8;
+        height: 80px;
+        margin-top: -50px;
+        width: 100%;
+        z-index: 1;
+
+        .backButton {
+            font-family: "Inter";
+            border-radius: 6px;
+            width: 100px;
+            line-height: 40px;
+            box-shadow: 1px 1px 2px 0px grey;
+            text-align: center;
+            background-color: #868686;
+            color: #fff;
+            cursor: pointer;
+            filter: brightness(100%);
+            transition: 0.2s filter ease-in-out;
+
+            &:hover {
+                filter: brightness(120%);
+            }
+        }
+
+    }
+
+
+    .title {
+        color: #000;
+        font-family: "Nunito Sans";
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        // align-items: flex-start;
+        // flex-wrap: nowrap;
+        gap: 30px;
+
+
+        .heading {
+            padding-top: 45px;
+            padding-bottom: 0px;
+            color: #000;
+            font-family: "Nunito Sans";
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .fieldContainer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 90px;
+
+
+            .fieldLabel {
+                width: 400px;
+                padding-bottom: 20px;
+                color: #000;
+                font-family: "Nunito Sans";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                text-transform: capitalize;
+            }
+
+            .fieldContent {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .terms {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 1214px;
+
+            .heading {
+                color: #000;
+                font-family: "Nunito Sans";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                text-transform: capitalize;
+            }
+
+            .desc {
+
+                color: #000;
+                font-family: "Nunito Sans";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 30px;
+                /* 187.5% */
+            }
+
+            .checkbox {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                align-items: center;
+                position: relative;
+
+                .text {
+                    padding-bottom: 25px;
+                }
+            }
+
+
+        }
+
+        .submit {
+            display: flex;
+            align-self: center;
+            width: 231px;
+            height: 50px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 8px;
+            background: #878787;
+
+            /* Light/Elevation/3 */
+            box-shadow: 0px 4px 8px -4px rgba(76, 78, 100, 0.42);
+
+            color: var(--Light-Primary-Contrast, #FFF);
+            font-feature-settings: 'liga' off, 'clig' off;
+
+            /* Light/Components/Button Large */
+            font-family: Inter;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 26px;
+            /* 173.333% */
+            letter-spacing: 0.46px;
+            text-transform: uppercase;
+
+            &:hover {
+                background: #878787;
+                color: white;
+                filter: brightness(130%);
+                border: none;
+            }
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: row;
+            gap: 70px;
+            padding-top: 25px;
+            align-self: center;
+        }
+    }
+}

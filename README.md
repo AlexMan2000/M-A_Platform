@@ -18,6 +18,13 @@ The landing page has been deployed to amazon AWS, visit http://18.188.164.17:517
 
 ## October
 
+### 2024/10/24
+
+- Add subpage for each inquiry.
+- Add back button on each subpage.
+
+
+
 ### 2024/10/21,22
 
 - Test the database functionalities

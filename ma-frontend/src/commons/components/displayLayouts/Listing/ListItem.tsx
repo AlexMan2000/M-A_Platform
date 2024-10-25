@@ -7,27 +7,27 @@ import { classNames, classNamesArgs } from '@/commons/utils/classNameHandler';
 
 
 interface ListItemProps {
-   children: ReactNode,
-   bulletImage?:string,
-   backgroundImage?: string,
-   imageAttr?:{[key: string]: string},
-   itemAlign?: string,
-   itemGap?: string,
-   textFontAttr?:{[key: string]: string},
-   className?:string;
-   style?:CSSProperties;
+  children: ReactNode,
+  bulletImage?: string,
+  backgroundImage?: string,
+  imageAttr?: { [key: string]: string },
+  itemAlign?: string,
+  itemGap?: string,
+  textFontAttr?: { [key: string]: string },
+  className?: string;
+  style?: CSSProperties;
 }
 
-const ListItem: FC<ListItemProps> = ({ 
-  children, 
-  bulletImage, 
+const ListItem: FC<ListItemProps> = ({
+  children,
+  bulletImage,
   backgroundImage,
   imageAttr,
-  itemAlign, 
+  itemAlign,
   itemGap,
-  textFontAttr, 
-  className, 
-  style}) => {
+  textFontAttr,
+  className,
+  style }) => {
 
 
   /** 
@@ -45,43 +45,43 @@ const ListItem: FC<ListItemProps> = ({
 
 
 
-  const bulletImageAlign = itemAlign == "start"? 
-  {
-    alignSelf: "flex-start",
-    marginTop: "7px"
-  }:
-  {
-    alignSelf: "center",
-    marginTop: 0
-  }
+  const bulletImageAlign = itemAlign == "start" ?
+    {
+      alignSelf: "flex-start",
+      marginTop: "7px"
+    } :
+    {
+      alignSelf: "center",
+      marginTop: 0
+    }
 
-  return <div 
-        className={classNames(["list-item", className])} 
-        style={{gap: itemGap, ...style}}>
+  return <div
+    className={classNames(["list-item", className])}
+    style={{ gap: itemGap, ...style }}>
 
-          {bulletImage && !bulletImageError ? (
+    {bulletImage && !bulletImageError ? (
 
-            <img
-                src={bulletImage}
-                alt="bullet"
-                className={classNames(["list-item-bullet-image", className])}
-                style={ {...bulletImageAlign, ...imageAttr, ...style} }
-                onError={() => setBulletImageError(true)}
-            />
-            ) : (
-                <div className={classNames(["list-item-bullet", className])}
-                  style={ {...bulletImageAlign, ...style}}
-                ></div>
-            )}
-            <div className={classNames(["list-item-text", className])}
-              style={{...textFontAttr,...style}}
-            >{children}</div>
-            <div className={classNamesArgs("list-item-container-background-image-container", className)}>
-              {backgroundImage && !backgroundImageError && <img src={backgroundImage}
-              className={classNamesArgs("list-item-container-background-image", className)}
-                onError={() => setBackgroundImageError(true)}
-              ></img>}
-            </div>
+      <img
+        src={bulletImage}
+        alt="bullet"
+        className={classNames(["list-item-bullet-image", className])}
+        style={{ ...bulletImageAlign, ...imageAttr, ...style }}
+        onError={() => setBulletImageError(true)}
+      />
+    ) : (
+      <div className={classNames(["list-item-bullet", className])}
+        style={{ ...bulletImageAlign, ...style }}
+      ></div>
+    )}
+    <div className={classNames(["list-item-text", className])}
+      style={{ ...textFontAttr, ...style }}
+    >{children}</div>
+    <div className={classNamesArgs("list-item-container-background-image-container", className)}>
+      {backgroundImage && !backgroundImageError && <img src={backgroundImage}
+        className={classNamesArgs("list-item-container-background-image", className)}
+        onError={() => setBackgroundImageError(true)}
+      ></img>}
+    </div>
   </div>;
 };
 
